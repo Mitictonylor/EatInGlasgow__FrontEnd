@@ -15,10 +15,16 @@ class UserForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
+  handleChange(event) {
+    const newState = {};
+    newState[event.target.name] = event.target.value;
+    this.setState(newState);
+  }
 
-
-
-
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.onSubmit(this.state);
+  }
 
 
   render(){

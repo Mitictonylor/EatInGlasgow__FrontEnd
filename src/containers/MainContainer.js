@@ -20,7 +20,7 @@ const MainContainer = () => {
         <Route exact path ='/users' component = {UserContainer}/>
         <Route exact path  ='/bookings' component = {BookingContainer}></Route>
         <Route exact path  ='/reviews' component = {ReviewContainer} />
-        <Route exact path  ='/users/new' component = {UserForm}>Add User</Route>
+        <Route exact path ='/users/new'  component={UserForm}/>
       </Switch>
 
 
