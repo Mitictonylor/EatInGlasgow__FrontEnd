@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import NavBar from '../NavBar.js';
+import NavigationBar from '../NavigationBar.js';
 
 
 const MainContainer = () => {
@@ -8,7 +8,7 @@ const MainContainer = () => {
     return (
       <Router>
       <Fragment>
-      <NavBar/>
+      <NavigationBar/>
       <Switch>
         // <Route path = "/pirates" component={PirateContainer} />
       </Switch>
