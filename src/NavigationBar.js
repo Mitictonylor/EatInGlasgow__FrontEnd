@@ -7,13 +7,16 @@ const NavigationBar = (props) => {
 
       <ul>
         <li className="navLink">
-          <a href="/pirates">Pirates</a>
+          <a href="/restaurants">Restaurants</a>
         </li>
         <li className="navLink">
-          <a href="/ships">Ships</a>
+          <a href="/users">Users</a>
         </li>
         <li className="navLink">
-          <a href="/raids" >Raids</a>
+          <a href="/bookings" >Bookings</a>
+        </li>
+        <li className="navLink">
+          <a href="/reviews" >Reviews</a>
         </li>
 
       </ul>
