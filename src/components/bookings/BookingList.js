@@ -6,9 +6,9 @@ const BookingList = (props) =>{
     return 'Loading....'
   }
 
-const bookingsOptions = props.bookings.map((booking, index) =>{
+const bookingsOptions = props.bookings.map((booking) =>{
   return (
-    <li key={index} className="component-item">
+    <li key={booking.id} className="component-item">
       <div className="component">
       <Booking booking={booking} />
       </div>
