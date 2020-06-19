@@ -18,9 +18,12 @@ const usersOptions = props.users.map((user, index) =>{
   )
 })
 return(
+  <>
+  <a className = "link" href="/users/new">ADD USER</a>
   <ul className="component-list">
    {usersOptions}
  </ul>
+ </>
 )
 
 

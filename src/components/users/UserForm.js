@@ -23,7 +23,7 @@ class UserForm extends Component{
   render(){
     return(
 
-      <form>
+      <form className="form-container">
       <div className="form_wrap">
         <label htmlFor="name">Your name:</label>
         <input
