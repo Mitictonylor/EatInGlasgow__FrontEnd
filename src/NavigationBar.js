@@ -3,7 +3,7 @@ import React from 'react';
 const NavigationBar = (props) => {
   return (
     <header>
-      <img src="/images/logo.jpg" alt="Logo"/>
+      <a href = "/"><img src="/images/logo.jpg"   alt="Logo"/></a>
 
       <ul>
         <li className="navLink">

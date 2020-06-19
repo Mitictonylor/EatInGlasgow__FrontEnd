@@ -10,9 +10,8 @@ const MainContainer = () => {
       <Fragment>
 
       <NavigationBar/>
-      <h1>WELCOME TO EatInGlasgow</h1>
       <Switch>
-<Route path ='/restaurants' component = {RestaurantContainer}></Route>
+        <Route path ='/restaurants' component = {RestaurantContainer}></Route>
       </Switch>
 
 

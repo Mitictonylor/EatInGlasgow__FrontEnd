@@ -1,6 +1,7 @@
 import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
+import RestaurantList from '../components/restaurants/RestaurantList.js'
 
 class RestaurantContainer extends Component{
   constructor(props){

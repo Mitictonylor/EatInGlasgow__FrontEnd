@@ -2,7 +2,7 @@ import React from 'react';
 import Restaurant from './Restaurant.js'
 
 const RestaurantList = (props) =>{
-  if (!props.restaurants.lenght){
+  if (props.restaurants.lenght === 0){
     return 'Loading....'
   }
 
@@ -16,7 +16,11 @@ const restaurantsOptions = props.restaurants.map((restaurant, index) =>{
 
   )
 })
-
+return(
+  <ul className="component-list">
+   {restaurantsOptions}
+ </ul>
+)
 
 
 }
