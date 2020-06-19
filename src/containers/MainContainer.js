@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavigationBar from '../NavigationBar.js';
-import RestaurantContainer from './RestaurantContainer.js'
-import UserContainer from './UserContainer.js'
-import BookingContainer from './BookingContainer.js'
-
+import RestaurantContainer from './RestaurantContainer.js';
+import UserContainer from './UserContainer.js';
+import BookingContainer from './BookingContainer.js';
+import ReviewContainer from './ReviewContainer.js';
 
 
 
@@ -19,6 +19,7 @@ const MainContainer = () => {
         <Route path ='/restaurants' component = {RestaurantContainer}></Route>
         <Route path ='/users' component = {UserContainer}></Route>
         <Route path ='/bookings' component = {BookingContainer}></Route>
+        <Route path ='/reviews' component = {ReviewContainer}></Route>
       </Switch>
 
 
