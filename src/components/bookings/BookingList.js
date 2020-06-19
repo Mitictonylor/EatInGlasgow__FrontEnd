@@ -10,7 +10,7 @@ const bookingsOptions = props.bookings.map((booking, index) =>{
   return (
     <li key={index} className="component-item">
       <div className="component">
-      <Restaurant booking={booking} />
+      <Booking booking={booking} />
       </div>
     </li>
 
@@ -18,7 +18,7 @@ const bookingsOptions = props.bookings.map((booking, index) =>{
 })
 return(
   <ul className="component-list">
-   {bookingOptions}
+   {bookingsOptions}
  </ul>
 )
 

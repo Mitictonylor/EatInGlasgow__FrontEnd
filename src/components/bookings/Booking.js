@@ -19,4 +19,4 @@ return(
 </Fragment>
 )          
 }
-export default Restaurant;
+export default Booking;

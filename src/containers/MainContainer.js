@@ -3,6 +3,10 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavigationBar from '../NavigationBar.js';
 import RestaurantContainer from './RestaurantContainer.js'
 import UserContainer from './UserContainer.js'
+import BookingContainer from './BookingContainer.js'
+
+
+
 
 const MainContainer = () => {
 
@@ -14,6 +18,7 @@ const MainContainer = () => {
       <Switch>
         <Route path ='/restaurants' component = {RestaurantContainer}></Route>
         <Route path ='/users' component = {UserContainer}></Route>
+        <Route path ='/bookings' component = {BookingContainer}></Route>
       </Switch>
 
 
