@@ -6,7 +6,7 @@ import UserContainer from './UserContainer.js';
 import BookingContainer from './BookingContainer.js';
 import ReviewContainer from './ReviewContainer.js';
 import UserForm from '../components/users/UserForm.js'
-
+import RestaurantForm from '../components/restaurant/RestaurantForm.js'
 
 const MainContainer = () => {
 
@@ -21,6 +21,7 @@ const MainContainer = () => {
         <Route exact path  ='/bookings' component = {BookingContainer}></Route>
         <Route exact path  ='/reviews' component = {ReviewContainer} />
         <Route exact path ='/users/new'  component={UserForm}/>
+        <Route exact path ='/restaurants/new'  component={RestaurantForm}/>
       </Switch>
 
 
