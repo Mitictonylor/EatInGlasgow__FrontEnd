@@ -23,23 +23,14 @@ class UserForm extends Component{
 
   handleSubmit(event) {
     event.preventDefault();
-    // this.props.onSubmit(this.state);
-    this.setState({
-                  name: '',
-                  surname: '',
-                  email: '',
-                  town: '',
-                  postcode: '',
-
-  })
-this.props.history.push('/users')
-}
+    this.props.onSubmit(this.state);
+  }
 
 
   render(){
     return(
 
-      <form className="form-container" post="/users">
+      <form className="form-container">
       <div className="form_wrap">
         <label htmlFor="name">Your name:</label>
         <input

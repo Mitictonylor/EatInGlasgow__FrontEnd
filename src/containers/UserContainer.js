@@ -2,7 +2,7 @@ import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
 import UserList from '../components/users/UserList.js'
-
+import UserForm from '../components/users/UserForm.js'
 
 
 class UserContainer extends Component{
@@ -32,7 +32,7 @@ class UserContainer extends Component{
   }
 
   addUser(){
-    return
+    return <UserForm onSubmit={this.handleSubmit}/>
   }
 
   handleSubmit(data) {
