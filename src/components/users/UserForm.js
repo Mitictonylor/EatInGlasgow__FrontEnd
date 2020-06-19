@@ -10,8 +10,9 @@ class UserForm extends Component{
                   email: '',
                   town: '',
                   postcode: '',
-
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
