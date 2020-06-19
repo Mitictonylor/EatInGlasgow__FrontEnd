@@ -9,6 +9,7 @@ class BookingContainer extends Component{
     super(props);
     this.state = {
       bookings:[{
+                    id:1,
                     date: "12/05/20",
                     time: "17:00",
                     user:{name: "john"},
@@ -16,6 +17,7 @@ class BookingContainer extends Component{
                     seats: 4
                   },
                   {
+                    id:2,
                     date: "15/05/20",
                     time: "19:00",
                     user:{name: "jack"},
