@@ -18,6 +18,9 @@ const NavigationBar = (props) => {
         <li className="navLink">
           <a href="/reviews" >Reviews</a>
         </li>
+        <li className="navLink">
+          <a href="/users/new" >Add User</a>
+        </li>
 
       </ul>
     </header>

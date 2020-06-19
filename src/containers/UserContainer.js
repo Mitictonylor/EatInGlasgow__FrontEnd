@@ -2,6 +2,7 @@ import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
 import UserList from '../components/users/UserList.js'
+import UserForm from '../components/users/UserForm.js'
 
 
 class UserContainer extends Component{
@@ -9,10 +10,20 @@ class UserContainer extends Component{
     super(props);
     this.state = {
       users:[{
-                    name: "john"
+                    id:1,
+                    name: "john",
+                    surname: 'wayne',
+                    email: 'a@a.it',
+                    town: 'Paisley',
+                    postcode: 'p1e4w',
                   },
                   {
-                    name: "jack"
+                    id:2,
+                    name: "jack",
+                    surname: 'pikke',
+                    email: 'b@b.it',
+                    town: 'Glasgow',
+                    postcode: 'g327qa',
                   }
       ]
     }
@@ -26,6 +37,7 @@ render(){
               <Route render={(props) => {
                 return <UserList users={this.state.users}/>
               }}/>
+              
           </Switch>
         </Fragment>
       </Router>
