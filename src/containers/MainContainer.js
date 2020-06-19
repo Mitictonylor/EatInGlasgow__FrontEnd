@@ -10,7 +10,7 @@ const MainContainer = () => {
       <Fragment>
       <NavigationBar/>
       <Switch>
-        // <Route path = "/pirates" component={PirateContainer} />
+      
       </Switch>
 
 
