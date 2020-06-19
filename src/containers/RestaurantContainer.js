@@ -8,10 +8,10 @@ class RestaurantContainer extends Component{
     super(props);
     this.state = {
       restaurants:[{
-                    name: "saffsasaf"
+                    name: "sapori"
                   },
                   {
-                    name: "jhafshoifsaohisfa"
+                    name: "dissapori"
                   }
       ]
     }
