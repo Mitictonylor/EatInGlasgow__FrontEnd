@@ -23,7 +23,6 @@ render(){
           <Switch>
               <Route render={(props) => {
                 return <RestaurantList restaurants={this.state.restaurants}/>
-
               }}/>
           </Switch>
         </Fragment>
