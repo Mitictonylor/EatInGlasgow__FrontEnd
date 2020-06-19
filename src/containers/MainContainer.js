@@ -6,7 +6,7 @@ import UserContainer from './UserContainer.js';
 import BookingContainer from './BookingContainer.js';
 import ReviewContainer from './ReviewContainer.js';
 import UserForm from '../components/users/UserForm.js'
-import RestaurantForm from '../components/restaurant/RestaurantForm.js'
+import RestaurantForm from '../components/restaurants/RestaurantForm.js'
 
 const MainContainer = () => {
 

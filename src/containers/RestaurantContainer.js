@@ -2,7 +2,7 @@ import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
 import RestaurantList from '../components/restaurants/RestaurantList.js'
-import RestaurantForm from '../components/restaurant/RestaurantForm.js'
+import RestaurantForm from '../components/restaurants/RestaurantForm.js'
 
 class RestaurantContainer extends Component{
   constructor(props){
@@ -32,7 +32,7 @@ class RestaurantContainer extends Component{
                     email: "b@b.bb",
                     address: "address",
                     postcode: "Postcode",
-                    city: "city",
+                    town: "city",
                     openTime: 11,
                     closeTime: 23
 
@@ -57,7 +57,7 @@ class RestaurantContainer extends Component{
                         email: data.email,
                         address: data.address,
                         postcode: data.postcode,
-                        city: data.city,
+                        town: data.town,
                         openTime: data.openTime,
                         closeTime: data.closeTime });
     }
