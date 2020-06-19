@@ -8,11 +8,7 @@ const RestaurantList = (props) =>{
 
 const restaurantsOptions = props.restaurants.map((restaurant, index) =>{
   return (
-    <li key={index} className="component-item">
-		    <div className="component">
-		    <Restaurant restaurant={restaurant} />
-				</div>
-			</li>
+
   )
 })
 
