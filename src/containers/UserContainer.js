@@ -39,7 +39,20 @@ handlePost(user){
   .then(() => window.location = '/users')
 }
 
+handleUpdate(user){
+    const request = new Request();
+    request.patch('/api/users/' + user.id, user).then(() => {
+      window.location = '/users/' + user.id
+    })
+  }
+
+
 render(){
+
+if(!this.state.users){
+  return null
+}
+
   return(
     <Router>
         <Fragment>
