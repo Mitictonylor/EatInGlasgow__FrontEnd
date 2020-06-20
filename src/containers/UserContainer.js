@@ -9,31 +9,15 @@ class UserContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      users:[{
-                    id:1,
-                    name: "john",
-                    surname: 'wayne',
-                    email: 'a@a.it',
-                    town: 'Paisley',
-                    postcode: 'p1e4w'
-                  },
-                  {
-                    id:2,
-                    name: "jack",
-                    surname: 'pikke',
-                    email: 'b@b.it',
-                    town: 'Glasgow',
-                    postcode: 'g327qa'
-                  }
-      ]
+      users:[]
     }
   this.handleSubmit = this.handleSubmit.bind(this);
-  this.addUser = this.addUser.bind(this);
   }
+componentDidMount(){
+  const request = new Request();
+  request.get('/api/pirates').then((data)=> this.setState({users: data)})
+}
 
-  addUser(){
-    return <UserForm onSubmit={this.handleSubmit}/>
-  }
 
   handleSubmit(data) {
 const newData = {   name: data.name,
