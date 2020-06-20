@@ -11,6 +11,8 @@ class UserContainer extends Component{
     this.state = {
       users:[]
     }
+
+  this.findUserById = this.findUserById.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this);
   }
 componentDidMount(){
@@ -23,6 +25,7 @@ findUserById(id){
     return user.id === parseInt(id);
   });
 }
+
   handleSubmit(data) {
 const newData = {   name: data.name,
                   surname: data.surname,
