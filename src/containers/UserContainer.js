@@ -26,6 +26,13 @@ findUserById(id){
   });
 }
 
+handleDelete(id){
+  const request = new Request();
+  const url = "/api/users/" + id
+  request.delete(url)
+  .then(() => window.location = "/users")
+}
+
   handleSubmit(data) {
 const newData = {   name: data.name,
                   surname: data.surname,
