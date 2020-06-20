@@ -36,12 +36,12 @@ class UserContainer extends Component{
   }
 
   handleSubmit(data) {
-
-      this.setState({   name: data.name,
-                        surname: data.surname,
-                        email: data.email,
-                        town: data.town,
-                        postcode: data.postcode });
+const newData = {   name: data.name,
+                  surname: data.surname,
+                  email: data.email,
+                  town: data.town,
+                  postcode: data.postcode }
+      this.setState([...this.state.users, newData ]);
     }
 
 render(){
@@ -54,7 +54,9 @@ render(){
               <Route render={(props) => {
                 return <UserList users={this.state.users}/>
               }}/>
-
+              <Route exact path="/users/new" render={(props) => {
+                      return <UserForm  onSubmit={this.handleSubmit}/>
+                    }} />
           </Switch>
 
 

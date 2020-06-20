@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
 import RestaurantList from '../components/restaurants/RestaurantList.js'
 import RestaurantForm from '../components/restaurants/RestaurantForm.js'
+import { findRenderedDOMComponentWithTag } from 'react-dom/test-utils';
 
 class RestaurantContainer extends Component{
   constructor(props){
@@ -63,11 +64,11 @@ class RestaurantContainer extends Component{
     }
 
 render(){
+  <
   return(
     <Router>
         <Fragment>
         <a className = "link" href="/restaurants/new" onClick={this.addRestaurant}>ADD Restaurant</a>
-
           <Switch>
               <Route render={(props) => {
                 return <RestaurantList restaurants={this.state.restaurants}/>
