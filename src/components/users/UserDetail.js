@@ -10,7 +10,7 @@ const UserDetail = ({user, onDelete, onUpdate}) => {
   }
 
 
-    if (!pirate){
+    if (!user){
       return "Loading..."
     }
 
