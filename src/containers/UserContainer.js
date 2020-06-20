@@ -15,10 +15,14 @@ class UserContainer extends Component{
   }
 componentDidMount(){
   const request = new Request();
-  request.get('/api/pirates').then((data)=> this.setState({users: data)})
+  request.get('/api/users').then((data)=> this.setState({users: data)})
 }
 
-
+findUserById(id){
+  return this.state.users.find((user) => {
+    return user.id === parseInt(id);
+  });
+}
   handleSubmit(data) {
 const newData = {   name: data.name,
                   surname: data.surname,
