@@ -56,12 +56,15 @@ if(!this.state.users){
   return(
     <Router>
       <Fragment>
-        <a className = "link" href="/users/new" onClick={this.addUser}>ADD USER</a>
+          <a className = "link" href="/users/new" onClick={this.addUser}>ADD USER</a>
           <Switch>
+
             <Route exact path="/users/new" render={(props) => {
               return <UserForm onCreate={this.handlePost}/>
               }} />
-
+              <Route render={(props) => {
+                    return <UserList users={this.state.users}/>
+                  }} />
           </Switch>
 
 
