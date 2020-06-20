@@ -70,6 +70,15 @@ if(!this.state.users){
                   onUpdate={this.handleUpdate}/>
                 }}/>
 
+                <Route exact path="/users/:id" render={(props) =>{
+                    const id = props.match.params.id;
+                    const user = this.findUserById(id);
+                    return <UserDetail user={user}
+                    onDelete={this.handleDelete}
+                    onUpdate={this.handleUpdate}
+                    />
+                  }}/>
+
               <Route render={(props) => {
                     return <UserList users={this.state.users}/>
                   }} />
