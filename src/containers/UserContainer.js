@@ -17,7 +17,7 @@ class UserContainer extends Component{
   }
 componentDidMount(){
   const request = new Request();
-  request.get('/api/users').then((data)=> this.setState({users: data)})
+  request.get('/api/users').then((data)=> this.setState({users: data}))
 }
 
 findUserById(id){
