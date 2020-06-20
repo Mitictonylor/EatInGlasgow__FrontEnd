@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import MainContainer from './containers/MainContainer.js'
 
-function App() {
+class App extends Component {
+  render(){
   return (
-
+    <div>
     <MainContainer/>
+    </div>
   );
+}
 }
 
 export default App;
