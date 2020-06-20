@@ -33,14 +33,11 @@ handleDelete(id){
   .then(() => window.location = "/users")
 }
 
-  handleSubmit(data) {
-const newData = {   name: data.name,
-                  surname: data.surname,
-                  email: data.email,
-                  town: data.town,
-                  postcode: data.postcode }
-      this.setState([...this.state.users, newData ]);
-    }
+handlePost(user){
+  const request = new Request();
+  request.post("/api/users", user)
+  .then(() => window.location = '/users')
+}
 
 render(){
   return(
