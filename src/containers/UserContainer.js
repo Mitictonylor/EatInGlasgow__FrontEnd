@@ -62,6 +62,14 @@ if(!this.state.users){
             <Route exact path="/users/new" render={(props) => {
               return <UserForm onCreate={this.handlePost}/>
               }} />
+
+              <Route exact path="/users/:id/edit" render={(props) =>{
+                  const id = props.match.params.id
+                  const user = this.findUserById(id);
+                  return <UserForm user={user}
+                  onUpdate={this.handleUpdate}/>
+                }}/>
+
               <Route render={(props) => {
                     return <UserList users={this.state.users}/>
                   }} />
