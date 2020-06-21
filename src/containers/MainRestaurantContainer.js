@@ -54,11 +54,8 @@ handleSubmit(restaurantLogged){
 
     this.setState({loggedRestaurant: loggedRestaurant})
     const request = new Request();
+    console.log(loggedRestaurant);
     window.location = `/restaurants/${loggedRestaurant.id}`;
-    request.get(`/api/reviews?restaurant_id=${this.loggedRestaurant.id}`)
-    .then(data => this.setState({reviews: data}))
-    request.get(`/api/bookings?restaurant_id=${this.loggedRestaurant.id}`)
-    .then(data => this.setState({bookings: data}))
 }
 
 
@@ -101,7 +98,6 @@ if(!this.state.restaurants){
                     return <RestaurantDetail restaurant={restaurant}
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
-                    reviews={this.getReviews}
                     />
                   }}/>
 
