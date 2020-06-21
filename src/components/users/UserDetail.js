@@ -19,12 +19,14 @@ const UserDetail = ({user, onDelete, onUpdate}) => {
 
 
     return (
+      <>
       <div className = "component">
       <User user = {user}/>
 
       <button onClick={handleDelete}>Delete {user.name}</button>
       <Link to= {editUrl}><button type="button">Edit {user.name}</button></Link>
       </div>
+      </>
     )
   }
 

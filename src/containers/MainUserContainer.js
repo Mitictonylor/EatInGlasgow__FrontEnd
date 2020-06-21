@@ -4,6 +4,7 @@ import Request from '../helpers/request.js'
 import UserContainer from './UserContainer.js'
 import UserForm from '../components/users/UserForm.js'
 import UserLogin from '../components/users/UserLogin.js'
+import UserDetail from '../components/users/UserDetail.js'
 
 class MainUserContainer extends Component{
   constructor(props){
@@ -82,6 +83,15 @@ if(!this.state.users){
               <Route exact path="/users/login" render={(props) => {
                 return <UserLogin onLogin={this.handleSubmit}/>
                 }} />
+
+                <Route exact path="/users/:id" render={(props) =>{
+                    const id = props.match.params.id;
+                    const user = this.findUserById(id);
+                    return <UserDetail user={user}
+                    onDelete={this.handleDelete}
+                    onUpdate={this.handleUpdate}
+                    />
+                  }}/>
 
 
           </Switch>
