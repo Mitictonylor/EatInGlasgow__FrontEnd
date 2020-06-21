@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
 
 import RestaurantForm from '../components/restaurants/RestaurantForm.js'
-import UserLogin from '../components/users/UserLogin.js'
+import RestaurantLogin from '../components/restaurants/RestaurantLogin.js'
 import UserDetail from '../components/users/UserDetail.js'
 
 class MainRestaurantContainer extends Component{
@@ -13,8 +13,9 @@ class MainRestaurantContainer extends Component{
       restaurants:[]
     }
 
-  this.findRestaurantById = this.findRestaurantById.bind(this)
-  this.handleSubmit = this.handleSubmit.bind(this)
+  this.findRestaurantById = this.findRestaurantById.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+  this.getReviews = this.getReviews.bind(this);
 
   }
 componentDidMount(){
@@ -57,7 +58,12 @@ handleSubmit(restaurantLogged){
     .then(() => window.location = `/restaurants/${loggedResaurant.id}`)
 }
 
-
+getReviews(){
+  const request = new Request();
+  const reviews
+  request.get(`/api/reviews?restaurant_id=${this.loggedRestaurant.id}`).then(data => reviews = data))
+  return reviews
+}
 
 
 render(){
@@ -79,17 +85,17 @@ if(!this.state.restaurants){
               return <RestaurantForm onCreate={this.handlePost}/>
               }} />
 
-              <Route exact path="/users/login" render={(props) => {
-                return <UserLogin onLogin={this.handleSubmit}/>
+              <Route exact path="/restaurants/login" render={(props) => {
+                return <RestaurantLogin onLogin={this.handleSubmit}/>
                 }} />
 
-                <Route exact path="/users/:id" render={(props) =>{
+                <Route exact path="/restaurants/:id" render={(props) =>{
                     const id = props.match.params.id;
-                    const user = this.findUserById(id);
-                    return <UserDetail user={user}
+                    const restaurant = this.findRestaurantById(id);
+                    return <UserDetail restaurant={restaurant}
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
-                    restaurants={this.state.restaurants}
+                    reviews={this.getReviews}
                     />
                   }}/>
 

@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react'
 
-class UserLogin extends Component{
+class RestaurantLogin extends Component{
 
   constructor(props){
     super(props)//it will track the state just for the form
     this.state = {
-                  user: {email: '',
+                  restaurant: {email: '',
                          password: '',
 
     }
