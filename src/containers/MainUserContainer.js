@@ -48,7 +48,9 @@ async restRequest (){
     // }
 
 this.setState({restaurants: restaurants})
-}
+}}
+
+
 findUserById(id){
   return this.state.users.find((user) => {
     return user.id === parseInt(id);
