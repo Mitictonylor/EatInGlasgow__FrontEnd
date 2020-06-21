@@ -9,6 +9,6 @@ return(
 <Fragment>
 <p>{restaurant.name}</p>
 </Fragment>
-)              
+)          
 }
 export default Restaurant;

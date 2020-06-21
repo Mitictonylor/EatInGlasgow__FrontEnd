@@ -20,6 +20,7 @@ class RestaurantForm extends Component{
     }}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.findPrice = this.findPrice.bind(this);
 
 
   }
@@ -29,7 +30,13 @@ class RestaurantForm extends Component{
       this.setState({restaurant: { ... this.props.restaurant}})
     }
   }
-
+  findPrice(){
+    if(this.props.restaurant){
+      return this.props.restaurant.priceRange
+    } else {
+      return null;
+    }
+  }
   handleChange(event) {
     let propertyName = event.target.name;
     let restaurant = this.state.restaurant
@@ -72,7 +79,7 @@ const priceOptions = priceCateg.map((price, index) => {
 
       <form className="form-container">
       <div className="form_wrap">
-        <label htmlFor="name">Your name:</label>
+        <label htmlFor="name">Restaurant name:</label>
         <input
           required
           onChange={this.handleChange}
@@ -92,7 +99,7 @@ const priceOptions = priceCateg.map((price, index) => {
           name="url"
           id="url"
           type="text"
-          value={this.state.restaurant.url} />
+          value={this.state.restaurant.pictureUrl} />
       </div>
 
       <div className="form_wrap">
@@ -108,7 +115,7 @@ const priceOptions = priceCateg.map((price, index) => {
       </div>
       <div className="form_wrap">
       <label htmlFor="priceRange">PriceRange:</label>
-      <select name="priceRange" onChange={this.handleChange} defaultValue="select-price">
+      <select name="priceRange" onChange={this.handleChange} defaultValue={this.findPrice() || 'select-price'}>
       <option disabled value="select-price">Select a price range</option>
         {priceOptions}
       </select>
@@ -187,27 +194,27 @@ const priceOptions = priceCateg.map((price, index) => {
       </div>
 
       <div className="form_wrap">
-        <label htmlFor="openTime">Opening time:</label>
+        <label htmlFor="openingTime">Opening time:</label>
         <input
           required
           onChange={this.handleChange}
           placeholder="Input opening time..."
-          name="openTime"
-          id="openTime"
+          name="openingTime"
+          id="openingTime"
           type="time"
-          value={this.state.restaurant.openTime} />
+          value={this.state.restaurant.openingTime} />
       </div>
 
       <div className="form_wrap">
-        <label htmlFor="closeTime">Closing time:</label>
+        <label htmlFor="closingTime">Closing time:</label>
         <input
           required
           onChange={this.handleChange}
           placeholder="Input closing Time..."
-          name="closeTime"
-          id="closeTime"
+          name="closingTime"
+          id="closingTime"
           type="time"
-          value={this.state.restaurant.closeTime} />
+          value={this.state.restaurant.closingTime} />
       </div>
 
       <input onClick={this.handleSubmit} type="submit" value="submit" />

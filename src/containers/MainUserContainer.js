@@ -16,14 +16,35 @@ class MainUserContainer extends Component{
 
   this.findUserById = this.findUserById.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
+  this.restRequest = this.restRequest.bind(this)
 
   }
 componentDidMount(){
   const request = new Request();
-  request.get('/api/users').then(data => this.setState({users: data}))
-  request.get('/api/restaurants').then(data => this.setState({restaurants :data}))
+request.get('/api/users').then(data => this.setState({users: data}))
+  this.restRequest()
+
 }
 
+async restRequest (){
+  const response = await fetch('/api/restaurants');
+    const restaurants = await response.json();
+
+
+    // for(let restaurant of restaurants){
+    //   let postcode = restaurant.postcode;
+    //   restaurant['longitude']= ""
+    //   restaurant['latitude'] = ""
+    //   const url = "https://api.postcodes.io/postcodes/"
+    //   const response = await fetch(url + postcode)
+    //   const restaurantData = await response.json();
+    //
+    //     restaurant.longitude= restaurantData.result.longitude;
+    //     restaurant.latitude = restaurantData.result.latitude;
+    // }
+
+this.setState({restaurants: restaurants})
+}
 findUserById(id){
   return this.state.users.find((user) => {
     return user.id === parseInt(id);
