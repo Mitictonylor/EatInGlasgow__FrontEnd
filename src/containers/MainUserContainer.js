@@ -40,7 +40,7 @@ async restRequest (){
       //   restaurant.longitude= restaurantData.result.longitude;
       //   restaurant.latitude = restaurantData.result.latitude;
 
-//OR
+//OR 
 
     //   fetch(url+postcode).then(res => res.json()).then((data) =>{
     //     restaurant["longitude"]= data.result.longitude;

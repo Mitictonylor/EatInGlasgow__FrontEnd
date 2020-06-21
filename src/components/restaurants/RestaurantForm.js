@@ -99,7 +99,7 @@ const priceOptions = priceCateg.map((price, index) => {
           name="url"
           id="url"
           type="text"
-          value={this.state.restaurant.pictureUrl} />
+        value={this.state.restaurant.pictureUrl} />
       </div>
 
       <div className="form_wrap">
