@@ -30,34 +30,35 @@ class RestaurantForm extends Component{
   }
 
   handleChange(event) {
-    const newState = {};
-    newState[event.target.name] = event.target.value;
-    this.setState(newState);
+    let propertyName = event.target.name;
+    let restaurant = this.state.restaurant
+    restaurant[propertyName] = event.target.value;
+    this.setState({restaurant: restaurant});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    // this.props.onSubmit(this.state);
-    this.setState({
-                       name: "",
-                       url: "",
-                       capacity: null,
-                       priceRange: "",
-                       cousine: "",
-                       discount:null,
-                       email: "",
-                       address: "",
-                       postcode: "",
-                       town: "",
-                       openTime: "",
-                       closeTime: ""
-    })
-this.props.history.push('/restaurants')
+    if(this.state.restaurant.id){
+      this.props.onUpdate(this.state.restaurant)
+    }else{
+      console.log("Called");
+      this.props.onCreate(this.state.restaurant)
+    }
+
 }
 
 
   render(){
-    return(
+    let heading = ""; // ADDED
+
+      if (!this.props.restaurant){
+        heading = "Create restaurant"
+      } else {
+        heading = "Edit " + this.props.restaurant.name ;
+      }
+        return(
+          <>
+          <h3> {heading}</h3>
 
       <form className="form-container">
       <div className="form_wrap">
@@ -95,17 +96,14 @@ this.props.history.push('/restaurants')
           type="number"
           value={this.state.capacity} />
       </div>
-
       <div className="form_wrap">
-        <label htmlFor="priceRange">PriceRange:</label>
-        <input
-          required
-          onChange={this.handleChange}
-          placeholder="Input price range..."
-          name="priceRange"
-          id="priceRange"
-          type="text"
-          value={this.state.town} />
+      <label htmlFor="priceRange">PriceRange:</label>
+      <select required id="price-range-selector" defaultValue="default" onChange = {this.handleChange}>
+            <option>Choose a price Range...</option>
+            <option value="cheap" key={index}>Cheap</option>
+            <option value="medium" key={index}>Medium</option>
+            <option value="expensive" key={index}>Expensive</option>
+          </select>
       </div>
 
       <div className="form_wrap">
@@ -188,7 +186,7 @@ this.props.history.push('/restaurants')
           placeholder="Input opening time..."
           name="openTime"
           id="openTime"
-          type="number"
+          type="time"
           value={this.state.openTime} />
       </div>
 
@@ -200,7 +198,7 @@ this.props.history.push('/restaurants')
           placeholder="Input closing Time..."
           name="closeTime"
           id="closeTime"
-          type="number"
+          type="time"
           value={this.state.closeTime} />
       </div>
 
