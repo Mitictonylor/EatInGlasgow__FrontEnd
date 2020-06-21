@@ -31,16 +31,20 @@ async restRequest (){
     const restaurants = await response.json();
 
 
-    // for(let restaurant of restaurants){
-    //   let postcode = restaurant.postcode;
-    //   restaurant['longitude']= ""
-    //   restaurant['latitude'] = ""
-    //   const url = "https://api.postcodes.io/postcodes/"
-    //   const response = await fetch(url + postcode)
-    //   const restaurantData = await response.json();
-    //
-    //     restaurant.longitude= restaurantData.result.longitude;
-    //     restaurant.latitude = restaurantData.result.latitude;
+    for(let restaurant of restaurants){
+      let postcode = restaurant.postcode;
+      const url = "https://api.postcodes.io/postcodes/"
+      // const response = await fetch(url + postcode)
+      // const restaurantData = await response.json();
+      //
+      //   restaurant.longitude= restaurantData.result.longitude;
+      //   restaurant.latitude = restaurantData.result.latitude;
+
+//OR
+
+    //   fetch(url+postcode).then(res => res.json()).then((data) =>{
+    //     restaurant["longitude"]= data.result.longitude;
+    //     restaurant["latitude"] = data.result.latitude;})
     // }
 
 this.setState({restaurants: restaurants})
