@@ -29,11 +29,8 @@ componentDidMount(){
 
   handleSubmit(event) {
     event.preventDefault();
-    if(this.state.user.id){
-      this.props.onUpdate(this.state.user)
-    }else{
-      console.log("Called");
-      this.props.onCreate(this.state.user)
+
+      this.props.onSubmit(this.state.user)
     }
 
 }
@@ -60,57 +57,20 @@ componentDidMount(){
             </div>
 
             <div className="form_wrap">
-              <label htmlFor="surname">Your surname:</label>
+              <label htmlFor="password">Your password:</label>
               <input
                 required
                 onChange={this.handleChange}
-                placeholder="Input your surname..."
-                name="surname"
-                id="surname"
-                type="text"
-                value={this.state.user.surname} />
+                placeholder="Input your password..."
+                name="password"
+                id="password"
+                type="password"
+                value={this.state.user.password} />
             </div>
-
-            <div className="form_wrap">
-              <label htmlFor="email">Your email:</label>
-              <input
-                required
-                onChange={this.handleChange}
-                placeholder="Input your em@il..."
-                name="email"
-                id="email"
-                type="email"
-                value={this.state.user.email} />
-            </div>
-
-            <div className="form_wrap">
-              <label htmlFor="town">Town:</label>
-              <input
-                required
-                onChange={this.handleChange}
-                placeholder="Input town..."
-                name="town"
-                id="town"
-                type="text"
-                value={this.state.user.town} />
-            </div>
-
-            <div className="form_wrap">
-              <label htmlFor="postcode">Postcode:</label>
-              <input
-                required
-                onChange={this.handleChange}
-                placeholder="Input postcode..."
-                name="postcode"
-                id="postcode"
-                type="text"
-                value={this.state.user.postcode} />
-            </div>
-
-            <button type="submit"> SAVE </button>
+    <button type="submit"> SAVE </button>
           </form>
     </>
     )
   }
 }
-export default UserForm;
+export default UserLogin;

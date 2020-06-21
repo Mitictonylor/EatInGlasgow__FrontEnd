@@ -45,6 +45,14 @@ handleUpdate(user){
       window.location = '/users/' + user.id
     })
   }
+handleSubmit(userLogged){
+  const loggedUser =  this.state.users.find((user) => {
+    return user.email === userLogged.email;}
+    this.setState{loggedUser: loggedUser}
+
+}
+
+
 
 
 render(){
@@ -52,6 +60,8 @@ render(){
 if(!this.state.users){
   return null
 }
+
+const id = this.state.loggedUser.id
 
   return(
     <Router>
@@ -83,4 +93,4 @@ if(!this.state.users){
 
 
 }
-export default UserContainer;
+export default MainUserContainer;
