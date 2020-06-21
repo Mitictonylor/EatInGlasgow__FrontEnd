@@ -18,15 +18,15 @@ class RestaurantLogin extends Component{
 
   handleChange(event) {
     let propertyName = event.target.name;
-    let user = this.state.user
-    user[propertyName] = event.target.value;
-    this.setState({user: user});
+    let restaurant = this.state.restaurant
+    restaurant[propertyName] = event.target.value;
+    this.setState({restaurant: restaurant});
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-      this.props.onLogin(this.state.user)
+      this.props.onLogin(this.state.restaurant)
     }
 
 
@@ -35,7 +35,7 @@ class RestaurantLogin extends Component{
 return(
 
           <>
-          <h3> LOGIN USER </h3>
+          <h3> LOGIN RESTAURANT </h3>
 
             <form className="form-container" onSubmit={this.handleSubmit}>
             <div className="form_wrap">
@@ -47,7 +47,7 @@ return(
                 name="email"
                 id="email"
                 type="email"
-                value={this.state.user.email} />
+                value={this.state.restaurant.email} />
             </div>
 
             <div className="form_wrap">
@@ -59,7 +59,7 @@ return(
                 name="password"
                 id="password"
                 type="password"
-                value={this.state.user.password} />
+                value={this.state.restaurant.password} />
             </div>
     <button type="submit"> SAVE </button>
           </form>
@@ -67,4 +67,4 @@ return(
 )
   }
 }
-export default UserLogin;
+export default RestaurantLogin;
