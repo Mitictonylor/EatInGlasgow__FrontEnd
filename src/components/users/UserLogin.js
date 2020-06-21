@@ -30,15 +30,13 @@ componentDidMount(){
   handleSubmit(event) {
     event.preventDefault();
 
-      this.props.onSubmit(this.state.user)
+      this.props.onLogin(this.state.user)
     }
-
-}
 
 
   render(){
 
-
+return(
 
           <>
           <h3> LOGIN USER </h3>
@@ -70,7 +68,7 @@ componentDidMount(){
     <button type="submit"> SAVE </button>
           </form>
     </>
-    )
+)
   }
 }
 export default UserLogin;

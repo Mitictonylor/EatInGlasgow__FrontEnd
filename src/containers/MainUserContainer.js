@@ -2,7 +2,8 @@ import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
 import UserContainer from './UserContainer.js'
-
+import UserForm from '../components/users/UserForm.js'
+import UserLogin from '../components/users/UserLogin.js'
 
 class MainUserContainer extends Component{
   constructor(props){
@@ -12,6 +13,7 @@ class MainUserContainer extends Component{
     }
 
   this.findUserById = this.findUserById.bind(this)
+  this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 componentDidMount(){
@@ -47,9 +49,12 @@ handleUpdate(user){
   }
 handleSubmit(userLogged){
   const loggedUser =  this.state.users.find((user) => {
-    return user.email === userLogged.email;}
-    this.setState{loggedUser: loggedUser}
+    return user.email === userLogged.email;})
 
+    this.setState({loggedUser: loggedUser})
+    const request = new Request();
+    request.get(`/api/users/${loggedUser.id}`)
+    .then(() => window.location = `/users/${loggedUser.id}`)
 }
 
 
@@ -61,7 +66,7 @@ if(!this.state.users){
   return null
 }
 
-const id = this.state.loggedUser.id
+
 
   return(
     <Router>
@@ -75,7 +80,7 @@ const id = this.state.loggedUser.id
               }} />
 
               <Route exact path="/users/login" render={(props) => {
-                return <UserLogin onsubmit={this.handleSubmit}/>
+                return <UserLogin onLogin={this.handleSubmit}/>
                 }} />
 
 
