@@ -3,15 +3,22 @@ import User from "./User";
 import {Link} from 'react-router-dom';
 import Reviews from '../reviews/Review.js'
 import Booking from '../bookings/Booking.js'
+import Moment from 'moment'
 
 
 const UserDetail = ({user, onDelete, onUpdate}) => {
 
 
-
-  const handleDelete = () => {
-    onDelete(user.id)
+  const handlePostBooking(booking){
+    const request = new Request();
+    request.post("/api/bookings", booking)
+    .then(() => window.location = `/users/${user.id}`)
   }
+
+const date(){
+  const d = new Date();
+
+}
 
   // need to render those 2 lists
 

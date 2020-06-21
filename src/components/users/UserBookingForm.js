@@ -19,26 +19,18 @@ class UserBookingForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
-componentDidMount(){
-  if(this.props.user){
-    this.setState({user: { ... this.props.user}})
-  }
-}
 
   handleChange(event) {
     let propertyName = event.target.name;
-    let user = this.state.user
-    user[propertyName] = event.target.value;
-    this.setState({user: user});
+    let booking = this.state.booking
+    booking[propertyName] = event.target.value;
+    this.setState({booking: booking});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    if(this.state.user.id){
-      this.props.onUpdate(this.state.user)
-    }else{
-      console.log("Called");
-      this.props.onCreate(this.state.user)
+      this.props.onCreateBooking(this.state.booking)
+
     }
 
 }
@@ -46,28 +38,24 @@ componentDidMount(){
 
   render(){
 
-    let heading = ""; // ADDED
 
-      if (!this.props.user){
-        heading = "Create User"
-      } else {
-        heading = "Edit " + this.props.user.name +" "+ this.props.user.surname;
-      }
         return(
           <>
-          <h3> {heading}</h3>
+          <h3> Book Now</h3>
 
             <form className="form-container" onSubmit={this.handleSubmit}>
             <div className="form_wrap">
-              <label htmlFor="name">Your name:</label>
+              <label htmlFor="name">Date</label>
               <input
                 required
                 onChange={this.handleChange}
-                placeholder="Input your name..."
-                name="name"
-                id="name"
-                type="text"
-                value={this.state.user.name} />
+                placeholder="Choose date"
+                name="date"
+                id="date"
+                type="date"
+                min = {this.state.user.date}
+                max = {this.state.user.date}
+                value={this.state.user.date} />
             </div>
 
             <div className="form_wrap">
