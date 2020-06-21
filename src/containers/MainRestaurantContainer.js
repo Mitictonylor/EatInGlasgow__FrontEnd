@@ -2,60 +2,59 @@ import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Request from '../helpers/request.js'
 
-import UserForm from '../components/users/UserForm.js'
+import RestaurantForm from '../components/restaurants/RestaurantForm.js'
 import UserLogin from '../components/users/UserLogin.js'
 import UserDetail from '../components/users/UserDetail.js'
 
-class MainUserContainer extends Component{
+class MainRestaurantContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      users:[]
+      restaurants:[]
     }
 
-  this.findUserById = this.findUserById.bind(this)
+  this.findRestaurantById = this.findRestaurantById.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 componentDidMount(){
   const request = new Request();
-  request.get('/api/users').then(data => this.setState({users: data}))
-  request.get('/api/restaurants').then(data => this.setState({restaurants :data}))
+  request.get('/api/restaurants').then(data => this.setState({restaurants: data}))
 }
 
-findUserById(id){
-  return this.state.users.find((user) => {
-    return user.id === parseInt(id);
+findRestaurantById(id){
+  return this.state.restaurant.find((restaurant) => {
+    return restaurant.id === parseInt(id);
   });
 }
 
 handleDelete(id){
   const request = new Request();
-  const url = "/api/users/" + id
+  const url = "/api/restaurants/" + id
   request.delete(url)
-  .then(() => window.location = "/users")
+  .then(() => window.location = "/restaurants")
 }
 
-handlePost(user){
+handlePost(restaurant){
   const request = new Request();
-  request.post("/api/users", user)
-  .then(() => window.location = '/users')
+  request.post("/api/restaurants", restaurant)
+  .then(() => window.location = '/restaurants')
 }
 
-handleUpdate(user){
+handleUpdate(restaurant){
     const request = new Request();
-    request.patch('/api/users/' + user.id, user).then(() => {
-      window.location = '/users/' + user.id
+    request.patch('/api/restaurants/' + restaurant.id, restaurant).then(() => {
+      window.location = '/restaurants/' + restaurant.id
     })
   }
-handleSubmit(userLogged){
-  const loggedUser =  this.state.users.find((user) => {
-    return user.email === userLogged.email;})
+handleSubmit(restaurantLogged){
+  const loggedRestaurant =  this.state.restaurant.find((restaurant) => {
+    return restaurant.email === restaurantLogged.email;})
 
-    this.setState({loggedUser: loggedUser})
+    this.setState({loggedRestaurant: loggedRestaurant})
     const request = new Request();
-    request.get(`/api/users/${loggedUser.id}`)
-    .then(() => window.location = `/users/${loggedUser.id}`)
+    request.get(`/api/restaurants/${loggedResaurant.id}`)
+    .then(() => window.location = `/restaurants/${loggedResaurant.id}`)
 }
 
 
@@ -63,7 +62,7 @@ handleSubmit(userLogged){
 
 render(){
 
-if(!this.state.users){
+if(!this.state.restaurants){
   return null
 }
 
@@ -72,12 +71,12 @@ if(!this.state.users){
   return(
     <Router>
       <Fragment>
-      <a className = "link" href="/users/new" >ReGIster</a>
-      <a className = "link" href="/users/login" >Login</a>
+      <a className = "link" href="/restaurants/new" >ReGIster</a>
+      <a className = "link" href="/restaurants/login" >Login</a>
           <Switch>
 
-            <Route exact path="/users/new" render={(props) => {
-              return <UserForm onCreate={this.handlePost}/>
+            <Route exact path="/restaurants/new" render={(props) => {
+              return <RestaurantForm onCreate={this.handlePost}/>
               }} />
 
               <Route exact path="/users/login" render={(props) => {
