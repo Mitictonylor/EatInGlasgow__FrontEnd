@@ -59,6 +59,13 @@ class RestaurantForm extends Component{
       } else {
         heading = "Edit " + this.props.restaurant.name ;
       }
+
+const priceCateg = ["cheap", "medium", 'expensive']
+const priceOptions = priceCateg.map((price, index) => {
+      return <option key={index} value={price}>{price}</option>
+    });
+
+
         return(
           <>
           <h3> {heading}</h3>
@@ -101,12 +108,10 @@ class RestaurantForm extends Component{
       </div>
       <div className="form_wrap">
       <label htmlFor="priceRange">PriceRange:</label>
-      <select required id="price-range-selector" value={this.state.restaurant.priceRange} defaultValue="default" onChange = {this.handleChange}>
-            <option>Choose a price Range...</option>
-            <option value="cheap" >Cheap</option>
-            <option value="medium" selected >Medium</option>
-            <option value="expensive" >Expensive</option>
-          </select>
+      <select name="priceRange" onChange={this.handleChange} defaultValue="select-price">
+      <option disabled value="select-price">Select a price range</option>
+        {priceOptions}
+      </select>
       </div>
 
       <div className="form_wrap">

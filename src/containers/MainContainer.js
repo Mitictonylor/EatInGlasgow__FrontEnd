@@ -8,7 +8,11 @@ import MainUserContainer from './MainUserContainer.js';
 
 const MainContainer = () => {
 
-if (window.location === '/')
+const welcome= ""
+
+if(window.location === "/"){
+  welcome = "WELCOME TO EAT IN GLASGOW"
+}
 
 
     return (
@@ -16,6 +20,9 @@ if (window.location === '/')
       <Fragment>
 
       <MainNavigationBar/>
+      <div>
+      {welcome}
+      </div>
       <Switch>
         <Route path  ='/restaurants' component = {MainRestaurantContainer}></Route>
         <Route path ='/users' component = {MainUserContainer}/>
