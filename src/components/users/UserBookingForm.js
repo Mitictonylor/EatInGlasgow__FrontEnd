@@ -1,15 +1,18 @@
 import React, {Component, Fragment} from 'react'
 
-class UserForm extends Component{
+class UserBookingForm extends Component{
 
   constructor(props){
     super(props)//it will track the state just for the form
     this.state = {
-                  user: {name: '',
-                  surname: '',
-                  email: '',
-                  town: '',
-                  postcode: ''
+                  booking:{
+                    date:"",
+                    time:"",
+                    restaurant: "",
+                    user: props.user.id,
+                    covers:
+
+                  }
     }
   }
     this.handleChange = this.handleChange.bind(this);
@@ -121,4 +124,4 @@ componentDidMount(){
     )
   }
 }
-export default UserForm;
+export default UserBookingForm;

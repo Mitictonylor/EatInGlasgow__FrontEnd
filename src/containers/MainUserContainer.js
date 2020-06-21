@@ -19,8 +19,8 @@ class MainUserContainer extends Component{
   }
 componentDidMount(){
   const request = new Request();
-
-  request.get('/api/users').then((data)=> this.setState({users: data}))
+  request.get('/api/users').then(data => this.setState({users: data}))
+  request.get('/api/restaurants').then(data => this.setState({restaurants :data}))
 }
 
 findUserById(id){
@@ -90,6 +90,7 @@ if(!this.state.users){
                     return <UserDetail user={user}
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
+                    restaurants={this.state.restaurants}
                     />
                   }}/>
 

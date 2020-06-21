@@ -47,7 +47,7 @@ const UserDetail = ({user, onDelete, onUpdate}) => {
 
     return (
       <>
-      
+
       <div className = "component">
       <User user = {user}/>
 
