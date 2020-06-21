@@ -4,7 +4,7 @@ import Request from '../helpers/request.js'
 
 import RestaurantForm from '../components/restaurants/RestaurantForm.js'
 import RestaurantLogin from '../components/restaurants/RestaurantLogin.js'
-import UserDetail from '../components/users/UserDetail.js'
+import RestaurantDetail from '../components/restaurants/RestaurantDetail.js'
 
 class MainRestaurantContainer extends Component{
   constructor(props){
@@ -92,7 +92,7 @@ if(!this.state.restaurants){
                 <Route exact path="/restaurants/:id" render={(props) =>{
                     const id = props.match.params.id;
                     const restaurant = this.findRestaurantById(id);
-                    return <UserDetail restaurant={restaurant}
+                    return <RestaurantDetail restaurant={restaurant}
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
                     reviews={this.getReviews}
