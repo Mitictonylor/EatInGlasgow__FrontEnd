@@ -5,23 +5,30 @@ class RestaurantForm extends Component{
   constructor(props){
     super(props)//it will track the state just for the form
     this.state = {
-                       name: "",
+           restaurant:{name: "",
                        url: "",
-                       capacity: null,
+                       capacity: 0,
                        priceRange: "",
                        cousine: "",
-                       discount:null,
+                       discount:0,
                        email: "",
                        address: "",
                        postcode: "",
                        town: "",
                        openTime: "",
                        closeTime: ""
-    }
+    }}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
+
+  componentDidMount(){
+    if(this.props.restaurant){
+      this.setState({restaurant: { ... this.props.restaurant}})
+    }
+  }
+
   handleChange(event) {
     const newState = {};
     newState[event.target.name] = event.target.value;
