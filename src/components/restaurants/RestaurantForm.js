@@ -100,9 +100,9 @@ class RestaurantForm extends Component{
       <label htmlFor="priceRange">PriceRange:</label>
       <select required id="price-range-selector" defaultValue="default" onChange = {this.handleChange}>
             <option>Choose a price Range...</option>
-            <option value="cheap" key={index}>Cheap</option>
-            <option value="medium" key={index}>Medium</option>
-            <option value="expensive" key={index}>Expensive</option>
+            <option value="cheap" >Cheap</option>
+            <option value="medium" >Medium</option>
+            <option value="expensive" >Expensive</option>
           </select>
       </div>
 
@@ -204,6 +204,7 @@ class RestaurantForm extends Component{
 
       <input onClick={this.handleSubmit} type="submit" value="submit" />
     </form>
+    </>
     )
   }
 }

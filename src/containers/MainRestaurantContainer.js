@@ -15,7 +15,7 @@ class MainRestaurantContainer extends Component{
 
   this.findRestaurantById = this.findRestaurantById.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
-  this.getReviews = this.getReviews.bind(this);
+
 
   }
 componentDidMount(){
@@ -54,16 +54,13 @@ handleSubmit(restaurantLogged){
 
     this.setState({loggedRestaurant: loggedRestaurant})
     const request = new Request();
-    request.get(`/api/restaurants/${loggedResaurant.id}`)
-    .then(() => window.location = `/restaurants/${loggedResaurant.id}`)
+    window.location = `/restaurants/${loggedRestaurant.id}`;
+    request.get(`/api/reviews?restaurant_id=${this.loggedRestaurant.id}`)
+    .then(data => this.setState({reviews: data}))
 }
 
-getReviews(){
-  const request = new Request();
-  const reviews
-  request.get(`/api/reviews?restaurant_id=${this.loggedRestaurant.id}`).then(data => reviews = data))
-  return reviews
-}
+
+
 
 
 render(){
@@ -114,4 +111,4 @@ if(!this.state.restaurants){
 
 
 }
-export default MainUserContainer;
+export default MainRestaurantContainer;
