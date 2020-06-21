@@ -6,7 +6,7 @@ class RestaurantForm extends Component{
     super(props)//it will track the state just for the form
     this.state = {
            restaurant:{name: "",
-                       url: "",
+                       pictureUrl: "",
                        capacity: 0,
                        priceRange: "",
                        cousine: "",
@@ -15,11 +15,12 @@ class RestaurantForm extends Component{
                        address: "",
                        postcode: "",
                        town: "",
-                       openTime: "",
-                       closeTime: ""
+                       openingTime: "",
+                       closingTime: ""
     }}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
 
   }
 
@@ -35,6 +36,8 @@ class RestaurantForm extends Component{
     restaurant[propertyName] = event.target.value;
     this.setState({restaurant: restaurant});
   }
+
+
 
   handleSubmit(event) {
     event.preventDefault();
@@ -70,7 +73,7 @@ class RestaurantForm extends Component{
           name="name"
           id="name"
           type="text"
-          value={this.state.name} />
+          value={this.state.restaurant.name} />
       </div>
 
       <div className="form_wrap">
@@ -82,7 +85,7 @@ class RestaurantForm extends Component{
           name="url"
           id="url"
           type="text"
-          value={this.state.url} />
+          value={this.state.restaurant.url} />
       </div>
 
       <div className="form_wrap">
@@ -94,14 +97,14 @@ class RestaurantForm extends Component{
           name="capacity"
           id="capacity"
           type="number"
-          value={this.state.capacity} />
+          value={this.state.restaurant.capacity} />
       </div>
       <div className="form_wrap">
       <label htmlFor="priceRange">PriceRange:</label>
-      <select required id="price-range-selector" defaultValue="default" onChange = {this.handleChange}>
+      <select required id="price-range-selector" value={this.state.restaurant.priceRange} defaultValue="default" onChange = {this.handleChange}>
             <option>Choose a price Range...</option>
             <option value="cheap" >Cheap</option>
-            <option value="medium" >Medium</option>
+            <option value="medium" selected >Medium</option>
             <option value="expensive" >Expensive</option>
           </select>
       </div>
@@ -115,7 +118,7 @@ class RestaurantForm extends Component{
           name="cousine"
           id="cousine"
           type="text"
-          value={this.state.cousine} />
+          value={this.state.restaurant.cousine} />
       </div>
 
       <div className="form_wrap">
@@ -127,7 +130,7 @@ class RestaurantForm extends Component{
           name="discount"
           id="discount"
           type="number"
-          value={this.state.discount} />
+          value={this.state.restaurant.discount} />
       </div>
 
       <div className="form_wrap">
@@ -139,7 +142,7 @@ class RestaurantForm extends Component{
           name="email"
           id="email"
           type="email"
-          value={this.state.email} />
+          value={this.state.restaurant.email} />
       </div>
 
       <div className="form_wrap">
@@ -151,7 +154,7 @@ class RestaurantForm extends Component{
           name="address"
           id="address"
           type="text"
-          value={this.state.address} />
+          value={this.state.restaurant.address} />
       </div>
 
       <div className="form_wrap">
@@ -163,7 +166,7 @@ class RestaurantForm extends Component{
           name="town"
           id="town"
           type="text"
-          value={this.state.town} />
+          value={this.state.restaurant.town} />
       </div>
 
       <div className="form_wrap">
@@ -175,7 +178,7 @@ class RestaurantForm extends Component{
           name="postcode"
           id="postcode"
           type="text"
-          value={this.state.postcode} />
+          value={this.state.restaurant.postcode} />
       </div>
 
       <div className="form_wrap">
@@ -187,7 +190,7 @@ class RestaurantForm extends Component{
           name="openTime"
           id="openTime"
           type="time"
-          value={this.state.openTime} />
+          value={this.state.restaurant.openTime} />
       </div>
 
       <div className="form_wrap">
@@ -199,7 +202,7 @@ class RestaurantForm extends Component{
           name="closeTime"
           id="closeTime"
           type="time"
-          value={this.state.closeTime} />
+          value={this.state.restaurant.closeTime} />
       </div>
 
       <input onClick={this.handleSubmit} type="submit" value="submit" />

@@ -15,7 +15,7 @@ const MainContainer = () => {
 
       <MainNavigationBar/>
       <Switch>
-        <Route exact path  ='/restaurants' component = {MainRestaurantContainer}></Route>
+        <Route path  ='/restaurants' component = {MainRestaurantContainer}></Route>
         <Route path ='/users' component = {MainUserContainer}/>
         <Route exact path  ='/bookings' component = {BookingContainer}></Route>
         <Route exact path  ='/reviews' component = {ReviewContainer} />

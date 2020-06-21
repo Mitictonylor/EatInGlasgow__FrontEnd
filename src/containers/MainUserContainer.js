@@ -54,8 +54,8 @@ handleSubmit(userLogged){
 
     this.setState({loggedUser: loggedUser})
     const request = new Request();
-    request.get(`/api/users/${loggedUser.id}`)
-    .then(() => window.location = `/users/${loggedUser.id}`)
+    request.get(`/api/users/${loggedUser.id}`).
+    then(() => window.location = `/users/${loggedUser.id}`)
 }
 
 
@@ -83,6 +83,13 @@ if(!this.state.users){
               <Route exact path="/users/login" render={(props) => {
                 return <UserLogin onLogin={this.handleSubmit}/>
                 }} />
+
+                <Route exact path="/users/:id/edit" render={(props) =>{
+                      const id = props.match.params.id
+                      const user = this.findUserById(id);
+                      return <UserForm user={user}
+                      onUpdate={this.handleUpdate}/>
+                    }}/>
 
                 <Route exact path="/users/:id" render={(props) =>{
                     const id = props.match.params.id;

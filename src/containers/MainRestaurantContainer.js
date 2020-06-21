@@ -24,7 +24,7 @@ componentDidMount(){
 }
 
 findRestaurantById(id){
-  return this.state.restaurant.find((restaurant) => {
+  return this.state.restaurants.find((restaurant) => {
     return restaurant.id === parseInt(id);
   });
 }
@@ -49,7 +49,7 @@ handleUpdate(restaurant){
     })
   }
 handleSubmit(restaurantLogged){
-  const loggedRestaurant =  this.state.restaurant.find((restaurant) => {
+  const loggedRestaurant =  this.state.restaurants.find((restaurant) => {
     return restaurant.email === restaurantLogged.email;})
 
     this.setState({loggedRestaurant: loggedRestaurant})
@@ -57,6 +57,8 @@ handleSubmit(restaurantLogged){
     window.location = `/restaurants/${loggedRestaurant.id}`;
     request.get(`/api/reviews?restaurant_id=${this.loggedRestaurant.id}`)
     .then(data => this.setState({reviews: data}))
+    request.get(`/api/bookings?restaurant_id=${this.loggedRestaurant.id}`)
+    .then(data => this.setState({bookings: data}))
 }
 
 
@@ -74,7 +76,7 @@ if(!this.state.restaurants){
   return(
     <Router>
       <Fragment>
-      <a className = "link" href="/restaurants/new" >ReGIster</a>
+      <a className = "link" href="/restaurants/new" >Register</a>
       <a className = "link" href="/restaurants/login" >Login</a>
           <Switch>
 
@@ -85,6 +87,13 @@ if(!this.state.restaurants){
               <Route exact path="/restaurants/login" render={(props) => {
                 return <RestaurantLogin onLogin={this.handleSubmit}/>
                 }} />
+
+                <Route exact path="/restaurants/:id/edit" render={(props) =>{
+                      const id = props.match.params.id
+                      const restaurant = this.findRestaurantById(id);
+                      return <RestaurantForm restaurant={restaurant}
+                      onUpdate={this.handleUpdate}/>
+                    }}/>
 
                 <Route exact path="/restaurants/:id" render={(props) =>{
                     const id = props.match.params.id;
