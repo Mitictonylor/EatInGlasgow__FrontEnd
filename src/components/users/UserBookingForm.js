@@ -8,9 +8,9 @@ class UserBookingForm extends Component{
                   booking:{
                     date: props.today,
                     time:"",
-                    restaurant: "",
+                    restaurant: 0,
                     user: props.user.id,
-                    covers:null
+                    covers:0
 
                   }
     }
@@ -18,6 +18,9 @@ class UserBookingForm extends Component{
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.restaurantsOptions = this.restaurantsOptions.bind(this);
+    this.findRestaurantById = this.findRestaurantById.bind(this);
+    this.timeSection = this.timeSection.bind(this);
+
 
   }
 
@@ -33,11 +36,35 @@ class UserBookingForm extends Component{
       this.props.onCreateBooking(this.state.booking)
 
     }
-restaurantsOptions (){
-    this.props.restaurants.map((restaurant, index)=>{
+restaurantsOptions(){
+    let options = this.props.restaurants.map((restaurant, index)=>{
     return <option value= {restaurant.id} key={index}>{restaurant.name}</option>
-    })}
+    })
+    return options
+  }
 
+  findRestaurantById(id){
+    return this.props.restaurant.find((restaurant) => {
+      return restaurant.id === parseInt(id);
+    });
+  }
+timeSection(){
+  if(this.state.restaurant != null){
+  const restaurant = this.findRestaurantById(this.state.restaurant)
+  return( <div className="form_wrap">
+    <label htmlFor="time">Time</label>
+    <input
+      required
+      onChange={this.handleChange}
+      placeholder="Choose time"
+      name="time"
+      id="time"
+      type="time"
+      min = {restaurant.openingTime}
+      max = {restaurant.closingTime}
+      value={this.state.booking.time} />
+    </div>)
+}}
 
   render(){
 
@@ -49,13 +76,15 @@ restaurantsOptions (){
 
             <form className="form-container" onSubmit={this.handleSubmit}>
             <div className="form_wrap">
+            <label htmlFor="name">Choose Restaurant</label>
             <select id="country-selector" defaultValue="default" onChange = {this.handleChange}>
-                  <option disabled value="default">Choose a restaurant...</option>
+                  <option>Choose a restaurant...</option>
+
                   {this.restaurantsOptions}
                 </select>
             </div>
             <div className="form_wrap">
-              <label htmlFor="name">Date</label>
+              <label htmlFor="date">Date</label>
               <input
                 required
                 onChange={this.handleChange}
@@ -67,8 +96,20 @@ restaurantsOptions (){
                 max = {this.props.maxDate}
                 value={this.state.booking.date} />
               </div>
-
-
+              {this.timeSection}
+              <div className="form_wrap">
+                <label htmlFor="covers">Covers</label>
+                <input
+                  required
+                  onChange={this.handleChange}
+                  placeholder="Covers"
+                  name="covers"
+                  id="covers"
+                  type="number"
+                  min = "1"
+                  max = "8"
+                  value={this.state.booking.covers} />
+                </div>
             <button type="submit"> SAVE </button>
           </form>
     </>

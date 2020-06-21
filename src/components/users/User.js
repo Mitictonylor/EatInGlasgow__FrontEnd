@@ -9,12 +9,9 @@ const url = "/users/" + user.id;
 
 return(
 <Fragment>
-<Link to = {url} className="name">
+
     {user.name} {user.surname}
-    </Link>
-<p>Email: {user.email}</p>
-<p>Town: {user.town}</p>
-<p>Postcode: {user.postcode}</p>
+
 </Fragment>
 )          
 }
