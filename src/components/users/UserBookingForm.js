@@ -7,9 +7,9 @@ class UserBookingForm extends Component{
     this.state = {
                   booking:{
                     date: props.today,
-                    time:"",
-                    restaurant: 0,
-                    user: props.user.id,
+                    time: props.time ,
+                    restaurant: null,
+                    user: props.user,
                     covers:0
 
                   }
@@ -17,9 +17,8 @@ class UserBookingForm extends Component{
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.restaurantsOptions = this.restaurantsOptions.bind(this);
+    this.handleRestaurant = this.handleRestaurant.bind(this);
     this.findRestaurantById = this.findRestaurantById.bind(this);
-    this.timeSection = this.timeSection.bind(this);
 
 
   }
@@ -36,51 +35,70 @@ class UserBookingForm extends Component{
       this.props.onCreateBooking(this.state.booking)
 
     }
-restaurantsOptions(){
-    let options = this.props.restaurants.map((restaurant, index)=>{
-    return <option value= {restaurant.id} key={index}>{restaurant.name}</option>
-    })
-    return options
-  }
+
+  handleRestaurant(event){
+      const index = parseInt(event.target.value)
+      const selectedRest = this.props.restaurants[index]
+      let booking = this.state.booking;
+      booking['restaurant'] = selectedRest
+      this.setState({booking: booking})
+    }
+
 
   findRestaurantById(id){
     return this.props.restaurant.find((restaurant) => {
       return restaurant.id === parseInt(id);
     });
   }
-timeSection(){
-  if(this.state.restaurant != null){
-  const restaurant = this.findRestaurantById(this.state.restaurant)
-  return( <div className="form_wrap">
-    <label htmlFor="time">Time</label>
-    <input
-      required
-      onChange={this.handleChange}
-      placeholder="Choose time"
-      name="time"
-      id="time"
-      type="time"
-      min = {restaurant.openingTime}
-      max = {restaurant.closingTime}
-      value={this.state.booking.time} />
-    </div>)
-}}
+
 
   render(){
+    const restOptions = this.props.restaurants.map((rest, index) => {
+          return <option key={rest.id} value={index}>{rest.name} cousine: {rest.cousine}</option>
+        });
 
+    let timeSection = null
 
-
+      if(this.state.restaurant != null){
+        timeSection = (<div className="form_wrap">
+          <label htmlFor="time">Time</label>
+          <input
+            required
+            onChange={this.handleChange}
+            placeholder="Choose time"
+            name="time"
+            id="time"
+            type="time"
+            min = {this.state.restaurant.openingTime}
+            max = {this.state.restaurant.closingTime}
+            value={this.state.booking.time} />
+          </div>)
+      }else{
+        timeSection = (<div className="form_wrap">
+          <label htmlFor="time">Time</label>
+          <input
+            required
+            onChange={this.handleChange}
+            placeholder="Choose time"
+            name="time"
+            id="time"
+            type="time"
+            min="09:00"
+            max="23:00"
+            required
+            value={this.state.booking.time} />
+          </div>)
+      }
         return(
           <>
           <h3> Book Now</h3>
 
             <form className="form-container" onSubmit={this.handleSubmit}>
             <div className="form_wrap">
-            <label htmlFor="name">Choose Restaurant</label>
-            <select id="country-selector" defaultValue="default" onChange = {this.handleChange}>
-                  <option>Choose a restaurant...</option>
-
-                  {this.restaurantsOptions}
+            <label htmlFor="restaurant">Choose Restaurant</label>
+            <select name= 'restaurant' onChange = {this.handleRestaurant} defaultValue='select-restaurant'>
+                  <option disabled value="select-restaurant">Choose a restaurant...</option>
+                  {restOptions}
                 </select>
             </div>
             <div className="form_wrap">
@@ -96,7 +114,7 @@ timeSection(){
                 max = {this.props.maxDate}
                 value={this.state.booking.date} />
               </div>
-              {this.timeSection}
+            {timeSection}
               <div className="form_wrap">
                 <label htmlFor="covers">Covers</label>
                 <input
@@ -110,6 +128,7 @@ timeSection(){
                   max = "8"
                   value={this.state.booking.covers} />
                 </div>
+
             <button type="submit"> SAVE </button>
           </form>
     </>

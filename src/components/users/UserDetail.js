@@ -70,7 +70,7 @@ return (yyyy+"-"+mm+"-"+dd);
 
     const editUrl = "/users/" + user.id + "/edit"
 
-
+    const time = new Date().getTime
     return (
     <>
 
@@ -80,7 +80,7 @@ return (yyyy+"-"+mm+"-"+dd);
       <Link to= {editUrl}><button type="button">Edit {user.name}</button></Link>
       </div>
       <div>
-      <UserBookingForm  restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onSubmit={handlePostBooking}/>
+      <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onSubmit={handlePostBooking}/>
 
       </div>
       </>

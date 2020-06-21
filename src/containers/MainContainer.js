@@ -3,11 +3,13 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MainNavigationBar from '../MainNavigationBar.js';
 import MainRestaurantContainer from './MainRestaurantContainer.js';
 import MainUserContainer from './MainUserContainer.js';
-import BookingContainer from './BookingContainer.js';
-import ReviewContainer from './ReviewContainer.js';
+
 
 
 const MainContainer = () => {
+
+if (window.location === '/')
+
 
     return (
       <Router>
@@ -17,8 +19,6 @@ const MainContainer = () => {
       <Switch>
         <Route path  ='/restaurants' component = {MainRestaurantContainer}></Route>
         <Route path ='/users' component = {MainUserContainer}/>
-        <Route exact path  ='/bookings' component = {BookingContainer}></Route>
-        <Route exact path  ='/reviews' component = {ReviewContainer} />
 
       </Switch>
 

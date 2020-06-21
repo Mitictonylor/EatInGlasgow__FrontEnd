@@ -10,7 +10,8 @@ class MainUserContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      users:[]
+      users:[],
+      restaurants:[]
     }
 
   this.findUserById = this.findUserById.bind(this)
