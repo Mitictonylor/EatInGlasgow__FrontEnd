@@ -3,23 +3,42 @@ import User from "./User";
 import {Link} from 'react-router-dom';
 import Reviews from '../reviews/Review.js'
 import Booking from '../bookings/Booking.js'
-import Moment from 'moment'
+import UserBookingForm from './UserBookingForm.js'
 
 
-const UserDetail = ({user, onDelete, onUpdate}) => {
+const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
 
-  const handlePostBooking(booking){
+  const handlePostBooking = (booking)=>{
     const request = new Request();
     request.post("/api/bookings", booking)
     .then(() => window.location = `/users/${user.id}`)
   }
 
-const date(){
-  const d = new Date();
+  let today = function(){
+  today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //As January is 0.
+  var yyyy = today.getFullYear();
 
-}
+  if(dd<10) dd='0'+dd;
+  if(mm<10) mm='0'+mm;
+  return (yyyy+"-"+mm+"-"+dd);
+  };
 
+
+
+let maxDate =function(){
+today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth()+1; //As January is 0.
+let yyyy = today.getFullYear();
+mm=(parseInt(mm)+1)
+if(dd<10) dd='0'+dd;
+if(mm<10) mm=('0'+mm) ;
+
+return (yyyy+"-"+mm+"-"+dd);
+};
   // need to render those 2 lists
 
 
@@ -53,14 +72,17 @@ const date(){
 
 
     return (
-      <>
+    <>
 
       <div className = "component">
       <User user = {user}/>
 
       <Link to= {editUrl}><button type="button">Edit {user.name}</button></Link>
       </div>
+      <div>
+      <UserBookingForm  restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onSubmit={handlePostBooking}/>
 
+      </div>
       </>
     )
   }
