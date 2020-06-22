@@ -7,7 +7,11 @@ const Restaurant = ({restaurant})=>{
 
 return(
 <Fragment>
+<img className = "rest-pic" src={restaurant.pictureUrl} alt="rest-pic"/>
+
 <p>{restaurant.name}</p>
+<p>Cousin: {restaurant.cousine}</p>
+<p>Working hours: {restaurant.openingTime} - {restaurant.closingTime}</p>
 </Fragment>
 )          
 }

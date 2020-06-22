@@ -44,6 +44,14 @@ header li {
     border-style: solid;
     border-color: brown;
 }
+.rest-pic{
+  height: 300px;
+  width: 300px;
+}
+.rest-pic:hover{
+  opacity: 0.8;
+  cursor: pointer
+}
 .component-list {
   display: flex;
   flex-wrap: wrap;
@@ -83,7 +91,7 @@ form label {
 
 }
 
-form input {
+form input,select {
   font-size: 18px;
   border-style: solid;
   border-color: green;
