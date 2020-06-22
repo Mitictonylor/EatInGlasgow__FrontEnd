@@ -10,9 +10,9 @@ const MainContainer = () => {
 
 const welcome= ""
 
-if(window.location === "/"){
-  welcome = "WELCOME TO EAT IN GLASGOW"
-}
+// if(window.location === "/"){
+//   welcome = "WELCOME TO EAT IN GLASGOW"
+// }
 
 
     return (
@@ -21,8 +21,9 @@ if(window.location === "/"){
 
       <MainNavigationBar/>
       <div>
-      
-      {welcome}
+
+      // {welcome}
+      <h2>HI WLFASFSA</h2>
       </div>
       <Switch>
         <Route path  ='/restaurants' component = {MainRestaurantContainer}></Route>

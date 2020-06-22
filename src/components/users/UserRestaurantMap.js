@@ -9,43 +9,44 @@ export const icon = new Icon({
   iconSize: [35, 35]
 });
 
-export default function App() {
-  const [activePark, setActivePark] = React.useState(null);
+export default function App({restaurants}) {
+  const [activeRestaurant, setActiveRestaurant] = React.useState(null);
 
   return (
-    <Map center={[45.4, -75.7]} zoom={12}>
+    <Map center={[55.8, -4.25]} zoom={12}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {parkData.features.map(park => (
+      {restaurants.features.map(restaurant => (
         <Marker
-          key={park.properties.PARK_ID}
+          key={restaurant.id}
           position={[
-            park.geometry.coordinates[1],
-            park.geometry.coordinates[0]
+            restaurant.longitude,
+            restaurant.latitude
           ]}
           onClick={() => {
-            setActivePark(park);
+            setActiveRestaurant(restaurant);
           }}
           icon={icon}
         />
       ))}
 
-      {activePark && (
+      {activeRestaurant && (
         <Popup
           position={[
-            activePark.geometry.coordinates[1],
-            activePark.geometry.coordinates[0]
+            restaurants.longitude,
+            restaurants.latitude
           ]}
           onClose={() => {
-            setActivePark(null);
+            setActiveRestaurant(null);
           }}
         >
           <div>
-            <h2>{activePark.properties.NAME}</h2>
-            <p>{activePark.properties.DESCRIPTIO}</p>
+            <h2>{activeRestaurant.name}</h2>
+            <p>{activeRestaurant.cousine}</p>
+            <p>{activeRestaurant.openingTime}- {activeRestaurant.closingTime}</p>
           </div>
         </Popup>
       )}

@@ -1,5 +1,5 @@
 import React,{Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Request from '../helpers/request.js'
 
 import UserForm from '../components/users/UserForm.js'
@@ -11,12 +11,16 @@ class MainUserContainer extends Component{
     super(props);
     this.state = {
       users:[],
-      restaurants:[]
+      restaurants:[],
+      loggedUser: {email:"",
+                  password:""
+                }
     }
 
   this.findUserById = this.findUserById.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
   this.restRequest = this.restRequest.bind(this)
+  this.renderLoginButtons = this.renderLoginButtons.bind(this)
 
   }
 componentDidMount(){
@@ -82,9 +86,14 @@ handleSubmit(userLogged){
     then(() => window.location = `/users/${loggedUser.id}`)
 }
 
-
-
-
+renderLoginButtons(){
+  if(this.state.loggedUser.password === ""){
+    return(
+    <>
+<a className = "link" href="/users/new" >ReGIster</a>
+<a className = "link" href="/users/login" >Login</a>
+</>)
+}}
 render(){
 
 if(!this.state.users){
@@ -96,8 +105,8 @@ if(!this.state.users){
   return(
     <Router>
       <Fragment>
-      <a className = "link" href="/users/new" >ReGIster</a>
-      <a className = "link" href="/users/login" >Login</a>
+
+        {this.renderLoginButtons()}
           <Switch>
 
             <Route exact path="/users/new" render={(props) => {
