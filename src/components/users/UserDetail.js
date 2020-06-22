@@ -6,7 +6,7 @@ import Booking from '../bookings/Booking.js';
 import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
 import UserRestaurantMap from './UserRestaurantMap.js'
-
+import RestaurantList from '../restaurants/RestaurantList.js';
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
@@ -92,6 +92,7 @@ let maxDate =function(){
     <div>
       <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
     </div>
+      <RestaurantList restaurants={restaurants} />
     <div>
 
     </div>
