@@ -1,30 +1,21 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import MainNavigationBar from '../MainNavigationBar.js';
 import MainRestaurantContainer from './MainRestaurantContainer.js';
 import MainUserContainer from './MainUserContainer.js';
-
+import Welcome from "../components/Welcome.js"
 
 
 const MainContainer = () => {
 
-const welcome= ""
+     const message = ""
 
-// if(window.location === "/"){
-//   welcome = "WELCOME TO EAT IN GLASGOW"
-// }
+
 
 
     return (
       <Router>
       <Fragment>
-
-      <MainNavigationBar/>
-      <div>
-
-      // {welcome}
-      <h2>HI WLFASFSA</h2>
-      </div>
+        <Welcome/>
       <Switch>
         <Route path  ='/restaurants' component = {MainRestaurantContainer}></Route>
         <Route path ='/users' component = {MainUserContainer}/>

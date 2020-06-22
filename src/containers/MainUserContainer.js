@@ -93,10 +93,13 @@ renderLoginButtons(){
   if(this.state.loggedUser.password === ""){
     return(
     <>
-<a className = "link" href="/users/new" >ReGIster</a>
-<a className = "link" href="/users/login" >Login</a>
-</>)
+    <Link to = "/users/new" className="link"> REGISTER</Link>
+    <Link to = "/users/login" className="link"> LOGIN</Link>
+    </>
+  )
 }}
+
+
 render(){
 
 if(!this.state.users){
