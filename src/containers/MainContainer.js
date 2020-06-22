@@ -21,6 +21,7 @@ if(window.location === "/"){
 
       <MainNavigationBar/>
       <div>
+      
       {welcome}
       </div>
       <Switch>
