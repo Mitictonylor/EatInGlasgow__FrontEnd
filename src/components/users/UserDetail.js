@@ -7,7 +7,7 @@ import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
 import UserRestaurantMap from './UserRestaurantMap.js'
 import RestaurantList from '../restaurants/RestaurantList.js';
-import UserReviewForm from './UserBookingForm.js';
+import UserReviewForm from './UserReviewForm.js';
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
@@ -17,6 +17,8 @@ const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
     request.post("/api/bookings", booking)
     .then(() => window.location = `/users/${user.id}`)
   }
+
+
 
   let today = function(){
     today = new Date();
@@ -43,6 +45,15 @@ let maxDate =function(){
   return (yyyy+"-"+mm+"-"+dd);
 };
 
+const handlePostReview = (review)=>{
+  const request = new Request();
+  request.post("/api/reviews", review)
+  .then(() => window.location = `/users/${user.id}`)
+}
+
+// let toReview = user.bookings.filter(({ id: first }) =>
+//   !user.reviews.some(({ id: second }) => second === first));
+// restaurantToReview = toReview.filter(booking => booking.date > today())
 
 
 // const allbookings = user.bookings.map((booking, index) => {
@@ -72,7 +83,9 @@ let maxDate =function(){
 // })
 
 
-
+// if(restaurantToReview.length >1){
+//   return <p>There are Restaurant to review</p>
+// } NEED TO ADD RESTAURANTS TO UserReviewFORM
 
 
   if (!user){
@@ -91,11 +104,10 @@ let maxDate =function(){
       <Link to= {editUrl}><button type="button">Edit {user.name}</button></Link>
       </div>
     <div>
-      <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
+      <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
     </div>
       <RestaurantList restaurants={restaurants} />
     <div>
-
     </div>
   </>
   )
