@@ -7,6 +7,7 @@ import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
 import UserRestaurantMap from './UserRestaurantMap.js'
 import RestaurantList from '../restaurants/RestaurantList.js';
+import UserReviewForm from './UserBookingForm.js';
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 

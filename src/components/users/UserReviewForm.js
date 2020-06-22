@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 
-class UserBookingForm extends Component{
+class UserreviewForm extends Component{
 
   constructor(props){
     super(props)//it will track the state just for the form
@@ -25,22 +25,22 @@ class UserBookingForm extends Component{
   handleChange(event) {
     let propertyName = event.target.name;
     let review = this.state.review
-    booking[propertyName] = event.target.value;
-    this.setState({booking: booking});
+    review[propertyName] = event.target.value;
+    this.setState({review: review});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-      this.props.onCreateReview(this.state.booking)
+      this.props.onCreateReview(this.state.review)
 
     }
 
   handleRestaurant(event){
       const index = parseInt(event.target.value)
       const selectedRest = this.props.restaurants[index]
-      let booking = this.state.booking;
-      booking['restaurant'] = selectedRest
-      this.setState({booking: booking})
+      let review = this.state.review;
+      review['restaurant'] = selectedRest
+      this.setState({review: review})
     }
 
 
@@ -55,39 +55,6 @@ class UserBookingForm extends Component{
     const restOptions = this.props.restaurants.map((rest, index) => {
           return <option key={rest.id} value={index}>{rest.name} cousine: {rest.cousine}</option>
         });
-
-    let timeSection = null
-
-      if(this.state.booking.restaurant != null){
-
-        timeSection = (<div className="form_wrap">
-          <label htmlFor="time">Time</label>
-          <input
-            required
-            onChange={this.handleChange}
-            name="time"
-            id="time"
-            type="time"
-            step="900"
-            min = {this.state.booking.restaurant.openingTime}
-            max = {this.state.booking.restaurant.closingTime}
-            value={this.state.booking.time} />
-          </div>)
-      }else{
-        timeSection = (<div className="form_wrap">
-          <label htmlFor="time">Time</label>
-          <input
-            required
-            onChange={this.handleChange}
-            name="time"
-            id="time"
-            type="time"
-            step="900"
-            min="09:00"
-            max="23:00"
-            value={this.state.booking.time} />
-          </div>)
-      }
 
 
 
@@ -114,21 +81,20 @@ class UserBookingForm extends Component{
                 type="date"
                 min = {this.props.today}
                 max = {this.props.maxDate}
-                value={this.state.booking.date} />
+                value={this.state.review.date} />
               </div>
-            {timeSection}
               <div className="form_wrap">
-                <label htmlFor="covers">Covers</label>
+                <label htmlFor="rate">Rate</label>
                 <input
                   required
                   onChange={this.handleChange}
-                  placeholder="Covers"
-                  name="covers"
-                  id="covers"
+                  placeholder="rate"
+                  name="rate"
+                  id="rate"
                   type="number"
                   min = "1"
-                  max = "8"
-                  value={this.state.booking.covers} />
+                  max = "5"
+                  value={this.state.review.rate} />
                 </div>
 
             <button type="submit"> SAVE </button>
@@ -137,4 +103,4 @@ class UserBookingForm extends Component{
     )
   }
 }
-export default UserBookingForm;
+export default UserreviewForm;
