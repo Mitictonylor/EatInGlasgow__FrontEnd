@@ -9,14 +9,14 @@ export const icon = new Icon({
   iconSize: [35, 35]
 });
 
-export default function UserRestauranMap({restaurants}) {
+export default function UserRestaurantMap({restaurants}){
+
+
   const [activeRestaurant, setActiveRestaurant] = React.useState(null);
 const filteredRestaurants = restaurants.filter(restaurant => restaurant.latitude != 0)
 console.log(filteredRestaurants[0])
+console.log(filteredRestaurants[0].latitude)
 
-if (!filteredRestaurants){
-  return "Loading"
-}
 
   return (
     <Map center={[55.860916, -4.251433]} zoom={12}>
