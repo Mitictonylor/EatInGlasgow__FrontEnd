@@ -9,6 +9,8 @@ body {
 }
 .navLink {
     display: inline;
+    border-style: solid;
+    border-color: turquoise;
 }
 header {
     background-color: white;
@@ -19,20 +21,30 @@ header {
     height: 80px;
      display: flex;
      align-items: center;
+     border-style: solid;
+     border-color: gold;
 }
 header * {
     display: inline;
+    border-style: solid;
+    border-color: darkgreen;
 }
 header img {
   height: 80px;
 margin-left: 40px;
+border-style: solid;
+border-color: grey;
 }
 header li {
     margin: 20px;
+    border-style: solid;
+    border-color: brown;
 }
 .component-list {
   display: flex;
   flex-wrap: wrap;
+  border-style: solid;
+  border-color: orange;
 }
 .link  {
   display: flex;
@@ -40,38 +52,50 @@ header li {
   margin: 20px;
   padding: 10px;
   width:10%;
-  border: 1px solid black;
+  border: 1px solid purple;
 }
 .component {
   margin: 20px;
   padding: 10px;
   width: 300px;
-  border: 1px solid black;
+  border: 1px solid papayawhip;
 }
 .component-item{
   display: inline;
+  border-style: solid;
+  border-color: skyblue;
 }
 p {
-  font-size: 18px;
+  font-size: 18px,
+  border-style: solid;
+  border-color: pink;
 }
 
 form label {
   min-width: 250px;
   display: inline-block;
+  border-style: solid;
+  border-color: blue;
+
 }
 
 form input {
   font-size: 18px;
+  border-style: solid;
+  border-color: green;
 }
 .form-container{
   margin: 20px;
   padding: 10px;
   width: 500px;
   border: 1px solid black;
+
 }
 .form_wrap {
   display: block;
   margin-bottom: 20px;
+  border-style: solid;
+  border-color: yellow;
 
 }
 
@@ -81,6 +105,8 @@ form input[type="submit"] {
   cursor: pointer;
   background: skyblue;
   color: #fff;
+  border-style: solid;
+  border-color: red;
 }
 
 form input[type="submit"]:hover,

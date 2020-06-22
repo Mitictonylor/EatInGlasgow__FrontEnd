@@ -91,13 +91,13 @@ const priceOptions = priceCateg.map((price, index) => {
       </div>
 
       <div className="form_wrap">
-        <label htmlFor="url">Image URL:</label>
+        <label htmlFor="pictureUrl">Image URL:</label>
         <input
           required
           onChange={this.handleChange}
           placeholder="Input the image URL..."
-          name="url"
-          id="url"
+          name="pictureUrl"
+          id="pictureUrl"
           type="text"
         value={this.state.restaurant.pictureUrl} />
       </div>
