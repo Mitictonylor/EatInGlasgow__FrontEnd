@@ -69,6 +69,7 @@ class UserBookingForm extends Component{
             name="time"
             id="time"
             type="time"
+            step="900"
             min = {this.state.restaurant.openingTime}
             max = {this.state.restaurant.closingTime}
             value={this.state.booking.time} />
@@ -83,6 +84,7 @@ class UserBookingForm extends Component{
             name="time"
             id="time"
             type="time"
+            step="900"
             min="09:00"
             max="23:00"
             required
