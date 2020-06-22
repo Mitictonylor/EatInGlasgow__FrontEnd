@@ -74,7 +74,7 @@ return (yyyy+"-"+mm+"-"+dd);
 
     const editUrl = "/users/" + user.id + "/edit"
 
-    const time = new Date().getTime
+    const time = new Date().getTime()
     return (
     <>
 

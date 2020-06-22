@@ -59,19 +59,19 @@ class UserBookingForm extends Component{
 
     let timeSection = null
 
-      if(this.state.restaurant != null){
+      if(this.state.booking.restaurant != null){
+          console.log(this.state.booking.restaurant.openingTime);
         timeSection = (<div className="form_wrap">
           <label htmlFor="time">Time</label>
           <input
             required
             onChange={this.handleChange}
-            placeholder="Choose time"
             name="time"
             id="time"
             type="time"
             step="900"
-            min = {this.state.restaurant.openingTime}
-            max = {this.state.restaurant.closingTime}
+            min = {this.state.booking.restaurant.openingTime}
+            max = {this.state.booking.restaurant.closingTime}
             value={this.state.booking.time} />
           </div>)
       }else{
@@ -80,17 +80,18 @@ class UserBookingForm extends Component{
           <input
             required
             onChange={this.handleChange}
-            placeholder="Choose time"
             name="time"
             id="time"
             type="time"
             step="900"
             min="09:00"
             max="23:00"
-            required
             value={this.state.booking.time} />
           </div>)
       }
+
+      console.log(this.state.booking.time);
+
         return(
           <>
           <h3> Book Now</h3>
