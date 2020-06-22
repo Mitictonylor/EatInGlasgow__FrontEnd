@@ -5,7 +5,7 @@ import * as parkData from "../../data/skateboard-parks.json";
 
 
 export const icon = new Icon({
-  iconUrl: "/images/Logo.jpg",
+   iconUrl: "/skateboarding.svg",
   iconSize: [25, 25]
 });
 
