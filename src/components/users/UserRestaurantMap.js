@@ -1,35 +1,35 @@
 import React from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
-import * as parkData from "./data/skateboard-parks.json";
+import * as parkData from "../../data/skateboard-parks.json";
 
-import { Icon } from "leaflet";
 
-const skater = new Icon({
-  iconUrl: "../images/logo.jpg",
+export const icon = new Icon({
+  iconUrl: "/images/Logo.jpg",
   iconSize: [25, 25]
 });
 
 export default function App() {
-const [activePark, setActivePark] = React.useState(null);
-return (
+  const [activePark, setActivePark] = React.useState(null);
+
+  return (
     <Map center={[45.4, -75.7]} zoom={12}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {parkData.features.map(park => (//will be the restaurant
+      {parkData.features.map(park => (
         <Marker
           key={park.properties.PARK_ID}
           position={[
-            park.geometry.coordinates[1],//longitude
-            park.geometry.coordinates[0]//latitude
+            park.geometry.coordinates[1],
+            park.geometry.coordinates[0]
           ]}
           onClick={() => {
-            setActivePark(park);//for the popup
+            setActivePark(park);
           }}
-
+          icon={icon}
         />
       ))}
 
