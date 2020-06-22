@@ -35,7 +35,6 @@ async restRequest (){
       const url = "https://api.postcodes.io/postcodes/"
       fetch(url + postcode).then(res => res.json())
       .then(restaurantData =>{
-        console.log(restaurantData);
       if (restaurantData.result){
       restaurant.longitude= restaurantData.result.longitude;
       restaurant.latitude = restaurantData.result.latitude;}})
