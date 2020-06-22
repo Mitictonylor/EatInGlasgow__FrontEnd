@@ -11,7 +11,7 @@ export const icon = new Icon({
 
 export default function App() {
   const [activePark, setActivePark] = React.useState(null);
- 
+
   return (
     <Map center={[45.4, -75.7]} zoom={12}>
       <TileLayer
