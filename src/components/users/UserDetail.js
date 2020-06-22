@@ -5,7 +5,7 @@ import Reviews from '../reviews/Review.js';
 import Booking from '../bookings/Booking.js';
 import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
-import RestaurantMap from './UserRestaurantMap.js'
+import UserRestaurantMap from './UserRestaurantMap.js'
 
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
@@ -88,7 +88,7 @@ return (yyyy+"-"+mm+"-"+dd);
       <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
       </div>
       <div>
-      <RestaurantMap restaurants={restaurants} />
+      <UserRestaurantMap restaurants={restaurants} />
       </div>
       </>
     )

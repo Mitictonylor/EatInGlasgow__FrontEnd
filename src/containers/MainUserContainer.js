@@ -31,23 +31,26 @@ request.get('/api/users').then(data => this.setState({users: data}))
 }
 
 async restRequest (){
+  let allRest
    fetch('/api/restaurants').then(res => res.json())
    .then(restaurants => {
+allRest= restaurants
+      for(let restaurant of allRest){
+        let postcode = restaurant.postcode;
+        const url = "https://api.postcodes.io/postcodes/"
+        fetch(url + postcode).then(res => res.json())
+          .then(restaurantData =>{
+            if (restaurantData.result){
+              restaurant.longitude= restaurantData.result.longitude;
+              restaurant.latitude = restaurantData.result.latitude;
+            }
+          }
+        )
+      }
+    this.setState({restaurants: allRest} )
 
-      for(let restaurant of restaurants){
-      let postcode = restaurant.postcode;
-      const url = "https://api.postcodes.io/postcodes/"
-      fetch(url + postcode).then(res => res.json())
-      .then(restaurantData =>{
-      if (restaurantData.result){
-      restaurant.longitude= restaurantData.result.longitude;
-      restaurant.latitude = restaurantData.result.latitude;}})
-
-
-}this.setState({restaurants: restaurants})
-}
-)
-
+  }
+  )
 }
 
 
@@ -99,6 +102,7 @@ render(){
 if(!this.state.users){
   return null
 }
+
 
 
 

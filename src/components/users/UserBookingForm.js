@@ -60,7 +60,7 @@ class UserBookingForm extends Component{
     let timeSection = null
 
       if(this.state.booking.restaurant != null){
-          console.log(this.state.booking.restaurant.openingTime);
+        
         timeSection = (<div className="form_wrap">
           <label htmlFor="time">Time</label>
           <input
@@ -90,7 +90,7 @@ class UserBookingForm extends Component{
           </div>)
       }
 
-      console.log(this.state.booking.time);
+
 
         return(
           <>
