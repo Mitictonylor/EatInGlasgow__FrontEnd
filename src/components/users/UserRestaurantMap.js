@@ -3,6 +3,13 @@ import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import * as parkData from "./data/skateboard-parks.json";
 
+import { Icon } from "leaflet";
+
+const skater = new Icon({
+  iconUrl: "../images/logo.jpg",
+  iconSize: [25, 25]
+});
+
 export default function App() {
 const [activePark, setActivePark] = React.useState(null);
 return (
