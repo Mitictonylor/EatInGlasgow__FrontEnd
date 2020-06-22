@@ -5,13 +5,13 @@ import * as parkData from "../../data/skateboard-parks.json";
 
 
 export const icon = new Icon({
-   iconUrl: "/skateboarding.svg",
-  iconSize: [25, 25]
+   iconUrl: "/images/Logo.jpg",
+  iconSize: [35, 35]
 });
 
 export default function App() {
   const [activePark, setActivePark] = React.useState(null);
-
+ 
   return (
     <Map center={[45.4, -75.7]} zoom={12}>
       <TileLayer
