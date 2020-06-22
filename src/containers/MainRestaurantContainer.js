@@ -1,5 +1,5 @@
 import React,{Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch,Link} from 'react-router-dom';
 import Request from '../helpers/request.js'
 
 import RestaurantForm from '../components/restaurants/RestaurantForm.js'
@@ -10,11 +10,15 @@ class MainRestaurantContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      restaurants:[]
+      restaurants:[],
+      loggedRestaurant:{email:"",
+                        password:""
+                      }
     }
 
   this.findRestaurantById = this.findRestaurantById.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.renderLoginButtons = this.renderLoginButtons.bind(this);
 
 
   }
@@ -57,7 +61,15 @@ handleSubmit(restaurantLogged){
     console.log(loggedRestaurant);
     window.location = `/restaurants/${loggedRestaurant.id}`;
 }
-
+renderLoginButtons(){
+  if(this.state.loggedRestaurant.password === ""){
+    return(
+    <>
+    <Link to = "/restaurants/new" className="link"> REGISTER</Link>
+    <Link to = "/restaurants/login" className="link"> LOGIN</Link>
+    </>
+  )
+}}
 
 
 
@@ -73,8 +85,7 @@ if(!this.state.restaurants){
   return(
     <Router>
       <Fragment>
-      <a className = "link" href="/restaurants/new" >Register</a>
-      <a className = "link" href="/restaurants/login" >Login</a>
+        {this.renderLoginButtons()}
           <Switch>
 
             <Route exact path="/restaurants/new" render={(props) => {

@@ -1,18 +1,18 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const NavigationBar = (props) => {
   return (
     <header>
-      <a href = "/"><img src="/images/logo.jpg"   alt="Logo"/></a>
+      <Link to = "/"><img src="/images/logo.jpg"   alt="Logo"/></Link>
 
       <ul>
-        <li className="navLink">
-          <a href="/restaurants">Restaurants</a>
+        <li>
+          <Link to = "/restaurants" className="navLink"> RESTAURANT</Link>
         </li>
-        <li className="navLink">
-          <a href="/users">Users</a>
+        <li>
+          <Link to = "/users" className="navLink"> USER</Link>
         </li>
-
       </ul>
     </header>
   )
