@@ -13,6 +13,9 @@ const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
   if(!user && !restaurants){
     return "loading"
+  }else{
+    console.log("User detail user",user);
+    console.log("User detail restaurants", restaurants);
   }
 
   const handlePostBooking = (booking)=>{
@@ -61,31 +64,44 @@ const handlePostReview = (review)=>{
 // console.log("UserDetail user",user)
 // console.log("UserDetail userBookings",user.bookings)
 
-// const allbookings = user.bookings.map((booking, index) => {
-//   return(
-//     <>
-//      <h2> All the bookings </h2>
-//       <li key={index} className="component-item">
-//         <div className="component">
-//           <Booking booking={booking} />
-//         </div>
-//       </li>
-//     </>
-//   )
-// })
-//
-// const allreviews = user.reviews.map((review, index) => {
-//   return(
-//     <>
-//      <h2> All the reviews left </h2>
-//       <li key={index} className="component-item">
-//         <div className="component">
-//           <Review review={review} />
-//         </div>
-//       </li>
-//     </>
-//   )
-// })
+// const allBookings = ()=>{
+//       if (user){
+//         const bookings=user.bookings.map((booking, index) => {
+//               return(
+//                 <>
+//                  <h2> All the bookings </h2>
+//                   <li key={index} className="component-item">
+//                     <div className="component">
+//                       <Booking booking={booking} />
+//                     </div>
+//                   </li>
+//                 </>
+//               )
+//           }
+//         )
+//       return bookings
+//     }
+// }
+
+// const allReviews = ()=>{
+//   if (user){
+//      const reviews= user.reviews.map((review, index) => {
+//        return(
+//           <>
+//            <h2> All the reviews left </h2>
+//             <li key={index} className="component-item">
+//               <div className="component">
+//                 <Review review={review} />
+//               </div>
+//             </li>
+//           </>
+//           )
+//         }
+//       )
+//     return reviews
+//   }
+// }
+
 
 
 // if(restaurantToReview.length >1){
@@ -113,6 +129,9 @@ const handlePostReview = (review)=>{
     </div>
       <RestaurantList restaurants={restaurants} />
     <div>
+    <div>
+
+    </div>
     </div>
   </>
   )
