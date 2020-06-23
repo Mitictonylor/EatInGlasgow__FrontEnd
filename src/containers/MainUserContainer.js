@@ -43,12 +43,12 @@ allRest= restaurants
             if (restaurantData.result){
               restaurant.longitude= restaurantData.result.longitude;
               restaurant.latitude = restaurantData.result.latitude;
-              console.log("ID in the loop", restaurant.id)
+              console.log("in the fetch loop rest id", restaurant.id)
             }
           }
         )
       }
-      console.log("all restaurants", allRest)
+      console.log("In the fetch all restaurants", allRest)
     this.setState({restaurants: allRest} )
 
   }
