@@ -12,7 +12,6 @@ export const icon = new Icon({
 export default function UserRestaurantMap({restaurants}){
 const [activeRestaurant, setActiveRestaurant] = React.useState(null);
 
-  console.log("restaurants", restaurants)
 
 if(!restaurants.length >0){
   return <h2>Loading</h2>

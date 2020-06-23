@@ -112,8 +112,6 @@ renderLoginButtons(){
 
 
 render(){
-console.log("Main User Container restaurants: " + this.state.restaurants)
-console.log("Main User Container user: " + this.state.users)
 
 
 

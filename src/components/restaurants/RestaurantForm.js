@@ -51,7 +51,6 @@ class RestaurantForm extends Component{
     if(this.state.restaurant.id){
       this.props.onUpdate(this.state.restaurant)
     }else{
-      console.log("Called");
       this.props.onCreate(this.state.restaurant)
     }
 

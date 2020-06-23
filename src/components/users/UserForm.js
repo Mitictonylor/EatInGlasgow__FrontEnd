@@ -34,7 +34,6 @@ componentDidMount(){
     if(this.state.user.id){
       this.props.onUpdate(this.state.user)
     }else{
-      console.log("Called");
       this.props.onCreate(this.state.user)
     }
 

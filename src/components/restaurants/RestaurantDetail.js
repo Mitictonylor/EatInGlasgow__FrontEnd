@@ -11,7 +11,6 @@ const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
   if(!restaurant){
     return "loading"
   }
-  console.log('restaurant Detail', restaurant)
   // need to render those 2 lists
 
 

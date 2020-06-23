@@ -14,11 +14,7 @@ const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
   if(!user && restaurants.length >0){
     return "loading"
-  }else{
-    console.log("User detail user",user);
-    console.log("User detail restaurants", restaurants);
   }
-
   const handlePostBooking = (booking)=>{
     const request = new Request();
     request.post("/api/bookings", booking)
@@ -62,8 +58,7 @@ const handlePostReview = (review)=>{
 //   !user.reviews.some(({ id: second }) => second === first));
 // restaurantToReview = toReview.filter(booking => booking.date > today())
 
-// console.log("UserDetail user",user)
-// console.log("UserDetail userBookings",user.bookings)
+
 
 
 
@@ -84,7 +79,7 @@ const handlePostReview = (review)=>{
   const time = new Date().getTime()
 
 
-  console.log("USER DETAILS before return, restaurants" ,restaurants)
+
   return (
   <>
 
