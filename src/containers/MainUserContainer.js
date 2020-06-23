@@ -26,7 +26,6 @@ class MainUserContainer extends Component{
   this.findUserById = this.findUserById.bind(this)
   this.handleLogin = this.handleLogin.bind(this)
   this.restaurantWithCoordinates = this.restaurantWithCoordinates.bind(this)
-  this.renderLoginButtons = this.renderLoginButtons.bind(this)
 
   }
 
@@ -88,15 +87,7 @@ handleLogin(userLogged){
    then(() => window.location = `/users/${loggedUser.id}`)
 }
 
-renderLoginButtons(){
-  if(this.state.loggedUser.email === ""){
-    return(
-    <>
-    <Link to = "/users/new" className="link"> REGISTER</Link>
-    <Link to = "/users/login" className="link"> LOGIN</Link>
-    </>
-  )
-}}
+
 
 restaurantWithCoordinates(){
 let restaurants = []
@@ -149,7 +140,7 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
     <Router>
       <Fragment>
 
-        {this.renderLoginButtons()}
+
           <Switch>
 
             <Route exact path="/users/new" render={(props) => {

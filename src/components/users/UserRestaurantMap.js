@@ -25,7 +25,7 @@ if(restaurantList.length <=0){
 
 
   return (
-    <Map center={[55.860916, -4.251433]} zoom={12}>
+    <Map center={[55.860916, -4.251433]} zoom={13}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -57,7 +57,9 @@ if(restaurantList.length <=0){
         >
           <div>
             <h2>{activeRestaurant.name}</h2>
-            <p>{activeRestaurant.cousine}</p>
+            <p>Cousine: {activeRestaurant.cousine}</p>
+            <p>Opening Time: {activeRestaurant.openingTime}-{activeRestaurant.closingTime}</p>
+            <button onClick="">Book</button>
           </div>
         </Popup>
       )}

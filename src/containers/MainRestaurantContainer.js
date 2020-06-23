@@ -19,7 +19,6 @@ class MainRestaurantContainer extends Component{
 
   this.findRestaurantById = this.findRestaurantById.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
-  this.renderLoginButtons = this.renderLoginButtons.bind(this);
 
 
   }
@@ -61,15 +60,7 @@ handleSubmit(restaurantLogged){
     const request = new Request();
     window.location = `/restaurants/${loggedRestaurant.id}`;
 }
-renderLoginButtons(){
-  if(this.state.loggedRestaurant.password === ""){
-    return(
-    <>
-    <Link to = "/restaurants/new" className="link"> REGISTER</Link>
-    <Link to = "/restaurants/login" className="link"> LOGIN</Link>
-    </>
-  )
-}}
+
 
 
 
@@ -85,7 +76,7 @@ if(!this.state.restaurants){
   return(
     <Router>
       <Fragment>
-        {this.renderLoginButtons()}
+
           <Switch>
 
             <Route exact path="/restaurants/new" render={(props) => {

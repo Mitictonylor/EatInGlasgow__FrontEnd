@@ -66,7 +66,7 @@ return(
                 type="password"
                 value={this.state.user.password} />
             </div>
-    <button type="submit"> SAVE </button>
+    <button className="edit-button" type="submit"> Login </button>
           </form>
     </>
 )
