@@ -75,8 +75,8 @@ handleSubmit(userLogged){
     return user.email === userLogged.email;})
     this.setState({loggedUser: loggedUser})
     const request = new Request();
-    request.get(`/api/users/${loggedUser.id}`).
-    then(() => window.location = `/users/${loggedUser.id}`)
+    request.get(`/api/users/${loggedUser.id}`)
+    .then(() => window.location = `/users/${loggedUser.id}`)
 }
 
 renderLoginButtons(){

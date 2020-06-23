@@ -7,7 +7,7 @@ import Welcome from "../components/Welcome.js"
 
 const MainContainer = () => {
 
-     const message = ""
+
 
 
 

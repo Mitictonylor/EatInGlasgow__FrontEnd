@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 
 class UserBookingForm extends Component{
 
@@ -58,7 +58,7 @@ const restaurantBookings= this.props.restaurant.bookings
 //accumulate the covers for the same day
 let result = restaurantBookings.reduce(function(acc, val){
     let o = acc.filter(function(obj){
-        return obj.date==val.date;
+        return obj.date===val.date;
     }).pop() || {date:val.date, covers:0};
     o.covers += val.covers;
     acc.push(o);
