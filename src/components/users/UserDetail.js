@@ -11,7 +11,7 @@ import UserReviewForm from './UserReviewForm.js';
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
-  if(!user && !restaurants){
+  if(!user && restaurants.length >0){
     return "loading"
   }else{
     console.log("User detail user",user);
@@ -64,24 +64,24 @@ const handlePostReview = (review)=>{
 // console.log("UserDetail user",user)
 // console.log("UserDetail userBookings",user.bookings)
 
-// const allBookings = ()=>{
-//       if (user){
-//         const bookings=user.bookings.map((booking, index) => {
-//               return(
-//                 <>
-//                  <h2> All the bookings </h2>
-//                   <li key={index} className="component-item">
-//                     <div className="component">
-//                       <Booking booking={booking} />
-//                     </div>
-//                   </li>
-//                 </>
-//               )
-//           }
-//         )
-//       return bookings
-//     }
-// }
+const allBookings = ()=>{
+      if (user){
+        const bookings=user.bookings.map((booking, index) => {
+              return(
+                <>
+                 <h2> All the bookings </h2>
+                  <li key={index} className="component-item">
+                    <div className="component">
+                      <Booking booking={booking} />
+                    </div>
+                  </li>
+                </>
+              )
+          }
+        )
+      return bookings
+    }
+}
 
 // const allReviews = ()=>{
 //   if (user){
@@ -129,10 +129,13 @@ const handlePostReview = (review)=>{
     </div>
       <RestaurantList restaurants={restaurants} />
     <div>
-    <div>
 
+{allBookings()}
     </div>
+    <div>
+    <UserRestaurantMap restaurants={restaurants}/>
     </div>
+
   </>
   )
 }

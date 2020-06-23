@@ -15,6 +15,7 @@ class MainUserContainer extends Component{
       loggedUser: {email:"",
                   password:""
                 }
+
     }
 
   this.findUserById = this.findUserById.bind(this)
@@ -25,19 +26,26 @@ class MainUserContainer extends Component{
   }
 componentDidMount(){
   const request = new Request();
-request.get('/api/users').then(data => this.setState({users: data}))
-  this.restRequest()
+request.get('/api/users')
+.then(data => this.setState({users: data}))
+.then( this.restRequest())
+
 
 }
 
 async restRequest (){
   let allRest
-   fetch('/api/restaurants').then(res => res.json())
+   await fetch('/api/restaurants').
+   then(res => res.json())
    .then(restaurants => {
-allRest= restaurants
+     const request = new Request();
+     const url = "https://api.postcodes.io/postcodes/"
+     
+allRest= restaurants.map(restaurant => restaurant.postcode)
+Promise
       for(let restaurant of allRest){
         let postcode = restaurant.postcode;
-        const url = "https://api.postcodes.io/postcodes/"
+
         fetch(url + postcode).then(res => res.json())
           .then(restaurantData =>{
             if (restaurantData.result){
@@ -85,6 +93,9 @@ handleSubmit(userLogged){
   const loggedUser =  this.state.users.find((user) => {
     return user.email === userLogged.email;})
 
+    // if(!loggedUser) {
+    //   alert("wrong Email or Password, try again")
+    // }
     this.setState({loggedUser: loggedUser})
     const request = new Request();
     request.get(`/api/users/${loggedUser.id}`).
@@ -136,9 +147,12 @@ console.log("Main User Container restaurants: " + this.state.restaurants)
                 <Route exact path="/users/:id" render={(props) =>{
                     const id = props.match.params.id;
                     const user = this.findUserById(id);
+                    console.log("Main User container user ",user);
+                    console.log("Main User container restaurants ",this.state.restaurants)
                     return <UserDetail user={user}
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
+
                     restaurants={this.state.restaurants}
                     />
                   }}/>
