@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 
 class UserBookingForm extends Component{
 
@@ -54,11 +54,11 @@ class UserBookingForm extends Component{
   }
 
 checkAvailableSeatsInRestaurant(date){
-const restaurantBookings= this.props.restaurant.bookings
+const restaurantBookings= this.state.booking.restaurant.bookings
 //accumulate the covers for the same day
 let result = restaurantBookings.reduce(function(acc, val){
     let o = acc.filter(function(obj){
-        return obj.date==val.date;
+        return obj.date===val.date;
     }).pop() || {date:val.date, covers:0};
     o.covers += val.covers;
     acc.push(o);
@@ -66,12 +66,15 @@ let result = restaurantBookings.reduce(function(acc, val){
 },[]);
 //get me just the object with the date i need
 const dateBooking = result.filter(booking => booking.date ===date)
+if(dateBooking.length >0){
 const dateCovers = dateBooking[0].covers
-if ((dateCovers + this.state.bookings.covers) > this.state.bookings.restaurant.capacity){
+if ((dateCovers + this.state.booking.covers) > this.state.booking.restaurant.capacity){
   return false
 }else{
   return true
 }
+}
+return true
 }
 
   render(){

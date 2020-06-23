@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 
 class RestaurantForm extends Component{
 
@@ -27,7 +27,7 @@ class RestaurantForm extends Component{
 
   componentDidMount(){
     if(this.props.restaurant){
-      this.setState({restaurant: { ... this.props.restaurant}})
+      this.setState({restaurant: { ...this.props.restaurant}})
     }
   }
   findPrice(){

@@ -1,12 +1,10 @@
-import React, {Component}  from 'react';
-import User from "./User";
+import React from 'react';
 import {Link} from 'react-router-dom';
-import ReviewList from '../reviews/ReviewList.js';
 import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
 import RestaurantList from '../restaurants/RestaurantList.js';
 import UserReviewForm from './UserReviewForm.js';
-import BookingList from '../bookings/BookingList.js';
+
 
 
 const UserDetail = ({user, onDelete, onUpdate, restaurantsWithCoordinates}) => {
