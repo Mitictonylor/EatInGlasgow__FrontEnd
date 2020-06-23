@@ -109,7 +109,7 @@ const handlePostReview = (review)=>{
       <Link to= {editUrl}><button className = "edit-button" type="button">Edit {user.name}</button></Link>
       </div>
     <div>
-      <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
+      <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
     </div>
       <RestaurantList restaurants={restaurants} />
     <div>
