@@ -51,6 +51,30 @@ class UserBookingForm extends Component{
     });
   }
 
+checkAvailableSeatsInRestaurant(){
+restaurantBookings= this.props.restaurant.bookings
+
+let result = restaurantBookings.reduce(function(acc, val){
+    let o = acc.filter(function(obj){
+        return obj.date==val.date;
+    }).pop() || {date:val.date, covers:0};
+
+    o.covers += val.covers;
+    acc.push(o);
+    return acc;
+},[]);
+result è un array di 
+result.map((booking) =>{  if (result.date === this.state.booking.date)
+
+
+
+
+//loppa tra le prenotazioni del ristorante, e conta quante prenotazioni ci sn per ogni giorno.
+confronta la data di questa prenotazione con la differenze tra seat del ristorante e prenotazioni,
+e vedi se c'è la disponibilità per questa prenotaz
+
+
+}
 
   render(){
     const restOptions = this.props.restaurants.map((rest, index) => {
