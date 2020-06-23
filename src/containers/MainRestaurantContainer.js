@@ -89,11 +89,11 @@ if(!this.state.restaurants){
           <Switch>
 
             <Route exact path="/restaurants/new" render={(props) => {
-              return <RestaurantForm onCreate={this.handlePost}/>
+              return <RestaurantForm restaurants = {this.state.restaurants} onCreate={this.handlePost}/>
               }} />
 
               <Route exact path="/restaurants/login" render={(props) => {
-                return <RestaurantLogin onLogin={this.handleSubmit}/>
+                return <RestaurantLogin restaurants = {this.state.restaurants} onLogin={this.handleSubmit}/>
                 }} />
 
                 <Route exact path="/restaurants/:id/edit" render={(props) =>{

@@ -20,16 +20,18 @@ class MainUserContainer extends Component{
 
   this.findUserById = this.findUserById.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
-  this.restRequest = this.restRequest.bind(this)
+  this.restaurantWithCoordinates = this.restaurantWithCoordinates.bind(this)
   this.renderLoginButtons = this.renderLoginButtons.bind(this)
 
   }
+
 componentDidMount(){
   const request = new Request();
-request.get('/api/users')
-.then(data => this.setState({users: data}))
-.then( this.restRequest())
-
+  const userRequest = request.get("/api/users")
+  const restarantRequest = request.get("/api/restaurants")
+  Promise.all([userRequest, restarantRequest])
+  .then((data) => this.setState({users: data[0],
+                                restaurants: data[1]}))
 
 }
 
@@ -38,28 +40,7 @@ request.get('/api/users')
 // const restaurantsPostcodeRequest = restaurants.map( restaurant => request.get(url + restaurant.postcode))
 // Promise.all(restaurantPostcodeRequest).then((data) => { restaurant.longitude = data.result.longitude})
 
-async restRequest (){
-   await fetch('/api/restaurants').
-   then(res => res.json())
-   .then(restaurants => {
-      for(let restaurant of restaurants){
-        let postcode = restaurant.postcode;
-        const url = "https://api.postcodes.io/postcodes/"
-        fetch(url + postcode).then(res => res.json())
-          .then(restaurantData =>{
-            if (restaurantData.result){
-              restaurant.longitude= restaurantData.result.longitude;
-              restaurant.latitude = restaurantData.result.latitude;
-            }
-          }
-        )
-      }
 
-    this.setState({restaurants: restaurants} )
-
-  }
-  )
-}
 
 
 findUserById(id){
@@ -90,10 +71,6 @@ handleUpdate(user){
 handleSubmit(userLogged){
   const loggedUser =  this.state.users.find((user) => {
     return user.email === userLogged.email;})
-
-    // if(!loggedUser) {
-    //   alert("wrong Email or Password, try again")
-    // }
     this.setState({loggedUser: loggedUser})
     const request = new Request();
     request.get(`/api/users/${loggedUser.id}`).
@@ -110,6 +87,26 @@ renderLoginButtons(){
   )
 }}
 
+restaurantWithCoordinates(){
+let restaurants = []
+restaurants=[...this.state.restaurants]
+if(restaurants.length > 19)
+for(let restaurant of restaurants){
+        let postcode = restaurant.postcode;
+        const url = "https://api.postcodes.io/postcodes/"
+        fetch(url + postcode).then(res => res.json())
+          .then(restaurantData =>{
+            if (restaurantData.result){
+              restaurant.longitude= restaurantData.result.longitude;
+              restaurant.latitude = restaurantData.result.latitude;
+            }
+          }
+        )
+      }
+return restaurants
+
+}
+
 
 render(){
 
@@ -121,7 +118,7 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
 }
 
 
-
+  console.log("Main user container restaurant state", this.state.restaurants);
 
   return(
     <Router>
@@ -131,11 +128,11 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
           <Switch>
 
             <Route exact path="/users/new" render={(props) => {
-              return <UserForm onCreate={this.handlePost}/>
+              return <UserForm users = {this.state.users} onCreate={this.handlePost}/>
               }} />
 
               <Route exact path="/users/login" render={(props) => {
-                return <UserLogin onLogin={this.handleSubmit}/>
+                return <UserLogin users={this.state.users} onLogin={this.handleSubmit}/>
                 }} />
 
                 <Route exact path="/users/:id/edit" render={(props) =>{
@@ -153,7 +150,7 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
 
-                    restaurants={this.state.restaurants}
+                    restaurants={this.restaurantWithCoordinates()}
                     />
                   }}/>
 

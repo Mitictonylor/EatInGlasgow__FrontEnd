@@ -47,13 +47,20 @@ class RestaurantForm extends Component{
 
 
   handleSubmit(event) {
-    event.preventDefault();
+  event.preventDefault()
     if(this.state.restaurant.id){
       this.props.onUpdate(this.state.restaurant)
     }else{
+      const restaurant =  this.props.restaurants.find((restaurant) => {
+        return restaurant.email === this.state.restaurant.email;})
+          if(restaurant){
+            alert("email already in the system, please try another one")
+            window.location = `/restaurants/new`
+          }else{
+
       this.props.onCreate(this.state.restaurant)
     }
-
+}
 }
 
 

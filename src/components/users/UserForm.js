@@ -34,8 +34,14 @@ componentDidMount(){
     if(this.state.user.id){
       this.props.onUpdate(this.state.user)
     }else{
+      const user =  this.props.users.find((user) => {
+        return user.email === this.state.user.email;})
+          if(user){
+            alert("email already in the system, please try another one")
+            window.location = `/users/new`
+          }else{
       this.props.onCreate(this.state.user)
-    }
+    }}
 
 }
 
