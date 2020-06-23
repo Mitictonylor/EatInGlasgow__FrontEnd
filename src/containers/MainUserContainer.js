@@ -80,8 +80,12 @@ handleUpdate(user){
     .then(() => window.location = `/users/${this.state.activeUser.id}`)
   }
 handleLogin(userLogged){
-    this.setState({activeUser: userLogged})
-    window.location = `/users/${this.activeUser.id}`
+  const loggedUser =  this.state.users.find((user) => {
+   return user.email === userLogged.email;})
+   this.setState({loggedUser: loggedUser})
+   const request = new Request();
+   request.get(`/api/users/${loggedUser.id}`).
+   then(() => window.location = `/users/${loggedUser.id}`)
 }
 
 renderLoginButtons(){
