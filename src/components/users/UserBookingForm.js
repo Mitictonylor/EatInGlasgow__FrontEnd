@@ -60,7 +60,7 @@ class UserBookingForm extends Component{
     let timeSection = null
 
       if(this.state.booking.restaurant != null){
-        
+
         timeSection = (<div className="form_wrap">
           <label htmlFor="time">Time</label>
           <input
@@ -109,7 +109,6 @@ class UserBookingForm extends Component{
               <input
                 required
                 onChange={this.handleChange}
-                placeholder="Choose date"
                 name="date"
                 id="date"
                 type="date"
