@@ -13,7 +13,7 @@ export default function UserRestaurantMap({restaurants}){
 const [activeRestaurant, setActiveRestaurant] = React.useState(null);
 
 
-if(!restaurants.length >0){
+if(restaurants.length <=0){
   return <h2>Loading</h2>
 }
 
@@ -35,7 +35,7 @@ if(!restaurants.length >0){
         <Marker
           key={restaurant.id}
           position={[
-          55.654,
+          restaurant.latitude
             -4.35
           ]}
           onClick={() => {
