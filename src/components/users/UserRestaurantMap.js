@@ -35,7 +35,7 @@ if(restaurants.length <=0){
         <Marker
           key={restaurant.id}
           position={[
-          restaurant.latitude
+          55.86,
             -4.35
           ]}
           onClick={() => {

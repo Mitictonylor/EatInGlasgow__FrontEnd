@@ -15,6 +15,8 @@ const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
   if(!user && restaurants.length >0){
     return "loading"
   }
+
+  console.log("prop restaurants in UserDetail",restaurants);
   const handlePostBooking = (booking)=>{
     const request = new Request();
     request.post("/api/bookings", booking)
@@ -54,19 +56,12 @@ const handlePostReview = (review)=>{
   .then(() => window.location = `/users/${user.id}`)
 }
 
-// let toReview = user.bookings.filter(({ id: first }) =>
-//   !user.reviews.some(({ id: second }) => second === first));
-// restaurantToReview = toReview.filter(booking => booking.date > today())
 
 
 
 
 
 
-
-// if(restaurantToReview.length >1){
-//   return <p>There are Restaurant to review</p>
-// } NEED TO ADD RESTAURANTS TO UserReviewFORM
 
 
   if (!user){
@@ -89,22 +84,22 @@ const handlePostReview = (review)=>{
       </div>
     <div>
       <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
-<hr/>
+      <hr/>
     </div>
       <RestaurantList restaurants={restaurants} />
       <hr/>
     <div>
-<h2> All the bookings </h2>
-<BookingList bookings={user.bookings}/>
+      <h2> All the bookings </h2>
+      <BookingList bookings={user.bookings}/>
+      <hr/>
     </div>
     <div>
-<h2> All the reviews left </h2>
-<ReviewList reviews={user.reviews}/>
-<hr/>
+      <h2> All the reviews left </h2>
+      <ReviewList reviews={user.reviews}/>
+      <hr/>
     </div>
     <div>
-
-    <UserRestaurantMap restaurants={restaurants}/>
+      <UserRestaurantMap restaurants={restaurants}/>
     </div>
 
   </>
