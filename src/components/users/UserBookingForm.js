@@ -11,7 +11,6 @@ class UserBookingForm extends Component{
                     restaurant: null,
                     user: props.user,
                     covers:0
-
                   }
     }
 
