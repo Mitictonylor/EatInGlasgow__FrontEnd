@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import ReviewList from '../reviews/ReviewList.js';
 import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
-
 import RestaurantList from '../restaurants/RestaurantList.js';
 import UserReviewForm from './UserReviewForm.js';
 import BookingList from '../bookings/BookingList.js';
@@ -72,15 +71,14 @@ const handlePostReview = (review)=>{
 
   return (
   <>
+  <h2>WELCOME BACK {user.name.toUpperCase()}</h2>
+  <Link to= {editUrl}><button className = "edit-button" type="button">Edit your profile</button></Link>
+  <Link to= {thisUrl+"/bookings"}><button className = "edit-button" type="button">All your bookings</button></Link>
+  <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
+  <Link to= {thisUrl+"/map"}><button className = "edit-button" type="button">All the restaurants in our system</button></Link>
 
-    <div className = "component">
-      <User user = {user}/>
-      <Link to= {editUrl}><button className = "edit-button" type="button">Edit {user.name}</button></Link>
-      <Link to= {thisUrl+"/bookings"}><button className = "edit-button" type="button">All your bookings</button></Link>
-      <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
-      <Link to= {thisUrl+"/map"}><button className = "edit-button" type="button">All the restaurants in our system</button></Link>
 
-      </div>
+
     <div>
       <UserBookingForm  time = {time} restaurants = {restaurantsWithCoordinates} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
       <hr/>
