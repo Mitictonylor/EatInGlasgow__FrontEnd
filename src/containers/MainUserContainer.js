@@ -143,7 +143,7 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
 }
 
 
-  console.log("Main user container restaurant state", this.state.restaurants);
+
 
   return(
     <Router>

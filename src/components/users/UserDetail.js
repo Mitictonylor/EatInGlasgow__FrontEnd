@@ -74,6 +74,7 @@ const handlePostReview = (review)=>{
   <Link to= {thisUrl+"/bookings"}><button className = "edit-button" type="button">All your bookings</button></Link>
   <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
   <Link to= {thisUrl+"/map"}><button className = "edit-button" type="button">All the restaurants in our system</button></Link>
+  <Link to= {thisUrl+"/reviews/new"}><button className = "edit-button" type="button">Leave a Review</button></Link>
 
 
 
