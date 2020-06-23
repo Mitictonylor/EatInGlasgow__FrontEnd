@@ -66,7 +66,7 @@ let result = restaurantBookings.reduce(function(acc, val){
     return acc;
 },[]);
 //get me just the object with the date i need
-const dateBooking = result.filter(booking => { booking.date ===date})
+const dateBooking = result.filter(booking => booking.date ===date)
 const dateCovers = dateBooking[0].covers
 if ((dateCovers + this.state.bookings.covers) > this.state.bookings.restaurant.capacity){
   return false
