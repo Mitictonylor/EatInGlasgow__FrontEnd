@@ -8,7 +8,7 @@ import Booking from '../bookings/Booking.js'
 
 const RestaurantDetail = ({reviews, onDelete, onUpdate, restaurant}) => {
 
-  if(!reviews && !onDelete && !onUpdate && !restaurant){
+  if(!reviews && !restaurant){
     return "loading"
   }
   console.log('restaurant Detail', reviews, restaurant)

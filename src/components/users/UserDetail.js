@@ -11,6 +11,9 @@ import UserReviewForm from './UserReviewForm.js';
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
+  if(!user && !restaurants){
+    return "loading"
+  }
 
   const handlePostBooking = (booking)=>{
     const request = new Request();
