@@ -9,11 +9,11 @@ export const icon = new Icon({
   iconSize: [35, 35]
 });
 
-export default function UserRestaurantMap({restaurants}){
+export default function UserRestaurantMap({restaurantList}){
 const [activeRestaurant, setActiveRestaurant] = React.useState(null);
 
 
-if(restaurants.length <=0){
+if(restaurantList.length <=0){
   return <h2>Loading</h2>
 }
 
@@ -31,12 +31,12 @@ if(restaurants.length <=0){
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {restaurants.map(restaurant => (
+      {restaurantList.map(restaurant => (
         <Marker
           key={restaurant.id}
           position={[
-          55.86,
-            -4.35
+          restaurant.latitude,
+          restaurant.longitude
           ]}
           onClick={() => {
             setActiveRestaurant(restaurant);

@@ -1,10 +1,12 @@
 import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Request from '../helpers/request.js'
-
+import BookingList from '../components/bookings/BookingList.js';
 import UserForm from '../components/users/UserForm.js'
 import UserLogin from '../components/users/UserLogin.js'
 import UserDetail from '../components/users/UserDetail.js'
+import ReviewList from '../components/reviews/ReviewList.js';
+import UserRestaurantMap from '../components/users/UserRestaurantMap.js'
 
 class MainUserContainer extends Component{
   constructor(props){
@@ -149,10 +151,24 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
                     return <UserDetail user={user}
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
-
-                    restaurants={this.restaurantWithCoordinates()}
+                    restaurantsWithCoordinates={this.restaurantWithCoordinates()}
                     />
                   }}/>
+
+                  <Route exact path="/users/:id/bookings" render={(props) =>{
+                      const id = props.match.params.id;
+                      const user = this.findUserById(id);
+                      return <BookingList bookings={user.bookings}/>
+                    }}/>
+
+                    <Route exact path="/users/:id/reviews" render={(props) =>{
+                        const id = props.match.params.id;
+                        const user = this.findUserById(id);
+                        return <ReviewList reviews={user.reviews}/>
+                      }}/>
+                      <Route exact path="/users/:id/map" render={(props) =>{
+                          return <UserRestaurantMap restaurantList={this.restaurantWithCoordinates()}/>
+                        }}/>
 
 
           </Switch>

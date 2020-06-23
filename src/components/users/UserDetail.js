@@ -4,19 +4,21 @@ import {Link} from 'react-router-dom';
 import ReviewList from '../reviews/ReviewList.js';
 import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
-import UserRestaurantMap from './UserRestaurantMap.js'
+
 import RestaurantList from '../restaurants/RestaurantList.js';
 import UserReviewForm from './UserReviewForm.js';
 import BookingList from '../bookings/BookingList.js';
 
 
-const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
+const UserDetail = ({user, onDelete, onUpdate, restaurantsWithCoordinates}) => {
 
-  if(!user && restaurants.length >0){
+  if(!user && restaurantsWithCoordinates.length >0){
     return "loading"
   }
 
-  console.log("prop restaurants in UserDetail",restaurants);
+  console.log("prop restaurants in UserDetail",restaurantsWithCoordinates);
+
+
   const handlePostBooking = (booking)=>{
     const request = new Request();
     request.post("/api/bookings", booking)
@@ -57,19 +59,12 @@ const handlePostReview = (review)=>{
 }
 
 
-
-
-
-
-
-
-
   if (!user){
     return "Loading..."
   }
 
-
-  const editUrl = "/users/" + user.id + "/edit"
+  const thisUrl= "/users/" + user.id
+  const editUrl = thisUrl + "/edit"
 
   const time = new Date().getTime()
 
@@ -81,26 +76,18 @@ const handlePostReview = (review)=>{
     <div className = "component">
       <User user = {user}/>
       <Link to= {editUrl}><button className = "edit-button" type="button">Edit {user.name}</button></Link>
+      <Link to= {thisUrl+"/bookings"}><button className = "edit-button" type="button">All your bookings</button></Link>
+      <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
+      <Link to= {thisUrl+"/map"}><button className = "edit-button" type="button">All the restaurants in our system</button></Link>
+
       </div>
     <div>
-      <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
+      <UserBookingForm  time = {time} restaurants = {restaurantsWithCoordinates} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
       <hr/>
     </div>
-      <RestaurantList restaurants={restaurants} />
+      <RestaurantList restaurants={restaurantsWithCoordinates} />
       <hr/>
-    <div>
-      <h2> All the bookings </h2>
-      <BookingList bookings={user.bookings}/>
-      <hr/>
-    </div>
-    <div>
-      <h2> All the reviews left </h2>
-      <ReviewList reviews={user.reviews}/>
-      <hr/>
-    </div>
-    <div>
-      <UserRestaurantMap restaurants={restaurants}/>
-    </div>
+
 
   </>
   )
