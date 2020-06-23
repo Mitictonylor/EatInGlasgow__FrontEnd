@@ -43,10 +43,12 @@ allRest= restaurants
             if (restaurantData.result){
               restaurant.longitude= restaurantData.result.longitude;
               restaurant.latitude = restaurantData.result.latitude;
+              console.log("ID in the loop", restaurant.id)
             }
           }
         )
       }
+      console.log("all restaurants", allRest)
     this.setState({restaurants: allRest} )
 
   }
@@ -102,10 +104,10 @@ renderLoginButtons(){
 
 render(){
 
-if(!this.state.users){
+if(!this.state.users && !this.state.restaurants){
   return null
 }
-
+console.log("Main User Container restaurants: " + this.state.restaurants)
 
 
 

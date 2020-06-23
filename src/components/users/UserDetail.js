@@ -58,6 +58,8 @@ const handlePostReview = (review)=>{
 //   !user.reviews.some(({ id: second }) => second === first));
 // restaurantToReview = toReview.filter(booking => booking.date > today())
 
+// console.log("UserDetail user",user)
+// console.log("UserDetail userBookings",user.bookings)
 
 // const allbookings = user.bookings.map((booking, index) => {
 //   return(
