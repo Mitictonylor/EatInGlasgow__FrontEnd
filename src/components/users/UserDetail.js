@@ -1,13 +1,15 @@
 import React, {Component}  from 'react';
 import User from "./User";
 import {Link} from 'react-router-dom';
-import Review from '../reviews/Review.js';
+import ReviewList from '../reviews/ReviewList.js';
 import Booking from '../bookings/Booking.js';
 import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
 import UserRestaurantMap from './UserRestaurantMap.js'
 import RestaurantList from '../restaurants/RestaurantList.js';
 import UserReviewForm from './UserReviewForm.js';
+import BookingList from '../bookings/BookingList.js';
+import Review from '../reviews/Review.js';
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
@@ -69,7 +71,7 @@ const allBookings = ()=>{
         const bookings=user.bookings.map((booking, index) => {
               return(
                 <>
-                 <h2> All the bookings </h2>
+
                   <li key={index} className="component-item">
                     <div className="component">
                       <Booking booking={booking} />
@@ -83,24 +85,24 @@ const allBookings = ()=>{
     }
 }
 
-// const allReviews = ()=>{
-//   if (user){
-//      const reviews= user.reviews.map((review, index) => {
-//        return(
-//           <>
-//            <h2> All the reviews left </h2>
-//             <li key={index} className="component-item">
-//               <div className="component">
-//                 <Review review={review} />
-//               </div>
-//             </li>
-//           </>
-//           )
-//         }
-//       )
-//     return reviews
-//   }
-// }
+const allReviews = ()=>{
+  if (user){
+     const reviews= user.reviews.map((review, index) => {
+       return(
+          <>
+
+            <li key={index} className="component-item">
+              <div className="component">
+                <Review review={review} />
+              </div>
+            </li>
+          </>
+          )
+        }
+      )
+    return reviews
+  }
+}
 
 
 
@@ -117,6 +119,9 @@ const allBookings = ()=>{
   const editUrl = "/users/" + user.id + "/edit"
 
   const time = new Date().getTime()
+
+
+  console.log("USER DETAILS before return, restaurants" ,restaurants)
   return (
   <>
 
@@ -126,13 +131,21 @@ const allBookings = ()=>{
       </div>
     <div>
       <UserBookingForm  time = {time} restaurants = {restaurants} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
+<hr/>
     </div>
       <RestaurantList restaurants={restaurants} />
+      <hr/>
     <div>
-
-{allBookings()}
+<h2> All the bookings </h2>
+<BookingList bookings={user.bookings}/>
     </div>
     <div>
+<h2> All the reviews left </h2>
+<ReviewList reviews={user.reviews}/>
+<hr/>
+    </div>
+    <div>
+
     <UserRestaurantMap restaurants={restaurants}/>
     </div>
 

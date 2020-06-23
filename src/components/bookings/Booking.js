@@ -12,7 +12,7 @@ return(
 <p>{booking.date}</p>
 <p>for {booking.user.name}</p>
 <p>at {booking.time}</p>
-<p>covers: {booking.seats}</p>
+<p>covers: {booking.covers}</p>
 
 
 

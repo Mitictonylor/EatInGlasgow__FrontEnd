@@ -20,9 +20,9 @@ if(!restaurants.length >0){
 
 
 
-const filteredRestaurants = restaurants.filter(restaurant => restaurant.latitude != 0)
-console.log(filteredRestaurants[0])
-console.log(filteredRestaurants[0].latitude)
+
+
+
 
 
   return (
@@ -32,12 +32,12 @@ console.log(filteredRestaurants[0].latitude)
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {filteredRestaurants.map(restaurant => (
+      {restaurants.map(restaurant => (
         <Marker
           key={restaurant.id}
           position={[
-            restaurant.latitude,
-            restaurant.longitude
+          55.654,
+            -4.35
           ]}
           onClick={() => {
             setActiveRestaurant(restaurant);

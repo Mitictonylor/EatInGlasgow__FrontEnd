@@ -33,31 +33,29 @@ request.get('/api/users')
 
 }
 
+// const request = new Request();
+// const url = "https://api.postcodes.io/postcodes/"
+// const restaurantsPostcodeRequest = restaurants.map( restaurant => request.get(url + restaurant.postcode))
+// Promise.all(restaurantPostcodeRequest).then((data) => { restaurant.longitude = data.result.longitude})
+
 async restRequest (){
-  let allRest
    await fetch('/api/restaurants').
    then(res => res.json())
    .then(restaurants => {
-     const request = new Request();
-     const url = "https://api.postcodes.io/postcodes/"
-     
-allRest= restaurants.map(restaurant => restaurant.postcode)
-Promise
-      for(let restaurant of allRest){
+      for(let restaurant of restaurants){
         let postcode = restaurant.postcode;
-
+        const url = "https://api.postcodes.io/postcodes/"
         fetch(url + postcode).then(res => res.json())
           .then(restaurantData =>{
             if (restaurantData.result){
               restaurant.longitude= restaurantData.result.longitude;
               restaurant.latitude = restaurantData.result.latitude;
-              console.log("in the fetch loop rest id", restaurant.id)
             }
           }
         )
       }
-      console.log("In the fetch all restaurants", allRest)
-    this.setState({restaurants: allRest} )
+
+    this.setState({restaurants: restaurants} )
 
   }
   )
@@ -103,7 +101,7 @@ handleSubmit(userLogged){
 }
 
 renderLoginButtons(){
-  if(this.state.loggedUser.password === ""){
+  if(this.state.loggedUser.email === ""){
     return(
     <>
     <Link to = "/users/new" className="link"> REGISTER</Link>
@@ -114,11 +112,16 @@ renderLoginButtons(){
 
 
 render(){
+console.log("Main User Container restaurants: " + this.state.restaurants)
+console.log("Main User Container user: " + this.state.users)
 
-if(!this.state.users && !this.state.restaurants){
+
+
+
+if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
   return null
 }
-console.log("Main User Container restaurants: " + this.state.restaurants)
+
 
 
 
@@ -147,8 +150,7 @@ console.log("Main User Container restaurants: " + this.state.restaurants)
                 <Route exact path="/users/:id" render={(props) =>{
                     const id = props.match.params.id;
                     const user = this.findUserById(id);
-                    console.log("Main User container user ",user);
-                    console.log("Main User container restaurants ",this.state.restaurants)
+
                     return <UserDetail user={user}
                     onDelete={this.handleDelete}
                     onUpdate={this.handleUpdate}
