@@ -14,6 +14,7 @@ class MainRestaurantContainer extends Component{
       loggedRestaurant:{email:"",
                         password:""
                       }
+        
     }
 
   this.findRestaurantById = this.findRestaurantById.bind(this);
@@ -58,7 +59,7 @@ handleSubmit(restaurantLogged){
 
     this.setState({loggedRestaurant: loggedRestaurant})
     const request = new Request();
-    console.log(loggedRestaurant);
+    console.log("loggedRestaurant",loggedRestaurant);
     window.location = `/restaurants/${loggedRestaurant.id}`;
 }
 renderLoginButtons(){

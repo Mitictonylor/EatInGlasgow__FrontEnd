@@ -6,12 +6,12 @@ import Booking from '../bookings/Booking.js'
 
 
 
-const RestaurantDetail = ({reviews, onDelete, onUpdate, restaurant}) => {
+const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
 
-  if(!reviews && !restaurant){
+  if(!restaurant){
     return "loading"
   }
-  console.log('restaurant Detail', reviews, restaurant)
+  console.log('restaurant Detail', restaurant)
   // need to render those 2 lists
 
 
