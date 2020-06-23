@@ -77,7 +77,7 @@ handleUpdate(user){
   handlePostReview(review){
     const request = new Request();
     request.post("/api/reviews", review)
-    .then(() => window.location = `/users/${this.state.activeUser.id}`)
+    .then(() => window.location = `/users/${review.user.id}`)
   }
 handleLogin(userLogged){
   const loggedUser =  this.state.users.find((user) => {
