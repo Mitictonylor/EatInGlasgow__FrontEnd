@@ -7,6 +7,8 @@ import UserLogin from '../components/users/UserLogin.js'
 import UserDetail from '../components/users/UserDetail.js'
 import ReviewList from '../components/reviews/ReviewList.js';
 import UserRestaurantMap from '../components/users/UserRestaurantMap.js'
+import UserReviewForm from '../components/users/UserReviewForm.js'
+
 
 class MainUserContainer extends Component{
   constructor(props){
@@ -16,12 +18,13 @@ class MainUserContainer extends Component{
       restaurants:[],
       loggedUser: {email:"",
                   password:""
-                }
+                },
+    activeUser:null
 
     }
 
   this.findUserById = this.findUserById.bind(this)
-  this.handleSubmit = this.handleSubmit.bind(this)
+  this.handleLogin = this.handleLogin.bind(this)
   this.restaurantWithCoordinates = this.restaurantWithCoordinates.bind(this)
   this.renderLoginButtons = this.renderLoginButtons.bind(this)
 
@@ -70,13 +73,15 @@ handleUpdate(user){
       window.location = '/users/' + user.id
     })
   }
-handleSubmit(userLogged){
-  const loggedUser =  this.state.users.find((user) => {
-    return user.email === userLogged.email;})
-    this.setState({loggedUser: loggedUser})
+
+  handlePostReview(review){
     const request = new Request();
-    request.get(`/api/users/${loggedUser.id}`)
-    .then(() => window.location = `/users/${loggedUser.id}`)
+    request.post("/api/reviews", review)
+    .then(() => window.location = `/users/${this.state.activeUser.id}`)
+  }
+handleLogin(userLogged){
+    this.setState({activeUser: userLogged})
+    window.location = `/users/${this.activeUser.id}`
 }
 
 renderLoginButtons(){
@@ -110,6 +115,20 @@ return restaurants
 }
 
 
+
+today(){
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth()+1; //As January is 0.
+  let yyyy = today.getFullYear();
+
+  if(dd<10) dd='0'+dd;
+  if(mm<10) mm='0'+mm;
+  return (yyyy+"-"+mm+"-"+dd);
+};
+
+
+
 render(){
 
 
@@ -134,7 +153,7 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
               }} />
 
               <Route exact path="/users/login" render={(props) => {
-                return <UserLogin users={this.state.users} onLogin={this.handleSubmit}/>
+                return <UserLogin users={this.state.users} onLogin={this.handleLogin}/>
                 }} />
 
                 <Route exact path="/users/:id/edit" render={(props) =>{
@@ -169,7 +188,16 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
                       <Route exact path="/users/:id/map" render={(props) =>{
                           return <UserRestaurantMap restaurantList={this.restaurantWithCoordinates()}/>
                         }}/>
-
+                        <Route exact path="/users/:id/reviews/new" render={(props) =>{
+                            const id = props.match.params.id;
+                            const user = this.findUserById(id);
+                            return <UserReviewForm
+                            user={user}
+                            restaurants={this.restaurantWithCoordinates()}
+                            onCreateReview={this.handlePostReview}
+                            todayDate={this.today()}
+                            />
+                          }}/>
 
           </Switch>
 

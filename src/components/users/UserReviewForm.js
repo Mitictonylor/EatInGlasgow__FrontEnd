@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 
-class UserreviewForm extends Component{
+class UserReviewForm extends Component{
 
   constructor(props){
     super(props)//it will track the state just for the form
     this.state = {
                   review:{
-                    date: props.today,
+                    date: this.props.today,
                     restaurant: null,
-                    user: props.user,
+                    user: this.props.user,
                     rate:0
 
                   }
@@ -60,7 +60,7 @@ class UserreviewForm extends Component{
 
         return(
           <>
-          <h3> Book Now</h3>
+          <h3> Review</h3>
 
             <form className="form-container" onSubmit={this.handleSubmit}>
             <div className="form_wrap">
@@ -75,12 +75,10 @@ class UserreviewForm extends Component{
               <input
                 required
                 onChange={this.handleChange}
-                placeholder="Choose date"
                 name="date"
                 id="date"
                 type="date"
-                min = {this.props.today}
-                max = {this.props.maxDate}
+                min = {this.props.todayDate}
                 value={this.state.review.date} />
               </div>
               <div className="form_wrap">
@@ -103,4 +101,4 @@ class UserreviewForm extends Component{
     )
   }
 }
-export default UserreviewForm;
+export default UserReviewForm;
