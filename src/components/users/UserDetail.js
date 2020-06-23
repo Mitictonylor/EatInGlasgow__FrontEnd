@@ -2,14 +2,13 @@ import React, {Component}  from 'react';
 import User from "./User";
 import {Link} from 'react-router-dom';
 import ReviewList from '../reviews/ReviewList.js';
-import Booking from '../bookings/Booking.js';
 import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
 import UserRestaurantMap from './UserRestaurantMap.js'
 import RestaurantList from '../restaurants/RestaurantList.js';
 import UserReviewForm from './UserReviewForm.js';
 import BookingList from '../bookings/BookingList.js';
-import Review from '../reviews/Review.js';
+
 
 const UserDetail = ({user, onDelete, onUpdate, restaurants}) => {
 
@@ -66,43 +65,7 @@ const handlePostReview = (review)=>{
 // console.log("UserDetail user",user)
 // console.log("UserDetail userBookings",user.bookings)
 
-const allBookings = ()=>{
-      if (user){
-        const bookings=user.bookings.map((booking, index) => {
-              return(
-                <>
 
-                  <li key={index} className="component-item">
-                    <div className="component">
-                      <Booking booking={booking} />
-                    </div>
-                  </li>
-                </>
-              )
-          }
-        )
-      return bookings
-    }
-}
-
-const allReviews = ()=>{
-  if (user){
-     const reviews= user.reviews.map((review, index) => {
-       return(
-          <>
-
-            <li key={index} className="component-item">
-              <div className="component">
-                <Review review={review} />
-              </div>
-            </li>
-          </>
-          )
-        }
-      )
-    return reviews
-  }
-}
 
 
 
