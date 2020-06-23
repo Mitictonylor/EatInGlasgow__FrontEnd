@@ -19,7 +19,7 @@ class UserBookingForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRestaurant = this.handleRestaurant.bind(this);
     this.findRestaurantById = this.findRestaurantById.bind(this);
-
+    this.checkAvailableSeatsInRestaurant = this.checkAvailableSeatsInRestaurant.bind(this)
 
   }
 
@@ -32,7 +32,10 @@ class UserBookingForm extends Component{
 
   handleSubmit(event) {
     event.preventDefault();
-      this.props.onCreateBooking(this.state.booking)
+    if(this.checkAvailableSeatsInRestaurant(this.state.booking.date)){
+      this.props.onCreateBooking(this.state.booking)}else{
+        alert("restaurant is full, please try another date or another restaurant")
+      }
 
     }
 
@@ -51,29 +54,25 @@ class UserBookingForm extends Component{
     });
   }
 
-checkAvailableSeatsInRestaurant(){
-restaurantBookings= this.props.restaurant.bookings
-
+checkAvailableSeatsInRestaurant(date){
+const restaurantBookings= this.props.restaurant.bookings
+//accumulate the covers for the same day
 let result = restaurantBookings.reduce(function(acc, val){
     let o = acc.filter(function(obj){
         return obj.date==val.date;
     }).pop() || {date:val.date, covers:0};
-
     o.covers += val.covers;
     acc.push(o);
     return acc;
 },[]);
-result è un array di 
-result.map((booking) =>{  if (result.date === this.state.booking.date)
-
-
-
-
-//loppa tra le prenotazioni del ristorante, e conta quante prenotazioni ci sn per ogni giorno.
-confronta la data di questa prenotazione con la differenze tra seat del ristorante e prenotazioni,
-e vedi se c'è la disponibilità per questa prenotaz
-
-
+//get me just the object with the date i need
+const dateBooking = result.filter(booking => { booking.date ===date})
+const dateCovers = dateBooking[0].covers
+if ((dateCovers + this.state.bookings.covers) > this.state.bookings.restaurant.capacity){
+  return false
+}else{
+  return true
+}
 }
 
   render(){
