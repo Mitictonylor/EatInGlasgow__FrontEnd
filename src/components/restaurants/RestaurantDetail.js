@@ -8,7 +8,10 @@ import Booking from '../bookings/Booking.js'
 
 const RestaurantDetail = ({reviews, onDelete, onUpdate, restaurant}) => {
 
-
+  if(!reviews && !onDelete && !onUpdate && !restaurant){
+    return "loading"
+  }
+  console.log('restaurant Detail', reviews, restaurant)
   // need to render those 2 lists
 
 
@@ -47,7 +50,7 @@ const RestaurantDetail = ({reviews, onDelete, onUpdate, restaurant}) => {
       <div className = "component">
       <Restaurant restaurant = {restaurant}/>
 
-      <Link to= {editUrl}><button type="button">Edit {restaurant.name}</button></Link>
+      <Link to= {editUrl}><button className = "edit-button" type="button">Edit {restaurant.name}</button></Link>
       </div>
       <div>
 
