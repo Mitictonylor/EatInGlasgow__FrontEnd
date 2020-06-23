@@ -9,7 +9,7 @@ return(
 
   <>
   <MainNavigationBar/>
-  <h1> WELCOME TO EAT IN GLASGOW</h1>
+  
 
 
  </>
