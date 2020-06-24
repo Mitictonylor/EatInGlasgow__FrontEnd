@@ -11,19 +11,13 @@ export const icon = new Icon({
 });
 
 export default function UserRestaurantMap({restaurantList, user}){
-const [activeRestaurant, setActiveRestaurant] = React.useState(null);
+  const [activeRestaurant, setActiveRestaurant] = React.useState(null);
 
+  if(restaurantList.length <=0){
+    return <h2>Loading</h2>
+  }
 
-if(restaurantList.length <=0){
-  return <h2>Loading</h2>
-}
-
-const thisUrl= "/users/" + user.id
-
-
-
-
-
+  const thisUrl= "/users/" + user.id
 
   return (
     <Map center={[55.860916, -4.251433]} zoom={13}>
@@ -62,7 +56,6 @@ const thisUrl= "/users/" + user.id
             <p>Opening Time: {activeRestaurant.openingTime}-{activeRestaurant.closingTime}</p>
             <h5>Address: {activeRestaurant.address}, {activeRestaurant.town}, {activeRestaurant.postcode}</h5>
             <Link to={thisUrl}><button type="button">Go to the booking Form</button></Link>
-
           </div>
         </Popup>
       )}

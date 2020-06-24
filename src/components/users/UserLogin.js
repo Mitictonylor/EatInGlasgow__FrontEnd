@@ -1,20 +1,15 @@
 import React, {Component} from 'react'
-
 class UserLogin extends Component{
 
   constructor(props){
-    super(props)//it will track the state just for the form
+    super(props)
     this.state = {
                   user: {email: '',
-                         password: '',
-
+                         password: ''}
     }
-  }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
-
 
   handleChange(event) {
     let propertyName = event.target.name;
@@ -33,42 +28,39 @@ class UserLogin extends Component{
     event.preventDefault();
     console.log(loggedUser)
     this.props.onLogin(loggedUser)
-
-}
-
+  }
 
   render(){
 
-return(
-
+    return(
           <>
           <h3> LOGIN USER </h3>
 
-            <form className="form-container" onSubmit={this.handleSubmit}>
+          <form className="form-container" onSubmit={this.handleSubmit}>
             <div className="form_wrap">
               <label htmlFor="email">Your email:</label>
-              <input
-                required
-                onChange={this.handleChange}
-                placeholder="Input your email"
-                name="email"
-                id="email"
-                type="email"
-                value={this.state.user.email} />
+                <input
+                  required
+                  onChange={this.handleChange}
+                  placeholder="Input your email"
+                  name="email"
+                  id="email"
+                  type="email"
+                  value={this.state.user.email} />
             </div>
 
             <div className="form_wrap">
               <label htmlFor="password">Your password:</label>
-              <input
-                required
-                onChange={this.handleChange}
-                placeholder="Input your password..."
-                name="password"
-                id="password"
-                type="password"
-                value={this.state.user.password} />
+                <input
+                  required
+                  onChange={this.handleChange}
+                  placeholder="Input your password..."
+                  name="password"
+                  id="password"
+                  type="password"
+                  value={this.state.user.password} />
             </div>
-    <button className="edit-button" type="submit"> Login </button>
+            <button className="edit-button" type="submit"> Login </button>
           </form>
     </>
 )

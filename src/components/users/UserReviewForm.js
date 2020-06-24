@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 class UserReviewForm extends Component{
 
   constructor(props){
@@ -10,7 +9,6 @@ class UserReviewForm extends Component{
                     restaurant: null,
                     user: this.props.user,
                     rate:0
-
                   }
     }
 
@@ -18,8 +16,6 @@ class UserReviewForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRestaurant = this.handleRestaurant.bind(this);
     this.findRestaurantById = this.findRestaurantById.bind(this);
-
-
   }
 
   handleChange(event) {
@@ -31,58 +27,52 @@ class UserReviewForm extends Component{
 
   handleSubmit(event) {
     event.preventDefault();
-      this.props.onCreateReview(this.state.review)
-
-    }
+    this.props.onCreateReview(this.state.review)
+  }
 
   handleRestaurant(event){
-      const index = parseInt(event.target.value)
-      const selectedRest = this.props.restaurants[index]
-      let review = this.state.review;
-      review['restaurant'] = selectedRest
-      this.setState({review: review})
+    const index = parseInt(event.target.value)
+    const selectedRest = this.props.restaurants[index]
+    let review = this.state.review;
+    review['restaurant'] = selectedRest
+    this.setState({review: review})
     }
-
 
   findRestaurantById(id){
     return this.props.restaurant.find((restaurant) => {
-      return restaurant.id === parseInt(id);
-    });
+      return restaurant.id === parseInt(id)});
   }
-
 
   render(){
     const restOptions = this.props.restaurants.map((rest, index) => {
-          return <option key={rest.id} value={index}>{rest.name} cousine: {rest.cousine}</option>
-        });
+      return <option key={rest.id} value={index}>{rest.name} cousine: {rest.cousine}</option>});
 
+    return(
+      <>
+        <h3> Review</h3>
 
-
-        return(
-          <>
-          <h3> Review</h3>
-
-            <form className="form-container" onSubmit={this.handleSubmit}>
+          <form className="form-container" onSubmit={this.handleSubmit}>
             <div className="form_wrap">
-            <label htmlFor="restaurant">Choose Restaurant</label>
-            <select name= 'restaurant' onChange = {this.handleRestaurant} defaultValue='select-restaurant'>
+              <label htmlFor="restaurant">Choose Restaurant</label>
+                <select name= 'restaurant' onChange = {this.handleRestaurant} defaultValue='select-restaurant'>
                   <option disabled value="select-restaurant">Choose a restaurant...</option>
                   {restOptions}
                 </select>
             </div>
             <div className="form_wrap">
               <label htmlFor="date">Date</label>
-              <input
-                required
-                onChange={this.handleChange}
-                name="date"
-                id="date"
-                type="date"
-                min = {this.props.todayDate}
-                value={this.state.review.date} />
-              </div>
-              <div className="form_wrap">
-                <label htmlFor="rate">Rate</label>
+                <input
+                  required
+                  onChange={this.handleChange}
+                  name="date"
+                  id="date"
+                  type="date"
+                  min = {this.props.todayDate}
+                  value={this.state.review.date}
+                />
+            </div>
+            <div className="form_wrap">
+              <label htmlFor="rate">Rate</label>
                 <input
                   required
                   onChange={this.handleChange}
@@ -92,8 +82,9 @@ class UserReviewForm extends Component{
                   type="number"
                   min = "1"
                   max = "5"
-                  value={this.state.review.rate} />
-                </div>
+                  value={this.state.review.rate}
+                 />
+            </div>
 
             <button type="submit"> SAVE </button>
           </form>

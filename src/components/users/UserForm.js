@@ -1,26 +1,25 @@
 import React, {Component} from 'react'
-
 class UserForm extends Component{
 
   constructor(props){
     super(props)//it will track the state just for the form
     this.state = {
                   user: {name: '',
-                  surname: '',
-                  email: '',
-                  town: '',
-                  postcode: ''
+                        surname: '',
+                        email: '',
+                        town: '',
+                        postcode: ''
+                        }
     }
-  }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
-componentDidMount(){
-  if(this.props.user){
-    this.setState({user: { ...this.props.user}})
+  //check if needs to treat it as an edit or new
+  componentDidMount(){
+    if(this.props.user){
+      this.setState({user: { ...this.props.user}})
+    }
   }
-}
 
   handleChange(event) {
     let propertyName = event.target.name;
@@ -36,32 +35,31 @@ componentDidMount(){
     }else{
       const user =  this.props.users.find((user) => {
         return user.email === this.state.user.email;})
-          if(user){
-            alert("email already in the system, please try another one")
-            window.location = `/users/new`
-          }else{
-      this.props.onCreate(this.state.user)
+      if(user){
+        alert("email already in the system, please try another one")
+        window.location = `/users/new`
+      }else{
+        this.props.onCreate(this.state.user)
     }}
-
 }
-
 
   render(){
 
-    let heading = ""; // ADDED
+    let heading = "";
 
-      if (!this.props.user){
-        heading = "Create User"
-      } else {
-        heading = "Edit " + this.props.user.name +" "+ this.props.user.surname;
-      }
-        return(
-          <>
-          <h3> {heading}</h3>
+    if (!this.props.user){
+      heading = "Create User"
+    } else {
+      heading = "Edit " + this.props.user.name +" "+ this.props.user.surname;
+    }
 
-            <form className="form-container" onSubmit={this.handleSubmit}>
-            <div className="form_wrap">
-              <label htmlFor="name">Your name:</label>
+    return(
+      <>
+      <h3> {heading}</h3>
+
+        <form className="form-container" onSubmit={this.handleSubmit}>
+          <div className="form_wrap">
+            <label htmlFor="name">Your name:</label>
               <input
                 required
                 onChange={this.handleChange}
@@ -70,10 +68,10 @@ componentDidMount(){
                 id="name"
                 type="text"
                 value={this.state.user.name} />
-            </div>
+          </div>
 
-            <div className="form_wrap">
-              <label htmlFor="surname">Your surname:</label>
+          <div className="form_wrap">
+            <label htmlFor="surname">Your surname:</label>
               <input
                 required
                 onChange={this.handleChange}
@@ -82,10 +80,10 @@ componentDidMount(){
                 id="surname"
                 type="text"
                 value={this.state.user.surname} />
-            </div>
+          </div>
 
-            <div className="form_wrap">
-              <label htmlFor="email">Your email:</label>
+          <div className="form_wrap">
+            <label htmlFor="email">Your email:</label>
               <input
                 required
                 onChange={this.handleChange}
@@ -94,10 +92,10 @@ componentDidMount(){
                 id="email"
                 type="email"
                 value={this.state.user.email} />
-            </div>
+          </div>
 
-            <div className="form_wrap">
-              <label htmlFor="town">Town:</label>
+          <div className="form_wrap">
+            <label htmlFor="town">Town:</label>
               <input
                 required
                 onChange={this.handleChange}
@@ -106,10 +104,10 @@ componentDidMount(){
                 id="town"
                 type="text"
                 value={this.state.user.town} />
-            </div>
+          </div>
 
-            <div className="form_wrap">
-              <label htmlFor="postcode">Postcode:</label>
+          <div className="form_wrap">
+            <label htmlFor="postcode">Postcode:</label>
               <input
                 required
                 onChange={this.handleChange}
@@ -118,10 +116,10 @@ componentDidMount(){
                 id="postcode"
                 type="text"
                 value={this.state.user.postcode} />
-            </div>
+          </div>
 
-            <button type="submit"> SAVE </button>
-          </form>
+        <button type="submit"> SAVE </button>
+      </form>
     </>
     )
   }
