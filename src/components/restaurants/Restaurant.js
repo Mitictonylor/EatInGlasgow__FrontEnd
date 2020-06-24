@@ -4,7 +4,7 @@ const Restaurant = ({restaurant})=>{
   if(!restaurant){
     return "Loading..."
   }
-const discount = () =>{
+const discount = ()=>{
 if((restaurant.discount) > 0){
   return (<h4>{restaurant.discount}% Off Today</h4>)
 }
