@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import BookingList from '../bookings/BookingList.js'
 
-class UserBookingForm extends Component{
+class RestaurantBookingForm extends Component{
 
   constructor(props){
     super(props)//it will track the state just for the form
@@ -103,4 +103,4 @@ console.log(this.filterByDate("2020-06-25"));
     )
   }
 }
-export default UserBookingForm;
+export default RestaurantBookingForm;
