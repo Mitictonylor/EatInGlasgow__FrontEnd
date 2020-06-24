@@ -6,7 +6,7 @@ import RestaurantList from '../restaurants/RestaurantList.js';
 import UserReviewForm from './UserReviewForm.js';
 import UserSelectFilter from './UserSelectFilter.js';
 
-const UserDetail = ({user, onUpdate, restaurantsWithCoordinates}) => {
+const UserDetail = ({user, restaurantsWithCoordinates}) => {
 
   if(!user && restaurantsWithCoordinates.length >0){
     return "loading"

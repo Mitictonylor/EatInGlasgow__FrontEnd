@@ -6,17 +6,14 @@ const Booking = ({booking})=>{
   }
 
 return(
-<Fragment>
-<p>{booking.restaurant.name}</p>
-<p>reservation number:{booking.id}</p>
-<p>{booking.date}</p>
-<p>for {booking.user.name}</p>
-<p>at {booking.time}</p>
-<p>covers: {booking.covers}</p>
-
-
-
-</Fragment>
-)          
+  <Fragment>
+    <p>{booking.restaurant.name}</p>
+    <p>reservation number:{booking.id}</p>
+    <p>{booking.date}</p>
+    <p>for {booking.user.name}</p>
+    <p>at {booking.time}</p>
+    <p>covers: {booking.covers}</p>
+  </Fragment>
+  )          
 }
 export default Booking;

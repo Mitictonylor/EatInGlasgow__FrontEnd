@@ -6,30 +6,22 @@ const RestaurantList = (props) =>{
     return 'Loading....'
   }
 
-const restaurantsOptions = props.restaurants.map((restaurant, index) =>{
-  return (
-    <li key={index} className="component-item">
-      <div className="component">
-      <Restaurant restaurant={restaurant} />
-      </div>
-    </li>
-
-  )
-})
-
-
-
+  const restaurantsOptions = props.restaurants.map((restaurant, index) =>{
+    return (
+      <li key={index} className="component-item">
+        <div className="component">
+        <Restaurant restaurant={restaurant} />
+        </div>
+      </li>
+      )
+    })
 
 return(
   <>
-
-  <ul className="component-list">
-
-   {restaurantsOptions}
- </ul>
- </>
-)
-
-
+    <ul className="component-list">
+    {restaurantsOptions}
+    </ul>
+  </>
+ )
 }
 export default RestaurantList;

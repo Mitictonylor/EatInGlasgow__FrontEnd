@@ -10,18 +10,17 @@ const bookingsOptions = props.bookings.map((booking) =>{
   return (
     <li key={booking.id} className="component-item">
       <div className="component">
-      <Booking booking={booking} />
+        <Booking booking={booking} />
       </div>
     </li>
+    )
+  }
+)
 
-  )
-})
 return(
   <ul className="component-list">
    {bookingsOptions}
- </ul>
-)
-
-
+  </ul>
+ )
 }
 export default BookingList;

@@ -6,7 +6,7 @@ import BookingList from '../bookings/BookingList.js'
 import RestaurantBookingsForm from "./RestaurantBookingForm";
 
 
-const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
+const RestaurantDetail = ({restaurant}) => {
 
   if(!restaurant){
     return "loading"
@@ -17,7 +17,6 @@ const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
     let dd = today.getDate();
     let mm = today.getMonth()+1; //As January is 0.
     let yyyy = today.getFullYear();
-
     if(dd<10) dd='0'+dd;
     if(mm<10) mm='0'+mm;
     return (yyyy+"-"+mm+"-"+dd);
@@ -31,28 +30,19 @@ const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
     dd=(parseInt(dd)+14)
     if(dd<10) dd='0'+dd;
     if(mm<10) mm=('0'+mm) ;
-
     return (yyyy+"-"+mm+"-"+dd);
   };
-
 
   const thisUrl= "/restaurants/" + restaurant.id
   const editUrl = thisUrl + "/edit"
 
-
-
-    return (
+  return (
     <>
-
       <h2>WELCOME BACK {restaurant.name.toUpperCase()}</h2>
       <Link to= {editUrl}><button className = "edit-button" type="button">Edit {restaurant.name}</button></Link>
       <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
-
-
-      <>
+      </hr>
       <RestaurantBookingsForm restaurant={restaurant} today={today()} maxDate={maxDate()} />
-      </>
-
       </>
     )
   }

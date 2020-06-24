@@ -6,22 +6,21 @@ const ReviewList = (props) =>{
     return 'Loading....'
   }
 
-const reviewsOptions = props.reviews.map((review) =>{
-  return (
-    <li key={review.id} className="component-item">
-      <div className="component">
-      <Review review={review} />
-      </div>
-    </li>
+  const reviewsOptions = props.reviews.map((review) =>{
+    return (
+      <li key={review.id} className="component-item">
+        <div className="component">
+          <Review review={review} />
+        </div>
+      </li>
+    )
+  })
 
-  )
-})
 return(
   <ul className="component-list">
    {reviewsOptions}
- </ul>
+  </ul>
 )
-
 
 }
 export default ReviewList;

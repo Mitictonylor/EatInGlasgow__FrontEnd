@@ -3,18 +3,15 @@ import React, {Component} from 'react'
 class RestaurantLogin extends Component{
 
   constructor(props){
-    super(props)//it will track the state just for the form
+    super(props)
     this.state = {
                   restaurant: {email: '',
-                         password: '',
-
-    }
-  }
+                              password: '',
+                              }
+                 }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
-
 
   handleChange(event) {
     let propertyName = event.target.name;
@@ -32,19 +29,17 @@ class RestaurantLogin extends Component{
     }
     event.preventDefault();
     this.props.onLogin(restaurant)
-    }
-
+  }
 
   render(){
 
-return(
+    return(
+      <>
+        <h3> LOGIN RESTAURANT </h3>
 
-          <>
-          <h3> LOGIN RESTAURANT </h3>
-
-            <form className="form-container" onSubmit={this.handleSubmit}>
-            <div className="form_wrap">
-              <label htmlFor="email">Your email:</label>
+        <form className="form-container" onSubmit={this.handleSubmit}>
+          <div className="form_wrap">
+            <label htmlFor="email">Your email:</label>
               <input
                 required
                 onChange={this.handleChange}
@@ -53,23 +48,22 @@ return(
                 id="email"
                 type="email"
                 value={this.state.restaurant.email} />
-            </div>
-
-            <div className="form_wrap">
-              <label htmlFor="password">Your password:</label>
-              <input
-                required
-                onChange={this.handleChange}
-                placeholder="Input your password..."
-                name="password"
-                id="password"
-                type="password"
-                value={this.state.restaurant.password} />
-            </div>
-    <button type="submit"> SAVE </button>
-          </form>
+          </div>
+          <div className="form_wrap">
+            <label htmlFor="password">Your password:</label>
+            <input
+              required
+              onChange={this.handleChange}
+              placeholder="Input your password..."
+              name="password"
+              id="password"
+              type="password"
+              value={this.state.restaurant.password} />
+          </div>
+          <button type="submit"> SAVE </button>
+        </form>
     </>
-)
+    )
   }
 }
 export default RestaurantLogin;
