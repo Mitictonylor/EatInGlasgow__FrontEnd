@@ -7,28 +7,23 @@ class UserBookingForm extends Component{
     super(props)//it will track the state just for the form
     this.state = {
                     date: props.today,
-                    bookings:props.restaurant.bookings
+
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.checkAvailableSeatsInRestaurant = this.checkAvailableSeatsInRestaurant.bind(this)
-
+    this.filterByDate = this.filterByDate.bind(this)
   }
 
   handleChange(event) {
-    let propertyName = event.target.name;
-    let booking = this.state.booking
-    booking[propertyName] = event.target.value;
-    this.setState({booking: booking});
+    this.setState({date: event.target.value});
+
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    //fai la fetch e fammi vedere le bookind di questo restaurant id
-      this.props.onSubmit(this.state.booking)
-
-    }
+filterByDate(date){
+  const filteredBookings = this.props.restaurant.bookings.filter(booking => booking.date ===date)
+  return filteredBookings
+}
 
 
 
@@ -54,25 +49,33 @@ const dateBooking = result.filter(booking => booking.date ===date)
 if(dateBooking.length >0){
 const dateCovers = dateBooking[0].covers
 const seatLeft = (this.props.restaurant.capacity - dateCovers  )
-return( <p>Bookings for today: {dateCovers}</p>
-        <p>Available seats: {seatLeft}</p>
-      )
+return(
+  <>
+  <p>Bookings for today: {dateCovers}</p>
+  <p>Available seats: {seatLeft}</p>
+  </>
+    )
 }
 else{
-  return(<p>No booking for today yet</p>
+  return(
+    <>
+    <p>No booking for today yet</p>
     <p>Available seats:{this.props.restaurant.capacity}</p>
-
-
+    </>
+  )
+}
 }
 
   render(){
-
+console.log(this.props.restaurant)
+console.log(this.props.today)
+console.log("date" ,this.state.date)
 
         return(
           <>
-          {checkAvailableSeatsInRestaurant(this.state.booking.date)}
 
-            <form className="form-container" onSubmit={this.handleSubmit}>
+
+
             <div className="form_wrap">
               <label htmlFor="date">Date</label>
               <input
@@ -83,14 +86,15 @@ else{
                 type="date"
                 min = {this.props.today}
                 max = {this.props.maxDate}
-                value={this.state.booking.date} />
+                value={this.state.date} />
               </div>
-                      <button type="submit"> SAVE </button>
-          </form>
 
-          <div>
+          <div >
+          {this.checkAvailableSeatsInRestaurant(this.state.date)}
+          </div>
+          <div >
           <h2>All the bookings</h2>
-            <BookingList bookings={restaurant.bookings}/>
+            <BookingList bookings={this.filterByDate(this.state.date)}/>
           </div>
 
 

@@ -3,7 +3,7 @@ import Restaurant from "./Restaurant";
 import {Link} from 'react-router-dom';
 import ReviewList from '../reviews/ReviewList.js'
 import BookingList from '../bookings/BookingList.js'
-
+import RestaurantBookingsForm from "./RestaurantBookingForm";
 
 
 const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
@@ -47,7 +47,9 @@ const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
       <Restaurant restaurant = {restaurant}/>
 
       <Link to= {editUrl}><button className = "edit-button" type="button">Edit {restaurant.name}</button></Link>
-      <RestaurantBookingsForm restaurant={restaurant} today={today()} maxDate={maxDate() }
+      </div>
+      <div className = "component">
+      <RestaurantBookingsForm restaurant={restaurant} today={today()} maxDate={maxDate()} />
       </div>
 
       <div>
