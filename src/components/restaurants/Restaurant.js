@@ -11,7 +11,7 @@ if (restaurant.discount > 0){
   disc = (
     <>
       <h4 className="offer">OFFER! </h4>
-      <h5 className="offer">Book today and receive ${restaurant.discount}% off</h5>
+      <h5 className="offer">Book today and receive {restaurant.discount}% off</h5>
     </>
   )
 }

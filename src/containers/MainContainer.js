@@ -53,12 +53,14 @@ class MainContainer extends Component{
   }
 
   handlePost(user){
+    alert("Your registration has been confirmed, please login now")
     const request = new Request();
     request.post("/api/users", user)
     .then(() => window.location = '/users')
   }
 
   handleUpdate(user){
+      alert("Your data have been updated")
     const request = new Request();
     request.patch('/api/users/' + user.id, user)
     .then(() => { window.location = '/users/' + user.id})
@@ -114,12 +116,14 @@ today(){
 };
 
 restHandlePost(restaurant){
+  alert("Your registration has been confirmed, please login now")
   const request = new Request();
   request.post("/api/restaurants", restaurant)
   .then(() => window.location = '/restaurants')
 }
 
 restHandleUpdate(restaurant){
+    alert("Your data have been updated")
     const request = new Request();
     request.patch('/api/restaurants/' + restaurant.id, restaurant)
     .then(() => {window.location = '/restaurants/' + restaurant.id})
@@ -193,11 +197,13 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
             }}/>
 
             <Route exact path="/restaurants/new" render={(props) => {
-              return <RestaurantForm restaurants = {this.state.restaurants} onCreate={this.restHandlePost}/>
+              return <RestaurantForm restaurants = {this.state.restaurants} o
+               onCreate={this.restHandlePost}/>
             }} />
 
             <Route exact path="/restaurants/login" render={(props) => {
-              return <RestaurantLogin restaurants = {this.state.restaurants} onLogin={this.restHandleSubmit}/>
+              return <RestaurantLogin restaurants = {this.state.restaurants}
+               onLogin={this.restHandleSubmit}/>
             }} />
 
             <Route exact path="/restaurants/:id/edit" render={(props) =>{

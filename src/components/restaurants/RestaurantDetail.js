@@ -41,7 +41,7 @@ const RestaurantDetail = ({restaurant}) => {
       <h2>WELCOME BACK {restaurant.name.toUpperCase()}</h2>
       <Link to= {editUrl}><button className = "edit-button" type="button">Edit {restaurant.name}</button></Link>
       <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
-      </hr>
+      <hr/>
       <RestaurantBookingsForm restaurant={restaurant} today={today()} maxDate={maxDate()} />
       </>
     )
