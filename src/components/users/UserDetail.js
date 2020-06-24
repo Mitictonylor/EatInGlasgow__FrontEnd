@@ -16,6 +16,7 @@ const UserDetail = ({user, onDelete, onUpdate, restaurantsWithCoordinates}) => {
 
 
   const handlePostBooking = (booking)=>{
+    alert(`${user.name} your booking for ${booking.restaurant.name} has been processed`)
     const request = new Request();
     request.post("/api/bookings", booking)
     .then(() => window.location = `/users/${user.id}`)
@@ -48,11 +49,6 @@ let maxDate =function(){
   return (yyyy+"-"+mm+"-"+dd);
 };
 
-const handlePostReview = (review)=>{
-  const request = new Request();
-  request.post("/api/reviews", review)
-  .then(() => window.location = `/users/${user.id}`)
-}
 
 
   if (!user){
@@ -78,7 +74,7 @@ const handlePostReview = (review)=>{
   <Link to= {editUrl}><button className = "edit-button" type="button">Edit your profile</button></Link>
   <Link to= {thisUrl+"/bookings"}><button className = "edit-button" type="button">All your bookings</button></Link>
   <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
-  <Link to= {thisUrl+"/map"}><button className = "edit-button" type="button">All the restaurants in our system</button></Link>
+  <Link to= {thisUrl+"/map"}><button className = "edit-button" type="button">View Restaurants on Map</button></Link>
   <Link to= {thisUrl+"/reviews/new"}><button className = "edit-button" type="button">Leave a Review</button></Link>
 
 
