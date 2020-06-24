@@ -60,6 +60,7 @@ const thisUrl= "/users/" + user.id
             <h2>{activeRestaurant.name}</h2>
             <p>Cousine: {activeRestaurant.cousine}</p>
             <p>Opening Time: {activeRestaurant.openingTime}-{activeRestaurant.closingTime}</p>
+            <h5>Address: {activeRestaurant.address}, {activeRestaurant.town}, {activeRestaurant.postcode}</h5>
             <Link to={thisUrl}><button type="button">Go to the booking Form</button></Link>
 
           </div>

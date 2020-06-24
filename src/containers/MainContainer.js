@@ -17,8 +17,8 @@ const MainContainer = () => {
       <Fragment>
         <Welcome/>
       <Switch>
-        <Route path  ='/restaurants' component = {MainRestaurantContainer}></Route>
-        <Route path ='/users' component = {MainUserContainer}/>
+        <Route exact path  ='/restaurants/' component = {MainRestaurantContainer}></Route>
+        <Route exact path ='/users/' component = {MainUserContainer}/>
 
       </Switch>
 
