@@ -56,12 +56,7 @@ findUserById(id){
   });
 }
 
-handleDelete(id){
-  const request = new Request();
-  const url = "/api/users/" + id
-  request.delete(url)
-  .then(() => window.location = "/users")
-}
+
 
 handlePost(user){
   const request = new Request();
@@ -129,12 +124,6 @@ today(){
   return (yyyy+"-"+mm+"-"+dd);
 };
 
-restHandleDelete(id){
-  const request = new Request();
-  const url = "/api/restaurants/" + id
-  request.delete(url)
-  .then(() => window.location = "/restaurants")
-}
 
 restHandlePost(restaurant){
   const request = new Request();
