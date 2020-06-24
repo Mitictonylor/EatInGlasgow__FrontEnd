@@ -28,3 +28,12 @@ Build a web app that allows Customer to view restaurants, book table, leave revi
 - Add proper authentication
 - Add email for booking confirmation
 - Add more style
+
+
+**SETUP**
+- download the repo
+- open the BackEnd folder with an IDE, let it build and then run the application(this will open the backend Server)
+- open a terminal windows
+- enter to the frontEnd directory
+- run npm install
+- run npm start
