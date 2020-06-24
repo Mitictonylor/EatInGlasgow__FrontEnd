@@ -49,10 +49,10 @@ background-attachment: fixed;
 }
 
 .dropdown-content:hover{
-  background-color: powderblue;
+  background-color: rgba(176,224,230,0.9);
   border-radius:0px 25px;}
 .drop-link:hover {
-  background-color: powderblue;
+  background-color: rgba(0,0,0,0.2);
   border-radius:0px 25px;
   }
 
