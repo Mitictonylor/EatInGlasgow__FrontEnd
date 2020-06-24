@@ -5,18 +5,19 @@ const Restaurant = ({restaurant})=>{
     return "Loading..."
   }
 
-// const discount = "no discount today"
-console.log(restaurant.discount);
-// if(restaurant.discount > 0){
-//   discount = <h4>{restaurant.discount}% Off Today</h4>
-// }
+let disc = ''
+
+if (restaurant.discount > 0){
+  disc = `OFFER! Book today and receive ${restaurant.discount}% off`
+}
+
 
 return(
 <Fragment>
 <img className = "rest-pic" src={restaurant.pictureUrl} alt="rest-pic"/>
 
 <h3>{restaurant.name}</h3>
-
+{disc}
 <p>Cousin: {restaurant.cousine}</p>
 <p>Working hours: {restaurant.openingTime} - {restaurant.closingTime}</p>
 <p>Price Range: {restaurant.priceRange}</p>
