@@ -70,6 +70,7 @@ else{
 console.log(this.props.restaurant)
 console.log(this.props.today)
 console.log("date" ,this.state.date)
+console.log(this.filterByDate("2020-06-25"));
 
         return(
           <>
