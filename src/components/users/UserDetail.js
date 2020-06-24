@@ -4,7 +4,7 @@ import UserBookingForm from './UserBookingForm.js';
 import Request from '../../helpers/request.js';
 import RestaurantList from '../restaurants/RestaurantList.js';
 import UserReviewForm from './UserReviewForm.js';
-
+import UserSelectFilter from './UserSelectFilter.js';
 
 
 const UserDetail = ({user, onDelete, onUpdate, restaurantsWithCoordinates}) => {
@@ -89,8 +89,9 @@ const handlePostReview = (review)=>{
       <hr/>
 
     </div>
-      <RestaurantList restaurants={restaurantsWithCoordinates} />
-      <hr/>
+    <div className = "component">
+    <UserSelectFilter restaurants={restaurantsWithCoordinates} />
+    </div>
 
 
   </>

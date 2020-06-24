@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import RestaurantList from '../restaurants/RestaurantList.js';
 
 class UserSelectFilter extends Component{
 
@@ -79,7 +80,7 @@ class UserSelectFilter extends Component{
           </form>
           <div >
           <h2>All the restaurants</h2>
-            <BookingList bookings={this.filterByCousineAndPrice(this.state.cousine, this.state.priceRange)}/>
+            <RestaurantList bookings={this.filterByCousineAndPrice(this.state.cousine, this.state.priceRange)}/>
           </div>
     </>
     )
