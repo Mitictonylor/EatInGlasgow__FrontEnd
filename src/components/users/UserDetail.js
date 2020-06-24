@@ -89,9 +89,9 @@ const handlePostReview = (review)=>{
       <hr/>
 
     </div>
-    <div className = "component">
+
     <UserSelectFilter restaurants={restaurantsWithCoordinates} />
-    </div>
+    
 
 
   </>

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 
@@ -9,7 +10,7 @@ export const icon = new Icon({
   iconSize: [35, 35]
 });
 
-export default function UserRestaurantMap({restaurantList}){
+export default function UserRestaurantMap({restaurantList, user}){
 const [activeRestaurant, setActiveRestaurant] = React.useState(null);
 
 
@@ -17,7 +18,7 @@ if(restaurantList.length <=0){
   return <h2>Loading</h2>
 }
 
-
+const thisUrl= "/users/" + user.id
 
 
 
@@ -59,7 +60,8 @@ if(restaurantList.length <=0){
             <h2>{activeRestaurant.name}</h2>
             <p>Cousine: {activeRestaurant.cousine}</p>
             <p>Opening Time: {activeRestaurant.openingTime}-{activeRestaurant.closingTime}</p>
-            <button onClick="">Book</button>
+            <Link to={thisUrl}><button type="button">Go to the booking Form</button></Link>
+
           </div>
         </Popup>
       )}

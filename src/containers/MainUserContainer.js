@@ -181,7 +181,9 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
                         return <ReviewList reviews={user.reviews}/>
                       }}/>
                       <Route exact path="/users/:id/map" render={(props) =>{
-                          return <UserRestaurantMap restaurantList={this.restaurantWithCoordinates()}/>
+                        const id = props.match.params.id;
+                        const user = this.findUserById(id);
+                          return <UserRestaurantMap user={user} restaurantList={this.restaurantWithCoordinates()}/>
                         }}/>
                         <Route exact path="/users/:id/reviews/new" render={(props) =>{
                             const id = props.match.params.id;

@@ -48,10 +48,10 @@ const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
       <Link to= {editUrl}><button className = "edit-button" type="button">Edit {restaurant.name}</button></Link>
       <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
 
-      
-      <div className = "component">
+
+      <>
       <RestaurantBookingsForm restaurant={restaurant} today={today()} maxDate={maxDate()} />
-      </div>
+      </>
 
       </>
     )
