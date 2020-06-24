@@ -1,7 +1,7 @@
 import React,{Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch,Link} from 'react-router-dom';
 import Request from '../helpers/request.js'
-
+import ReviewList from '../components/reviews/ReviewList.js'
 import RestaurantForm from '../components/restaurants/RestaurantForm.js'
 import RestaurantLogin from '../components/restaurants/RestaurantLogin.js'
 import RestaurantDetail from '../components/restaurants/RestaurantDetail.js'
@@ -101,7 +101,11 @@ if(!this.state.restaurants){
                     onUpdate={this.handleUpdate}
                     />
                   }}/>
-
+                  <Route exact path="/restaurants/:id/reviews" render={(props) =>{
+                      const id = props.match.params.id;
+                      const restaurant = this.findRestaurantById(id);
+                      return <ReviewList reviews={restaurant.reviews}/>
+                    }}/>
 
           </Switch>
 

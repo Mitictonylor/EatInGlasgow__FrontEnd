@@ -80,7 +80,7 @@ const handlePostReview = (review)=>{
 
   return (
   <>
-  <h2>WELCOME BACK {user.name.toUpperCase()}</h2>
+
   <Link to= {editUrl}><button className = "edit-button" type="button">Edit your profile</button></Link>
   <Link to= {thisUrl+"/bookings"}><button className = "edit-button" type="button">All your bookings</button></Link>
   <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>

@@ -1,7 +1,7 @@
 import React  from 'react';
 import Restaurant from "./Restaurant";
 import {Link} from 'react-router-dom';
-import ReviewList from '../reviews/ReviewList.js'
+
 import BookingList from '../bookings/BookingList.js'
 import RestaurantBookingsForm from "./RestaurantBookingForm";
 
@@ -36,25 +36,21 @@ const RestaurantDetail = ({ onDelete, onUpdate, restaurant}) => {
   };
 
 
+  const thisUrl= "/restaurants/" + restaurant.id
+  const editUrl = thisUrl + "/edit"
 
-    const editUrl = "/restaurants/" + restaurant.id + "/edit"
 
 
     return (
     <>
 
-      <div className = "component">
-      <Restaurant restaurant = {restaurant}/>
-
+      <h2>WELCOME BACK {restaurant.name.toUpperCase()}</h2>
       <Link to= {editUrl}><button className = "edit-button" type="button">Edit {restaurant.name}</button></Link>
-      </div>
+      <Link to= {thisUrl+"/reviews"}><button className = "edit-button" type="button">All your reviews</button></Link>
+
+      
       <div className = "component">
       <RestaurantBookingsForm restaurant={restaurant} today={today()} maxDate={maxDate()} />
-      </div>
-
-      <div>
-      <h2>All the reviews</h2>
-        <ReviewList reviews={restaurant.reviews}/>
       </div>
 
       </>
