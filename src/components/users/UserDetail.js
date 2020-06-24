@@ -67,12 +67,7 @@ const handlePostReview = (review)=>{
 
 
 
-  // const uniqueCousines = [...new Set(restaurantsWithCoordinates.map(restaurant => restaurant.age))];
-  // console.log(uniqueCousines)
   //
-  // const cousineOptions = uniqueCousines.map((cousine, index) => {
-  //       return <option key={index} value={cousine}>{cousine}</option>
-  //     });
 
 
 
