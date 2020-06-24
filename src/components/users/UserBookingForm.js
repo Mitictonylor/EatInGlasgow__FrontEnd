@@ -38,13 +38,13 @@ class UserBookingForm extends Component{
 
     }
 
-  handleRestaurant(event){
-      const index = parseInt(event.target.value)
-      const selectedRest = this.props.restaurants[index]
-      let booking = this.state.booking;
-      booking['restaurant'] = selectedRest
-      this.setState({booking: booking})
-    }
+    handleRestaurant(event){
+        const index = parseInt(event.target.value)
+        const selectedRest = this.props.restaurants[index]
+        let booking = this.state.booking;
+        booking['restaurant'] = selectedRest
+        this.setState({booking: booking})
+      }
 
 
   findRestaurantById(id){

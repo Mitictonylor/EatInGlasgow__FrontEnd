@@ -16,10 +16,18 @@ const restaurantsOptions = props.restaurants.map((restaurant, index) =>{
 
   )
 })
+
+
+
+
 return(
+  <>
+
   <ul className="component-list">
+
    {restaurantsOptions}
  </ul>
+ </>
 )
 
 

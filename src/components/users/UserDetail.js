@@ -67,6 +67,17 @@ const handlePostReview = (review)=>{
 
 
 
+  // const uniqueCousines = [...new Set(restaurantsWithCoordinates.map(restaurant => restaurant.age))];
+  // console.log(uniqueCousines)
+  //
+  // const cousineOptions = uniqueCousines.map((cousine, index) => {
+  //       return <option key={index} value={cousine}>{cousine}</option>
+  //     });
+
+
+
+
+
   return (
   <>
   <h2>WELCOME BACK {user.name.toUpperCase()}</h2>
@@ -81,6 +92,7 @@ const handlePostReview = (review)=>{
     <div>
       <UserBookingForm  time = {time} restaurants = {restaurantsWithCoordinates} user= {user} today={today()} maxDate={maxDate()} onCreateBooking={handlePostBooking}/>
       <hr/>
+
     </div>
       <RestaurantList restaurants={restaurantsWithCoordinates} />
       <hr/>
