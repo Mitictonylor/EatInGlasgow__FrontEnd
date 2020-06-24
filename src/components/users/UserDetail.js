@@ -13,7 +13,6 @@ const UserDetail = ({user, onDelete, onUpdate, restaurantsWithCoordinates}) => {
     return "loading"
   }
 
-  console.log("prop restaurants in UserDetail",restaurantsWithCoordinates);
 
 
   const handlePostBooking = (booking)=>{
@@ -91,7 +90,7 @@ const handlePostReview = (review)=>{
     </div>
 
     <UserSelectFilter restaurants={restaurantsWithCoordinates} />
-    
+
 
 
   </>

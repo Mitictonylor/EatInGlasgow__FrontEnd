@@ -4,18 +4,19 @@ const Restaurant = ({restaurant})=>{
   if(!restaurant){
     return "Loading..."
   }
-  console.log(restaurant.discount);
-const discount = ()=>{
-if(restaurant.discount > 0){
-  return (<h4>{restaurant.discount}% Off Today</h4>)
-}
-}
+
+// const discount = "no discount today"
+console.log(restaurant.discount);
+// if(restaurant.discount > 0){
+//   discount = <h4>{restaurant.discount}% Off Today</h4>
+// }
+
 return(
 <Fragment>
 <img className = "rest-pic" src={restaurant.pictureUrl} alt="rest-pic"/>
 
 <h3>{restaurant.name}</h3>
-{discount}
+
 <p>Cousin: {restaurant.cousine}</p>
 <p>Working hours: {restaurant.openingTime} - {restaurant.closingTime}</p>
 <p>Price Range: {restaurant.priceRange}</p>

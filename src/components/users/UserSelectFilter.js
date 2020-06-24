@@ -53,9 +53,7 @@ class UserSelectFilter extends Component{
     const priceOptions = uniquePrices.map((price, index) => {
           return <option key={index} value={price}>{price}</option>
         });
-console.log(this.filterByCousineAndPrice("all","all"));
-console.log(this.filterByCousineAndPrice("Italian","all"));
-console.log(uniquePrices);
+
 
         return(
           <>
