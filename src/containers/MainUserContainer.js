@@ -39,11 +39,6 @@ componentDidMount(){
 
 }
 
-// const request = new Request();
-// const url = "https://api.postcodes.io/postcodes/"
-// const restaurantsPostcodeRequest = restaurants.map( restaurant => request.get(url + restaurant.postcode))
-// Promise.all(restaurantPostcodeRequest).then((data) => { restaurant.longitude = data.result.longitude})
-
 
 
 

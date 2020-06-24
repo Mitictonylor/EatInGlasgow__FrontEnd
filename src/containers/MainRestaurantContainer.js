@@ -18,7 +18,7 @@ class MainRestaurantContainer extends Component{
     }
 
   this.findRestaurantById = this.findRestaurantById.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
+  this.restHandleSubmit = this.restHandleSubmit.bind(this);
 
 
   }
@@ -33,26 +33,26 @@ findRestaurantById(id){
   });
 }
 
-handleDelete(id){
+restHandleDelete(id){
   const request = new Request();
   const url = "/api/restaurants/" + id
   request.delete(url)
   .then(() => window.location = "/restaurants")
 }
 
-handlePost(restaurant){
+restHandlePost(restaurant){
   const request = new Request();
   request.post("/api/restaurants", restaurant)
   .then(() => window.location = '/restaurants')
 }
 
-handleUpdate(restaurant){
+restHandleUpdate(restaurant){
     const request = new Request();
     request.patch('/api/restaurants/' + restaurant.id, restaurant).then(() => {
       window.location = '/restaurants/' + restaurant.id
     })
   }
-handleSubmit(restaurantLogged){
+restHandleSubmit(restaurantLogged){
   const loggedRestaurant =  this.state.restaurants.find((restaurant) => {
     return restaurant.email === restaurantLogged.email;})
 
@@ -79,26 +79,26 @@ if(!this.state.restaurants){
           <Switch>
 
             <Route exact path="/restaurants/new" render={(props) => {
-              return <RestaurantForm restaurants = {this.state.restaurants} onCreate={this.handlePost}/>
+              return <RestaurantForm restaurants = {this.state.restaurants} onCreate={this.restHandlePost}/>
               }} />
 
               <Route exact path="/restaurants/login" render={(props) => {
-                return <RestaurantLogin restaurants = {this.state.restaurants} onLogin={this.handleSubmit}/>
+                return <RestaurantLogin restaurants = {this.state.restaurants} onLogin={this.restHandleSubmit}/>
                 }} />
 
                 <Route exact path="/restaurants/:id/edit" render={(props) =>{
                       const id = props.match.params.id
                       const restaurant = this.findRestaurantById(id);
                       return <RestaurantForm restaurant={restaurant}
-                      onUpdate={this.handleUpdate}/>
+                      onUpdate={this.restHandleUpdate}/>
                     }}/>
 
                 <Route exact path="/restaurants/:id" render={(props) =>{
                     const id = props.match.params.id;
                     const restaurant = this.findRestaurantById(id);
                     return <RestaurantDetail restaurant={restaurant}
-                    onDelete={this.handleDelete}
-                    onUpdate={this.handleUpdate}
+                    onDelete={this.restHandleDelete}
+                    onUpdate={this.restHandleUpdate}
                     />
                   }}/>
                   <Route exact path="/restaurants/:id/reviews" render={(props) =>{

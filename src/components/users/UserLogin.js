@@ -25,13 +25,14 @@ class UserLogin extends Component{
 
   handleSubmit(event) {
     const loggedUser =  this.props.users.find((user) => {
-  return user.email === this.state.user.email;})
-  if(!loggedUser){
-    alert("username or password are wrong, please try again")
-    window.location = `/users/login`
-  }
-event.preventDefault();
-  this.props.onLogin(this.state.user)
+      return user.email === this.state.user.email;})
+    if(!loggedUser){
+      alert("username or password are wrong, please try again")
+      window.location = `/users/login`
+    }
+    event.preventDefault();
+    this.props.onLogin(loggedUser)
+    
 }
 
 

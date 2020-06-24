@@ -25,13 +25,13 @@ class RestaurantLogin extends Component{
 
   handleSubmit(event) {
     const restaurant =  this.props.restaurants.find((restaurant) => {
-      return restaurant.email === this.state.restaurant.email;})
-        if(!restaurant){
-          alert("username or password are wrong, please try again")
-          window.location = `/restaurants/login`
-        }
-            event.preventDefault();
-      this.props.onLogin(this.state.restaurant)
+    return restaurant.email === this.state.restaurant.email;})
+    if(!restaurant){
+      alert("username or password are wrong, please try again")
+      window.location = `/restaurants/login`
+    }
+    event.preventDefault();
+    this.props.onLogin(restaurant)
     }
 
 
