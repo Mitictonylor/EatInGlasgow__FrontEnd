@@ -6,7 +6,7 @@ class UserSelectFilter extends Component{
     super(props)//it will track the state just for the form
     this.state = {
                   cousine:"all",
-                  price:'all'
+                  priceRange:'all'
                   }
     }
 
@@ -18,9 +18,23 @@ class UserSelectFilter extends Component{
     this.setState({cousine: event.target.value});
   }
   handlePriceChange(event) {
-    this.setState({price: event.target.value});
+    this.setState({priceRange: event.target.value});
   }
-
+  filterByCousineAndPrice(cousine, price){
+    if (cousine === "all" && price === "all"){
+      return this.props.restaurants
+    }
+    if(cousine === "all" && price !=="all"){
+      const filteredRest = this.props.restaurants.filter(restaurant => restaurant.price ===price)
+      return filteredRest
+    }
+    if(price === "all" && cousine !=="all"){
+      const filteredRest = this.props.restaurants.filter(restaurant => restaurant.cousine ===cousine)
+      return filteredRest
+    }
+    const filteredRest = this.props.restaurants.filter(restaurant => restaurant.cousine ===cousine && restaurant.price ===price)
+    return filteredRest
+  }
 
 
   render(){
@@ -49,6 +63,7 @@ class UserSelectFilter extends Component{
             <label htmlFor="cousine">Choose Cousine</label>
             <select name= 'restaurant' onChange = {this.handleCousineChange} defaultValue='all'>
                   <option disabled value="all">Choose a cousine</option>
+                  <option key='99' value="all">All cousines</option>
                   {cousineOptions}
                 </select>
             </div>
@@ -56,11 +71,16 @@ class UserSelectFilter extends Component{
             <label htmlFor="price">Choose Cousine</label>
             <select name= 'price' onChange = {this.handlePriceChange} defaultValue='all'>
                   <option disabled value="all">Choose a price Range</option>
+                  <option key='99' value="all">All priceRange</option>
                   {priceOptions}
                 </select>
             </div>
 
           </form>
+          <div >
+          <h2>All the restaurants</h2>
+            <BookingList bookings={this.filterByCousineAndPrice(this.state.cousine, this.state.priceRange)}/>
+          </div>
     </>
     )
   }
