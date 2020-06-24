@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import history from './history'
 import Welcome from "../components/Welcome.js"
 import Request from '../helpers/request.js'
 import ReviewList from '../components/reviews/ReviewList.js'
@@ -80,11 +81,14 @@ handleUpdate(user){
     request.post("/api/reviews", review)
     .then(() => window.location = `/users/${review.user.id}`)
   }
+
 handleLogin(userLogged){
+
    this.setState({loggedUser: userLogged})
-if(!this.state.loggedUser){
-   window.location = `/users/${userLogged.id}`}
+  window.location = `/users/${userLogged.id}`
 }
+
+
 restHandleSubmit(restaurantLogged){
       this.setState({loggedRestaurant: restaurantLogged})
 if(!this.state.loggedRestaurant){
@@ -154,10 +158,10 @@ if(this.state.users.lenghth < 15 && this.state.restaurants.length < 20){
 }
 
 
-
+console.log(this.state.loggedUser)
 
   return(
-    <Router>
+    <Router history={history}>
       <Fragment>
         <Welcome/>
 

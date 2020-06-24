@@ -31,8 +31,9 @@ class UserLogin extends Component{
       window.location = `/users/login`
     }
     event.preventDefault();
+    console.log(loggedUser)
     this.props.onLogin(loggedUser)
-    
+
 }
 
 
