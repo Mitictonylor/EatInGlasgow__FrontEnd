@@ -79,7 +79,7 @@ class RestaurantForm extends Component{
       <>
         <h3> {heading}</h3>
 
-        <form className="form-container">
+        <form className="form-container" onSubmit={this.handleSubmit}>
           <div className="form_wrap">
             <label htmlFor="name">Restaurant name:</label>
               <input
@@ -209,8 +209,8 @@ class RestaurantForm extends Component{
                 type="time"
                 value={this.state.restaurant.closingTime} />
           </div>
-          <input onClick={this.handleSubmit} type="submit" value="submit" />
-        </form>
+            <button className="edit-button"type="submit"> SAVE </button>
+          </form>
     </>
     )
   }

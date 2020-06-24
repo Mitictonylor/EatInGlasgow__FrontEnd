@@ -118,7 +118,7 @@ class UserForm extends Component{
                 value={this.state.user.postcode} />
           </div>
 
-        <button type="submit"> SAVE </button>
+        <button className="edit-button"type="submit"> SAVE </button>
       </form>
     </>
     )

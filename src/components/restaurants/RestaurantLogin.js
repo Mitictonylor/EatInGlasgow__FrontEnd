@@ -60,7 +60,7 @@ class RestaurantLogin extends Component{
               type="password"
               value={this.state.restaurant.password} />
           </div>
-          <button type="submit"> SAVE </button>
+          <button type="submit" className="edit-button"> LOGIN </button>
         </form>
     </>
     )
