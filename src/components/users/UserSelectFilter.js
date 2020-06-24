@@ -9,11 +9,12 @@ class UserSelectFilter extends Component{
                   cousine:"all",
                   priceRange:'all'
                   }
+      this.handleCousineChange = this.handleCousineChange.bind(this);
+      this.handlePriceChange = this.handlePriceChange.bind(this);
     }
 
-    this.handleChange = this.handleChange.bind(this);
 
-  }
+
 
   handleCousineChange(event) {
     this.setState({cousine: event.target.value});
@@ -26,34 +27,35 @@ class UserSelectFilter extends Component{
       return this.props.restaurants
     }
     if(cousine === "all" && price !=="all"){
-      const filteredRest = this.props.restaurants.filter(restaurant => restaurant.price ===price)
+      const filteredRest = this.props.restaurants.filter(restaurant => restaurant.priceRange ===price)
       return filteredRest
     }
     if(price === "all" && cousine !=="all"){
       const filteredRest = this.props.restaurants.filter(restaurant => restaurant.cousine ===cousine)
       return filteredRest
     }
-    const filteredRest = this.props.restaurants.filter(restaurant => restaurant.cousine ===cousine && restaurant.price ===price)
+    const filteredRest = this.props.restaurants.filter(restaurant => restaurant.cousine ===cousine && restaurant.priceRange ===price)
     return filteredRest
   }
 
 
   render(){
 
-    const uniqueCousines = [...new Set(restaurants.map(restaurant => restaurant.cousine))];
+    const uniqueCousines = [...new Set(this.props.restaurants.map(restaurant => restaurant.cousine))];
 
 
     const cousineOptions = uniqueCousines.map((cousine, index) => {
           return <option key={index} value={cousine}>{cousine}</option>
         });
 
-    const uniquePrices = [...new Set(restaurants.map(restaurant => restaurant.priceRange))];
+    const uniquePrices = [...new Set(this.props.restaurants.map(restaurant => restaurant.priceRange))];
 
     const priceOptions = uniquePrices.map((price, index) => {
           return <option key={index} value={price}>{price}</option>
         });
-
-
+console.log(this.filterByCousineAndPrice("all","all"));
+console.log(this.filterByCousineAndPrice("Italian","all"));
+console.log(uniquePrices);
 
         return(
           <>
@@ -80,7 +82,7 @@ class UserSelectFilter extends Component{
           </form>
           <div >
           <h2>All the restaurants</h2>
-            <RestaurantList bookings={this.filterByCousineAndPrice(this.state.cousine, this.state.priceRange)}/>
+            <RestaurantList restaurants={this.filterByCousineAndPrice(this.state.cousine, this.state.priceRange)}/>
           </div>
     </>
     )
