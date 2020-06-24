@@ -57,7 +57,7 @@ class UserSelectFilter extends Component{
 
         return(
           <>
-          <h3> Filter Restaurant by Type of Cousine </h3>
+          <h3> Filter Restaurant by : </h3>
 
             <form className="form-container">
             <div className="form_wrap">
@@ -69,7 +69,7 @@ class UserSelectFilter extends Component{
                 </select>
             </div>
             <div className="form_wrap">
-            <label htmlFor="price">Choose Cousine</label>
+            <label htmlFor="price">Choose Price Range</label>
             <select name= 'price' onChange = {this.handlePriceChange} defaultValue='all'>
                   <option disabled value="all">Choose a price Range</option>
                   <option key='99' value="all">All priceRange</option>
