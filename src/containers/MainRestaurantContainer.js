@@ -64,7 +64,6 @@ handleSubmit(restaurantLogged){
 
 
 
-
 render(){
 
 if(!this.state.restaurants){
