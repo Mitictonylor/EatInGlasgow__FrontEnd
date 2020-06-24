@@ -1,7 +1,10 @@
 body {
     height: 125vh;
     font-family: sans-serif;
-  background-color: lightskyblue;
+
+  background-image: url("/logos.png");
+background-repeat: no-repeat;
+background-attachment: fixed;
 }
 .menu-container{
   display: block;
@@ -12,12 +15,13 @@ body {
   color:red
 }
 .dropbtn {
-  background-color: lightskyblue;
-  color: white;
-  font-style: ;
+  background-color: rgba(250,240,230,0.7);
+  color: Black;
+  font-weight: bold ;
   padding: 16px;
   font-size: 16px;
   border: solid 1px;
+  border-radius: 25px 0px ;
   cursor: pointer;
   margin: 10px
 }
@@ -30,10 +34,11 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: rgba(250,240,230,0.7);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 25px 0px ;
 }
 
 .dropdown-content .drop-link {
@@ -43,14 +48,24 @@ body {
   display: block;
 }
 
-.dropdown-content .drop-link:hover {background-color: powderblue}
+.dropdown-content:hover{
+  background-color: powderblue;
+  border-radius:0px 25px;}
+.drop-link:hover {
+  background-color: powderblue;
+  border-radius:0px 25px;
+  }
+
 
 .dropdown:hover .dropdown-content {
   display: block;
+
 }
 
 .dropdown:hover .dropbtn {
-  background-color: lightskyblue;
+  background-color: rgba(176,224,230,0.9);
+  border-radius:0px 25px;
+
 }
 #root {
   margin-top: 30px;
@@ -65,13 +80,12 @@ body {
 }
 .edit-button {
 	box-shadow:inset 0px 1px 0px 0px #bee2f9;
-	background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
-	background-color:#63b8ee;
-	border-radius:6px;
+	background-color:rgba(250,240,230,0.7);
+	border-radius:25px 0px;
 	border:1px solid #3866a3;
 	display:inline-block;
 	cursor:pointer;
-	color:#14396a;
+	color:black;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
@@ -80,15 +94,14 @@ body {
 	text-shadow:0px 1px 0px #7cacde;
 }
 .edit-button:hover {
-	background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
-	background-color:#468ccf;
+	background-color:rgba(176,224,230,0.9);
+  border-radius:0px 25px;
 }
 .edit-button:active {
 	position:relative;
 	top:1px;
 }
 .logo-container {
-    background-color: lightskyblue;
     position: fixed;
     top: 0;
     left: 0;
@@ -96,19 +109,15 @@ body {
     height: 80px;
     display: flex;
     align-items: center;
-
-
 }
+
 .logo-container * {
     display: inline;
-
-
 }
 .logo {
   height: 80px;
-  width: 80%;
-margin-left: 10%;
-margin-right: 15%;
+  width: 100%;
+
 }
 
 .rest-pic{
@@ -137,6 +146,8 @@ margin-right: 15%;
   padding: 10px;
   width: 300px;
   border: 1px solid papayawhip;
+  border-radius:0px 25px;
+  background-color: rgba(250,240,230,0.7)
 }
 .component-item{
   display: inline;
@@ -164,11 +175,16 @@ form input,select {
   padding: 10px;
   width: 500px;
   border: 1px solid black;
-
+  border-radius: 25px 0px;
+  background-color: rgba(250,240,230,0.7)
+}
+.title-container{
+  background-color: rgba(250,240,230,0.7)
 }
 .form_wrap {
   display: block;
   margin-bottom: 20px;
+  backgrouund-color: rgba(0,0,0,0.5)
 
 
 }

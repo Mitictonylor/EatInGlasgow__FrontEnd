@@ -35,7 +35,7 @@ class RestaurantLogin extends Component{
 
     return(
       <>
-        <h3> LOGIN RESTAURANT </h3>
+        <h3 className="title-container"> LOGIN RESTAURANT </h3>
 
         <form className="form-container" onSubmit={this.handleSubmit}>
           <div className="form_wrap">
