@@ -1,2 +1,2 @@
 /*    /index.html   200
-/api/*     https://eat-in-glasgow-server.herokuapp.com/:splat 200
+/api/*     https://eat-in-glasgow-server.herokuapp.com/api/:splat 200
