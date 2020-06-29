@@ -41,8 +41,8 @@ class MainContainer extends Component{
 // }
     const request = new Request();
 
-    const userRequest = request.get("/api/users")
-    const restarantRequest = request.get("/api/restaurants")
+    const userRequest = request.get("https://eat-in-glasgow-server.herokuapp.com/api/users")
+    const restarantRequest = request.get("https://eat-in-glasgow-server.herokuapp.com/api/restaurants")
     Promise.all([userRequest, restarantRequest])
     .then((data) => this.setState({users: data[0],
                                   restaurants: data[1]}
