@@ -114,6 +114,7 @@ body {
 
 .logo-container * {
     display: inline;
+    width: 100%
 }
 .logo {
   height: 80px;

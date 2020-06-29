@@ -36,6 +36,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": ".",
   "proxy": "https://eat-in-glasgow-server.herokuapp.com"
 }
