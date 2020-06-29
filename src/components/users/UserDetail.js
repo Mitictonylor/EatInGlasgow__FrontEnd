@@ -15,7 +15,7 @@ const UserDetail = ({user, restaurantsWithCoordinates}) => {
   const handlePostBooking = (booking)=>{
     alert(`${user.name} your booking for ${booking.restaurant.name} has been processed`)
     const request = new Request();
-    request.post("/api/bookings", booking)
+    request.post("https://eat-in-glasgow-server.herokuapp.com/api/bookings", booking)
     .then(() => window.location = `/users/${user.id}`)
   }
 

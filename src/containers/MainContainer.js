@@ -62,20 +62,20 @@ class MainContainer extends Component{
   handlePost(user){
     alert("Your registration has been confirmed, please login now")
     const request = new Request();
-    request.post("/api/users", user)
+    request.post("https://eat-in-glasgow-server.herokuapp.com/api/users", user)
     .then(() => window.location = '/users')
   }
 
   handleUpdate(user){
       alert("Your data have been updated")
     const request = new Request();
-    request.patch('/api/users/' + user.id, user)
+    request.patch('https://eat-in-glasgow-server.herokuapp.com/api/users/' + user.id, user)
     .then(() => { window.location = '/users/' + user.id})
   }
 
   handlePostReview(review){
     const request = new Request();
-    request.post("/api/reviews", review)
+    request.post("https://eat-in-glasgow-server.herokuapp.com/api/reviews", review)
     .then(() => window.location = `/users/${review.user.id}`)
   }
 
@@ -125,14 +125,14 @@ today(){
 restHandlePost(restaurant){
   alert("Your registration has been confirmed, please login now")
   const request = new Request();
-  request.post("/api/restaurants", restaurant)
+  request.post("https://eat-in-glasgow-server.herokuapp.com/api/restaurants", restaurant)
   .then(() => window.location = '/restaurants')
 }
 
 restHandleUpdate(restaurant){
     alert("Your data have been updated")
     const request = new Request();
-    request.patch('/api/restaurants/' + restaurant.id, restaurant)
+    request.patch('https://eat-in-glasgow-server.herokuapp.com/api/restaurants/' + restaurant.id, restaurant)
     .then(() => {window.location = '/restaurants/' + restaurant.id})
   }
 
