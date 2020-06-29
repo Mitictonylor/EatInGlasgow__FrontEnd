@@ -33,7 +33,14 @@ class MainContainer extends Component{
   }
 
   componentDidMount(){
+//     const url = "https://eat-in-glasgow-server.herokuapp.com/api/users"
+//     fetch(url).then(res =>res.json()).then(data => this.setState({users: data}))
+//
+//     const url2 = "https://eat-in-glasgow-server.herokuapp.com/api/restaurants"
+//     fetch(url2).then(res =>res.json()).then(data => this.setState({restaurants: data}))
+// }
     const request = new Request();
+
     const userRequest = request.get("/api/users")
     const restarantRequest = request.get("/api/restaurants")
     Promise.all([userRequest, restarantRequest])
